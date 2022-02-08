@@ -1,16 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:materia_optima/core/game_model.dart';
-import 'package:materia_optima/core/alchemy_element.dart';
 import 'package:provider/provider.dart';
 
-class InventoryElementPicker extends StatefulWidget {
-  final double width;
-  final double elementDimension;
+import 'package:materia_optima/core/models/game_model.dart';
+import 'package:materia_optima/core/alchemy_element.dart';
 
+class InventoryElementPicker extends StatefulWidget {
   const InventoryElementPicker({
+    Key? key,
     required this.width,
     required this.elementDimension,
-  });
+  }) : super(key: key);
+
+  final double width;
+  final double elementDimension;
 
   @override
   _InventoryElementPickerState createState() => _InventoryElementPickerState();

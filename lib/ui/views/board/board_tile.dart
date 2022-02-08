@@ -1,20 +1,22 @@
 import 'package:flutter/material.dart';
-import 'package:materia_optima/utils/theme.dart';
-import 'package:materia_optima/core/alchemy_element.dart';
-import 'package:materia_optima/core/board_tile_model.dart';
-import 'package:materia_optima/core/game_model.dart';
 import 'package:provider/provider.dart';
 
-class BoardTile extends StatefulWidget {
-  final BoardTileModel tileModel;
-  final double dimension;
-  final Duration animationDuration;
+import 'package:materia_optima/utils/theme.dart';
+import 'package:materia_optima/core/alchemy_element.dart';
+import 'package:materia_optima/core/models/board_tile_model.dart';
+import 'package:materia_optima/core/models/game_model.dart';
 
+class BoardTile extends StatefulWidget {
   const BoardTile({
+    Key? key,
     required this.tileModel,
     required this.dimension,
     this.animationDuration = const Duration(milliseconds: 600),
-  });
+  }) : super(key: key);
+
+  final BoardTileModel tileModel;
+  final double dimension;
+  final Duration animationDuration;
 
   @override
   _BoardTileState createState() => _BoardTileState();
@@ -36,7 +38,6 @@ class _BoardTileState extends State<BoardTile> {
             curve: Curves.ease,
             duration: widget.animationDuration,
             decoration: BoxDecoration(
-              // TODO: change for proper color
               color: _isNullTile ? Colors.transparent : GameColors.grey200,
               boxShadow: [
                 BoxShadow(
@@ -108,7 +109,7 @@ class _BoardTileState extends State<BoardTile> {
 
   bool _canMove(BoardTileModel? nullTile) {
     if (nullTile == null) {
-      throw Exception('Access null tile index before intialization');
+      throw Exception('Access null tile index before initialization');
     }
 
     int index = widget.tileModel.position.index;

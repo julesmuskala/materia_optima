@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:materia_optima/core/game_model.dart';
-import 'package:materia_optima/ui/large_screen.dart';
 import 'package:provider/provider.dart';
 
+import 'package:materia_optima/core/models/game_model.dart';
+import 'package:materia_optima/ui/large_screen.dart';
+
 class Game extends StatefulWidget {
+  const Game({
+    Key? key,
+  }) : super(key: key);
+
   @override
   _GameState createState() => _GameState();
 }
@@ -19,7 +24,7 @@ class _GameState extends State<Game> {
     return Scaffold(
       body: ChangeNotifierProvider<GameModel>(
         create: (_) => GameModel(),
-        child: LargeScreenView(),
+        child: const LargeScreenView(),
       ),
     );
   }

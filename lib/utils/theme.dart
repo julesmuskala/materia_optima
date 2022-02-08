@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class GameColors {
+abstract class GameColors {
   static const white = Color.fromARGB(255, 255, 255, 255);
   static const green = Color.fromARGB(255, 35, 227, 141);
   static const blue = Color.fromARGB(255, 2, 167, 233);
@@ -13,7 +13,7 @@ class GameColors {
   static const shadowBlack = Color.fromARGB(115, 0, 0, 0);
 }
 
-class GameTypography {
+abstract class GameTypography {
   static const String _fontFamily = 'RobotoCondensed';
 
   static const FontWeight _bold = FontWeight.w700;
@@ -104,7 +104,7 @@ class GameTypography {
   }
 }
 
-class GameTheme {
+abstract class GameTheme {
   static const List<BoxShadow> boxShadow = [
     BoxShadow(
       color: GameColors.shadowBlack,

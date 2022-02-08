@@ -1,19 +1,21 @@
 import 'package:flutter/material.dart';
-import 'package:materia_optima/core/game_model.dart';
-import 'package:materia_optima/core/alchemy_element.dart';
-import 'package:materia_optima/utils/theme.dart';
 import 'package:provider/provider.dart';
 
-class InventoryTitle extends StatefulWidget {
-  final double width;
-  final double height;
-  final Duration animationDuration;
+import 'package:materia_optima/core/models/game_model.dart';
+import 'package:materia_optima/core/alchemy_element.dart';
+import 'package:materia_optima/utils/theme.dart';
 
+class InventoryTitle extends StatefulWidget {
   const InventoryTitle({
+    Key? key,
     required this.height,
     required this.width,
     this.animationDuration = const Duration(milliseconds: 600),
-  });
+  }) : super(key: key);
+
+  final double width;
+  final double height;
+  final Duration animationDuration;
 
   @override
   _InventoryTitleState createState() => _InventoryTitleState();

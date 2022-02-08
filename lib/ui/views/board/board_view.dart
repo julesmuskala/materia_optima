@@ -1,14 +1,22 @@
 import 'package:flutter/material.dart';
-import 'package:materia_optima/core/board_tile_model.dart';
+import 'package:provider/provider.dart';
+
+import 'package:materia_optima/core/models/board_tile_model.dart';
 import 'package:materia_optima/ui/shared/fancy_button.dart';
 import 'package:materia_optima/ui/views/board/board_tile.dart';
 import 'package:materia_optima/core/listened_keys.dart';
 import 'package:materia_optima/utils/theme.dart';
 import 'package:materia_optima/utils/script.dart';
-import 'package:materia_optima/core/game_model.dart';
-import 'package:provider/provider.dart';
+import 'package:materia_optima/core/models/game_model.dart';
 
 class BoardView extends StatefulWidget {
+  const BoardView({
+    Key? key,
+    required this.width,
+  }) : super(key: key);
+
+  final double width;
+
   @override
   _BoardViewState createState() => _BoardViewState();
 }
@@ -21,12 +29,12 @@ class _BoardViewState extends State<BoardView> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
           Container(
-            constraints: const BoxConstraints(
-              maxHeight: 420.0,
-              maxWidth: 420.0,
+            constraints: BoxConstraints(
+              maxHeight: widget.width,
+              maxWidth: widget.width,
             ),
-            height: 420.0,
-            width: 420.0,
+            height: widget.width,
+            width: widget.width,
             decoration: const BoxDecoration(
               color: GameColors.grey200,
               image: DecorationImage(
@@ -38,7 +46,10 @@ class _BoardViewState extends State<BoardView> {
             child: Padding(
               padding: const EdgeInsets.all(15.0),
               child: Stack(
-                children: _buildBoardTileList(gameValue.boardTiles),
+                children: _buildBoardTileList(
+                  gameValue.boardTiles,
+                  dimension: widget.width * 0.22,
+                ),
               ),
             ),
           ),
@@ -71,7 +82,7 @@ class _BoardViewState extends State<BoardView> {
   }
 
   List<BoardTile> _buildBoardTileList(List<BoardTileModel> tileModels,
-      [double dimension = 92]) {
+      {required double dimension}) {
     List<BoardTile> boardTiles = [];
 
     for (var tileModel in tileModels) {

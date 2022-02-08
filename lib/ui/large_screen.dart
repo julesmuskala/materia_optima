@@ -1,10 +1,15 @@
 import 'package:flutter/material.dart';
+
 import 'package:materia_optima/ui/views/board/board_view.dart';
 import 'package:materia_optima/ui/views/inventory/inventory_view.dart';
 import 'package:materia_optima/utils/script.dart';
 import 'package:materia_optima/utils/theme.dart';
 
 class LargeScreenView extends StatelessWidget {
+  const LargeScreenView({
+    Key? key,
+  }) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -28,22 +33,26 @@ class LargeScreenView extends StatelessWidget {
           ),
           Expanded(
             child: Row(
-              children: <Widget>[
+              children: const <Widget>[
                 Expanded(
                   flex: 8,
-                  child: Container(
-                    color: Colors.transparent,
+                  child: Placeholder(),
+                ),
+                Spacer(),
+                Expanded(
+                  flex: 8,
+                  child: BoardView(
+                    width: 420.0,
+                    key: Key('board_view'),
                   ),
                 ),
-                const Spacer(),
+                Spacer(),
                 Expanded(
                   flex: 8,
-                  child: BoardView(),
-                ),
-                const Spacer(),
-                Expanded(
-                  flex: 8,
-                  child: InventoryView(),
+                  child: InventoryView(
+                    width: 420.0,
+                    key: Key('inventory_view'),
+                  ),
                 ),
               ],
             ),

@@ -36,9 +36,12 @@ def gen_file(file_path, patterns):
         file.write("        break;\n")
 
     file = open(file_path, 'w')
+    file.write("//\n")
+    file.write("// Generated file. Do not edit.\n")
+    file.write("//\n\n")
     file.write("import 'package:materia_optima/core/alchemy_element.dart';\n")
     file.write(
-        "import 'package:materia_optima/core/board_tile_model.dart';\n\n")
+        "import 'package:materia_optima/core/models/board_tile_model.dart';\n\n")
 
     file.write(
         "AlchemyElement matchPattern(List<BoardTileModel> boardTiles,\n")

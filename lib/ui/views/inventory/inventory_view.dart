@@ -1,15 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
 import 'package:materia_optima/ui/shared/fancy_button.dart';
 import 'package:materia_optima/ui/views/inventory/inventory_element_picker.dart';
 import 'package:materia_optima/core/alchemy_element.dart';
 import 'package:materia_optima/utils/theme.dart';
-import 'package:provider/provider.dart';
-import 'package:materia_optima/core/game_model.dart';
+import 'package:materia_optima/core/models/game_model.dart';
 import 'package:materia_optima/ui/views/inventory/inventory_title.dart';
 import 'package:materia_optima/utils/script.dart';
 import 'package:materia_optima/core/listened_keys.dart';
 
 class InventoryView extends StatefulWidget {
+  const InventoryView({
+    Key? key,
+    required this.width,
+  }) : super(key: key);
+
+  final double width;
+
   @override
   _InventoryViewState createState() => _InventoryViewState();
 }
@@ -28,29 +36,29 @@ class _InventoryViewState extends State<InventoryView> {
         return Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            const InventoryElementPicker(
-              width: 375.2,
-              elementDimension: 33.6,
+            InventoryElementPicker(
+              width: widget.width * 0.9,
+              elementDimension: widget.width * 0.9 * 0.09,
             ),
             const SizedBox(
               height: 20.0,
             ),
             Image.asset(
               'assets/images/inventory_divider.png',
-              width: 420.0,
+              width: widget.width,
             ),
             const SizedBox(
               height: 20.0,
             ),
-            const InventoryTitle(
-              width: 375.2,
-              height: 67.2,
+            InventoryTitle(
+              width: widget.width * 0.9,
+              height: widget.width * 0.9 * 0.18,
             ),
             const SizedBox(
               height: 20.0,
             ),
             SizedBox(
-              width: 375.2,
+              width: widget.width * 0.9,
               height: 120.0,
               child: Text(
                 gameScriptLines[

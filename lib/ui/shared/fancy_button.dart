@@ -1,17 +1,19 @@
 import 'package:flutter/material.dart';
+
 import 'package:materia_optima/core/listened_keys.dart';
 import 'package:materia_optima/utils/theme.dart';
 
 class FancyButton extends StatelessWidget {
-  final VoidCallback? onPressed;
-  final ListenedKeys listenedKey;
-  final String description;
-
   const FancyButton({
+    Key? key,
     this.onPressed,
     required this.listenedKey,
     required this.description,
-  });
+  }) : super(key: key);
+
+  final VoidCallback? onPressed;
+  final ListenedKeys listenedKey;
+  final String description;
 
   @override
   Widget build(BuildContext context) {

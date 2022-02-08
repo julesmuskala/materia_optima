@@ -1,7 +1,7 @@
 import 'package:materia_optima/core/alchemy_element.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-class GamePreferences {
+abstract class GamePreferences {
   static const String _selectedElementKey = 'selected_element';
   static const String _currentQuestStageKey = 'quest_stage';
 

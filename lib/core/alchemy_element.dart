@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import 'package:materia_optima/utils/theme.dart';
 
 enum AlchemyElement {
@@ -13,7 +14,7 @@ enum AlchemyElement {
   materiaOptima,
 }
 
-extension AlchemyElementExtention on AlchemyElement {
+extension AlchemyElementExtension on AlchemyElement {
   String get _underscoreName {
     switch (this) {
       case AlchemyElement.aether:
