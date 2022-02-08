@@ -1,63 +1,98 @@
-// import 'package:flutter/material.dart';
-// import 'package:provider/provider.dart';
+import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
-// import 'package:materia_optima/utils/theme.dart';
-// import 'package:materia_optima/core/models/game_model.dart';
-// import 'package:materia_optima/utils/story.dart';
-// import 'package:materia_optima/ui/views/compendium/compendium_tab.dart';
+import 'package:materia_optima/core/models/game_model.dart';
+import 'package:materia_optima/utils/story.dart';
+import 'package:materia_optima/ui/views/compendium/compendium_tab.dart';
+import 'package:materia_optima/utils/theme.dart';
 
-// class CompendiumView extends StatefulWidget {
-//   const CompendiumView({
-//     Key? key,
-//     required this.width,
-//   }) : super(key: key);
+class CompendiumView extends StatefulWidget {
+  const CompendiumView({
+    Key? key,
+    required this.width,
+  }) : super(key: key);
 
-//   final double width;
+  final double width;
 
-//   @override
-//   _CompendiumViewState createState() => _CompendiumViewState();
-// }
+  @override
+  _CompendiumViewState createState() => _CompendiumViewState();
+}
 
-// class _CompendiumViewState extends State<CompendiumView> {
-//   @override
-//   Widget build(BuildContext context) {
-//     return Center(
-//       child: SizedBox(
-//         width: widget.width,
-//         child: Consumer<GameModel>(
-//           builder: (context, gameValue, child) {
-//             final List<StoryEntry> renderedEntries =
-//                 _filterUnlockedEntries(gameValue.currentQuestStage);
-//             return ListView.separated(
-//               shrinkWrap: true,
-//               itemCount: renderedEntries.length,
-//               itemBuilder: (BuildContext context, int index) {
-//                 var entry = renderedEntries[index];
-//                 print(entry.toString());
-//                 return CompendiumTab(
-//                   width: widget.width,
-//                   color: GameColors.grey50,
-//                   text: 'test',
-//                 );
-//                 // return const Placeholder();
-//               },
-//               separatorBuilder: (BuildContext context, int index) =>
-//                   const Divider(height: 20.0),
-//             );
-//           },
-//         ),
-//       ),
-//     );
-//   }
+class _CompendiumViewState extends State<CompendiumView> {
+  final GlobalKey<AnimatedListState> _listKey = GlobalKey<AnimatedListState>();
 
-//   List<StoryEntry> _filterUnlockedEntries(int currentQuestStage) {
-//     List<StoryEntry> entries = [];
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: SizedBox(
+        width: widget.width,
+        child: Consumer<GameModel>(
+          builder: (context, gameValue, child) {
+            final renderedEntries = _filterUnlockedEntries(
+              gameValue.currentQuestStage,
+              lastEntriesLength: gameValue.lastCompendiumListLength,
+              setLength: gameValue.setLastCompendiumListLength,
+            );
+            return AnimatedList(
+              key: _listKey,
+              shrinkWrap: true,
+              initialItemCount: gameValue.lastCompendiumListLength,
+              itemBuilder: (context, index, animation) {
+                return FadeTransition(
+                  opacity: animation.drive(
+                    Tween<double>(
+                      begin: 0,
+                      end: 1,
+                    ),
+                  ),
+                  child: SlideTransition(
+                    position: animation.drive(
+                      Tween<Offset>(
+                        begin: const Offset(-0.05, 0),
+                        end: const Offset(0, 0),
+                      ),
+                    ),
+                    child: Column(
+                      children: [
+                        CompendiumTab(
+                          width: widget.width,
+                          color: GameColors.grey50,
+                          text: GameStory
+                                  .lines[renderedEntries[index].titleKey] ??
+                              'Error: no line found',
+                        ),
+                        const SizedBox(
+                          height: 20.0,
+                        )
+                      ],
+                    ),
+                  ),
+                );
+              },
+            );
+          },
+        ),
+      ),
+    );
+  }
 
-//     for (var entry in GameStory.storyEntries.entries) {
-//       if (entry.key > currentQuestStage) break;
-//       entries.add(entry.value);
-//     }
+  List<StoryEntry> _filterUnlockedEntries(int currentQuestStage,
+      {required int lastEntriesLength, required void Function(int) setLength}) {
+    List<StoryEntry> returnedEntries = [];
 
-//     return entries;
-//   }
-// }
+    for (var entry in GameStory.storyEntries.entries) {
+      if (entry.key <= currentQuestStage) {
+        returnedEntries.add(entry.value);
+      }
+    }
+
+    if (returnedEntries.length > lastEntriesLength) {
+      for (var i = 0; i < returnedEntries.length - lastEntriesLength; i++) {
+        _listKey.currentState?.insertItem(lastEntriesLength + i);
+      }
+      setLength.call(returnedEntries.length - lastEntriesLength);
+    }
+
+    return returnedEntries;
+  }
+}

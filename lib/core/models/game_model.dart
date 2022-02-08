@@ -1,5 +1,5 @@
 import 'dart:math';
-import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
 
 import 'package:materia_optima/core/alchemy_element.dart';
 import 'package:materia_optima/core/tile_position.dart';
@@ -34,6 +34,13 @@ class GameModel extends ChangeNotifier {
     GamePreferences.setCurrentStage(stage);
 
     notifyListeners();
+  }
+
+  // Used to track changes to the contents of compendium list
+  // TODO: change it so it is less
+  int lastCompendiumListLength = 0;
+  void setLastCompendiumListLength(int value) {
+    lastCompendiumListLength = value;
   }
 
   // Keep track of board state

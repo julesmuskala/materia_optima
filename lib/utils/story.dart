@@ -46,8 +46,8 @@ abstract class GameStory {
       descriptionKey: 'quest_desc_10',
     ),
     100: StoryEntry(
-      titleKey: 'quest_entry_100',
-      descriptionKey: 'quest_entry_100',
+      titleKey: 'quest_title_100',
+      descriptionKey: 'quest_desc_100',
     ),
   });
 }

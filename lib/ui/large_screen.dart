@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 import 'package:materia_optima/ui/views/board/board_view.dart';
+import 'package:materia_optima/ui/views/compendium/compendium_view.dart';
 import 'package:materia_optima/ui/views/inventory/inventory_view.dart';
-// import 'package:materia_optima/ui/views/compendium/compendium_view.dart';
 import 'package:materia_optima/utils/story.dart';
 import 'package:materia_optima/utils/theme.dart';
 
@@ -37,7 +37,10 @@ class LargeScreenView extends StatelessWidget {
               children: const <Widget>[
                 Expanded(
                   flex: 8,
-                  child: Placeholder(),
+                  child: CompendiumView(
+                    width: 420.0,
+                    key: Key('compendium_view'),
+                  ),
                 ),
                 Spacer(),
                 Expanded(

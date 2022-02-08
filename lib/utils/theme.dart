@@ -67,7 +67,7 @@ abstract class GameTypography {
     return TextStyle(
       fontFamily: _fontFamily,
       fontWeight: _regular,
-      color: color,
+      color: color == GameColors.grey50 ? GameColors.white : color,
       fontSize: 14,
       shadows: <Shadow>[
         Shadow(
