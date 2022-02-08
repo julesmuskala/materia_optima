@@ -29,8 +29,7 @@ def gen_file(file_path, patterns):
         for if_elem, return_elems in if_cases.items():
             file.write("        if (tile.alchemyElement == " + get_full_name(if_elem) + ") {\n")
             for elem in return_elems:
-                file.write("          matchesFoundMap[" + get_full_name(elem) + "] = matchesFoundMap[")
-                file.write(get_full_name(elem) + "]! + 1;\n")
+                file.write("          matchesFoundMap.update(" + get_full_name(elem) + ", (value) => ++value, ifAbsent: () => 1);\n")
             file.write("        }\n")
 
         file.write("        break;\n")
@@ -46,10 +45,7 @@ def gen_file(file_path, patterns):
     file.write(
         "AlchemyElement matchPattern(List<BoardTileModel> boardTiles,\n")
     file.write("    [int tileCount = 16]) {\n")
-    file.write("  Map<AlchemyElement, int> matchesFoundMap = {};\n")
-    file.write("  for (var element in AlchemyElement.values) {\n")
-    file.write("    matchesFoundMap[element] = 0;\n")
-    file.write("  }\n\n")
+    file.write("  Map<AlchemyElement, int> matchesFoundMap = {};\n\n")
 
     file.write("  for (var tile in boardTiles) {\n")
     file.write("    switch (tile.position.index) {\n")
