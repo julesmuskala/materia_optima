@@ -71,7 +71,7 @@ class _InventoryElementPickerState extends State<InventoryElementPicker> {
                   ),
                   fit: BoxFit.cover,
                   child: InkWell(
-                    onTap: () => onElementPicked(element),
+                    onTap: () => onElementPicked.call(element),
                   ),
                 ),
               ),

@@ -63,7 +63,7 @@ class _BoardViewState extends State<BoardView> {
                 GameStory.lines['finish_board'] ?? 'Error: no line found',
           ),
           const SizedBox(
-            height: 100.0,
+            height: 70.0,
           ),
           FancyButton(
             onPressed: () => gameValue.resetBoardTiles(),
@@ -78,7 +78,7 @@ class _BoardViewState extends State<BoardView> {
 
   void _finishBoard(bool Function() providerFunc) {
     // TODO: do sth with finishGame() result
-    providerFunc();
+    providerFunc.call();
   }
 
   List<BoardTile> _buildBoardTileList(List<BoardTileModel> tileModels,

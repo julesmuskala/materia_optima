@@ -90,6 +90,6 @@ class _InventoryViewState extends State<InventoryView> {
 
   void _addToBoard(bool Function() providerFunc) {
     // TODO: do sth with addToBoard() result
-    providerFunc();
+    providerFunc.call();
   }
 }

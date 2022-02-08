@@ -90,8 +90,9 @@ class _CompendiumViewState extends State<CompendiumView> {
       for (var i = 0; i < returnedEntries.length - lastEntriesLength; i++) {
         _listKey.currentState?.insertItem(lastEntriesLength + i);
       }
-      setLength.call(returnedEntries.length - lastEntriesLength);
     }
+
+    setLength.call(returnedEntries.length);
 
     return returnedEntries;
   }
