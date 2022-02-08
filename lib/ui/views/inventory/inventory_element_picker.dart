@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:materia_optima/ui/shared/animated_color_filtered.dart';
 import 'package:provider/provider.dart';
 
 import 'package:materia_optima/core/models/game_model.dart';
@@ -51,31 +52,35 @@ class _InventoryElementPickerState extends State<InventoryElementPicker> {
     }
 
     return elementsToRender
-        .map((element) => SizedBox(
-              width: widget.elementDimension,
-              height: widget.elementDimension,
-              child: Material(
-                clipBehavior: Clip.antiAlias,
-                borderRadius:
-                    BorderRadius.circular(widget.elementDimension / 2),
-                color: Colors.transparent,
-                child: Ink.image(
-                  colorFilter: ColorFilter.mode(
-                    element.color,
-                    BlendMode.modulate,
-                  ),
-                  width: widget.elementDimension,
-                  height: widget.elementDimension,
-                  image: AssetImage(
+        .map(
+          (element) => SizedBox(
+            width: widget.elementDimension,
+            height: widget.elementDimension,
+            child: Stack(
+              children: <Widget>[
+                AnimatedColorFiltered(
+                  endColor: element.color,
+                  child: Image.asset(
                     'assets/icons/${element.iconPath}.png',
-                  ),
-                  fit: BoxFit.cover,
-                  child: InkWell(
-                    onTap: () => onElementPicked.call(element),
+                    filterQuality: FilterQuality
+                        .medium, // That's why I no longer use Ink.image
                   ),
                 ),
-              ),
-            ))
+                Positioned.fill(
+                  child: Material(
+                    clipBehavior: Clip.antiAlias,
+                    borderRadius:
+                        BorderRadius.circular(widget.elementDimension / 2),
+                    color: Colors.transparent,
+                    child: InkWell(
+                      onTap: () => onElementPicked.call(element),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        )
         .toList();
   }
 }

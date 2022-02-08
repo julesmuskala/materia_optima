@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 import 'package:materia_optima/core/models/game_model.dart';
 import 'package:materia_optima/core/alchemy_element.dart';
 import 'package:materia_optima/utils/theme.dart';
+import 'package:materia_optima/ui/shared/animated_color_filtered.dart';
 
 class InventoryTitle extends StatefulWidget {
   const InventoryTitle({
@@ -34,17 +35,16 @@ class _InventoryTitleState extends State<InventoryTitle> {
         builder: (context, gameValue, child) {
           return Stack(
             children: <Widget>[
-              ColorFiltered(
-                colorFilter: ColorFilter.mode(
-                  gameValue.selectedElement.color,
-                  BlendMode.modulate,
-                ),
+              AnimatedColorFiltered(
+                endColor: gameValue.selectedElement.color,
+                duration: widget.animationDuration,
                 child: Image.asset('assets/images/inventory_element_frame.png'),
               ),
-              Container(
+              AnimatedContainer(
                 width: double.maxFinite,
                 height: double.maxFinite,
                 alignment: Alignment.center,
+                duration: widget.animationDuration,
                 decoration: BoxDecoration(
                   gradient: GameTheme.gradient(gameValue.selectedElement.color),
                 ),

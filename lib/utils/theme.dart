@@ -155,7 +155,7 @@ abstract class GameTheme {
           ),
         ),
         shadowColor: MaterialStateProperty.all<Color>(GameColors.shadowBlack),
-        elevation: MaterialStateProperty.all<double>(15.0),
+        elevation: MaterialStateProperty.all<double>(3.0),
         shape: MaterialStateProperty.all<OutlinedBorder>(
           const ContinuousRectangleBorder(),
         ),
@@ -185,7 +185,6 @@ abstract class GameTheme {
     // highlightColor:
     // hoverColor:
     // indicatorColor:
-    // listTileTheme:
     // pageTransitionTheme:
     // primaryColor:
     scaffoldBackgroundColor: GameColors.grey200,

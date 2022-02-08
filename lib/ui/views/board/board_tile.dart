@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:materia_optima/ui/shared/animated_color_filtered.dart';
 import 'package:provider/provider.dart';
 
 import 'package:materia_optima/utils/theme.dart';
@@ -55,32 +56,25 @@ class _BoardTileState extends State<BoardTile> {
                 ? Stack(
                     children: <Widget>[
                       Center(
-                        child: ColorFiltered(
-                          colorFilter: ColorFilter.mode(
-                            widget.tileModel.alchemyElement.color,
-                            BlendMode.modulate,
-                          ),
-                          child: Image(
+                        child: AnimatedColorFiltered(
+                          endColor: widget.tileModel.alchemyElement.color,
+                          duration: widget.animationDuration,
+                          child: Image.asset(
+                            'assets/icons/${widget.tileModel.alchemyElement.iconPath}.png',
                             width: widget.dimension / 2.5,
                             height: widget.dimension / 2.5,
-                            image: AssetImage(
-                                'assets/icons/${widget.tileModel.alchemyElement.iconPath}.png'),
+                            filterQuality: FilterQuality.medium,
                           ),
                         ),
                       ),
-                      Material(
-                        color: Colors.transparent,
-                        child: Ink.image(
-                          colorFilter: ColorFilter.mode(
-                            widget.tileModel.alchemyElement.color,
-                            BlendMode.modulate,
-                          ),
-                          width: widget.dimension,
-                          height: widget.dimension,
-                          image: const AssetImage(
-                            'assets/images/board_tile_background.png',
-                          ),
-                          fit: BoxFit.cover,
+                      AnimatedColorFiltered(
+                        endColor: widget.tileModel.alchemyElement.color,
+                        child: Image.asset(
+                            'assets/images/board_tile_background.png'),
+                      ),
+                      Positioned.fill(
+                        child: Material(
+                          color: Colors.transparent,
                           child: InkWell(
                             onTap: _canMove(gameValue.nullTile)
                                 ? () => gameValue.moveTile(widget.tileModel)
