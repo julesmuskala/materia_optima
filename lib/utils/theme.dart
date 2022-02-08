@@ -121,6 +121,22 @@ abstract class GameTheme {
     ),
   ];
 
+  static LinearGradient gradient(Color color) {
+    var colorAlpha50 = Color.fromARGB(127, color.red, color.green, color.blue);
+    var colorAlpha10 = Color.fromARGB(25, color.red, color.green, color.blue);
+
+    return LinearGradient(
+      colors: [
+        colorAlpha50,
+        colorAlpha10,
+        colorAlpha50,
+      ],
+      stops: const [0, 0.5, 1],
+      begin: Alignment.topLeft,
+      end: Alignment.bottomRight,
+    );
+  }
+
   static final ThemeData data = ThemeData(
     // appBarTheme:
     backgroundColor: GameColors.grey200,

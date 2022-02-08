@@ -7,7 +7,7 @@ import 'package:materia_optima/core/alchemy_element.dart';
 import 'package:materia_optima/utils/theme.dart';
 import 'package:materia_optima/core/models/game_model.dart';
 import 'package:materia_optima/ui/views/inventory/inventory_title.dart';
-import 'package:materia_optima/utils/script.dart';
+import 'package:materia_optima/utils/story.dart';
 import 'package:materia_optima/core/listened_keys.dart';
 
 class InventoryView extends StatefulWidget {
@@ -61,7 +61,7 @@ class _InventoryViewState extends State<InventoryView> {
               width: widget.width * 0.9,
               height: 120.0,
               child: Text(
-                gameScriptLines[
+                GameStory.lines[
                         gameValue.selectedElement.scriptLineDescriptionKey] ??
                     'Error: no line found',
                 style: GameTypography.paragraph,

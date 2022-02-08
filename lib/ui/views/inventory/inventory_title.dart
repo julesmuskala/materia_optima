@@ -24,9 +24,12 @@ class InventoryTitle extends StatefulWidget {
 class _InventoryTitleState extends State<InventoryTitle> {
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
+    return Container(
       width: widget.width,
       height: widget.height,
+      decoration: const BoxDecoration(
+        boxShadow: GameTheme.boxShadow,
+      ),
       child: Consumer<GameModel>(
         builder: (context, gameValue, child) {
           return Stack(
@@ -43,12 +46,7 @@ class _InventoryTitleState extends State<InventoryTitle> {
                 height: double.maxFinite,
                 alignment: Alignment.center,
                 decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                    colors: _gradientColors(gameValue.selectedElement.color),
-                    stops: const [0, 0.5, 1],
-                    begin: Alignment.topLeft,
-                    end: Alignment.bottomRight,
-                  ),
+                  gradient: GameTheme.gradient(gameValue.selectedElement.color),
                 ),
                 child: Text(
                   gameValue.selectedElement.name.toUpperCase(),
@@ -61,12 +59,5 @@ class _InventoryTitleState extends State<InventoryTitle> {
         },
       ),
     );
-  }
-
-  List<Color> _gradientColors(Color color) {
-    var colorAlpha50 = Color.fromARGB(127, color.red, color.green, color.blue);
-    var colorAlpha10 = Color.fromARGB(25, color.red, color.green, color.blue);
-
-    return [colorAlpha50, colorAlpha10, colorAlpha50];
   }
 }

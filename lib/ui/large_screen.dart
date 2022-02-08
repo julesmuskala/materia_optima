@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 
 import 'package:materia_optima/ui/views/board/board_view.dart';
 import 'package:materia_optima/ui/views/inventory/inventory_view.dart';
-import 'package:materia_optima/utils/script.dart';
+// import 'package:materia_optima/ui/views/compendium/compendium_view.dart';
+import 'package:materia_optima/utils/story.dart';
 import 'package:materia_optima/utils/theme.dart';
 
 class LargeScreenView extends StatelessWidget {
@@ -17,7 +18,7 @@ class LargeScreenView extends StatelessWidget {
       child: Column(
         children: <Widget>[
           Text(
-            gameScriptLines['app_title']?.toUpperCase() ??
+            GameStory.lines['app_title']?.toUpperCase() ??
                 'Error: no line found',
             style: GameTypography.title,
           ),
@@ -25,7 +26,7 @@ class LargeScreenView extends StatelessWidget {
             height: 5.0,
           ),
           Text(
-            gameScriptLines['app_subtitle'] ?? 'Error: no line found',
+            GameStory.lines['app_subtitle'] ?? 'Error: no line found',
             style: GameTypography.subtitle,
           ),
           const SizedBox(

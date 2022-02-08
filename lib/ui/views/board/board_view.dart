@@ -6,7 +6,7 @@ import 'package:materia_optima/ui/shared/fancy_button.dart';
 import 'package:materia_optima/ui/views/board/board_tile.dart';
 import 'package:materia_optima/core/listened_keys.dart';
 import 'package:materia_optima/utils/theme.dart';
-import 'package:materia_optima/utils/script.dart';
+import 'package:materia_optima/utils/story.dart';
 import 'package:materia_optima/core/models/game_model.dart';
 
 class BoardView extends StatefulWidget {
@@ -60,7 +60,7 @@ class _BoardViewState extends State<BoardView> {
             onPressed: () => _finishBoard(gameValue.finishGame),
             listenedKey: ListenedKeys.spaceKey,
             description:
-                gameScriptLines['finish_board'] ?? 'Error: no line found',
+                GameStory.lines['finish_board'] ?? 'Error: no line found',
           ),
           const SizedBox(
             height: 100.0,
@@ -69,7 +69,7 @@ class _BoardViewState extends State<BoardView> {
             onPressed: () => gameValue.resetBoardTiles(),
             listenedKey: ListenedKeys.rKey,
             description:
-                gameScriptLines['reset_board'] ?? 'Error: no line found',
+                GameStory.lines['reset_board'] ?? 'Error: no line found',
           ),
         ],
       );
