@@ -4,11 +4,14 @@ import 'package:materia_optima/core/alchemy_element.dart';
 import 'package:materia_optima/core/tile_position.dart';
 import 'package:materia_optima/core/board_tile_model.dart';
 import 'package:materia_optima/core/match_pattern.dart';
+import 'package:materia_optima/core/game_preferences.dart';
 
 class GameModel extends ChangeNotifier {
   GameModel() {
     _initBoardTiles();
+    loadSave();
   }
+
   final Random _random = Random();
 
   // Track selected element
@@ -17,6 +20,7 @@ class GameModel extends ChangeNotifier {
 
   void selectElement(AlchemyElement element) {
     _selectedElement = element;
+    GamePreferences.setSelectedElement(element);
 
     notifyListeners();
   }
@@ -24,7 +28,12 @@ class GameModel extends ChangeNotifier {
   // Keep track of quest stages
   int _currentQuestStage = 0;
   int get currentQuestStage => _currentQuestStage;
-  void setQuestStage(int amount) => _currentQuestStage = amount;
+  void setQuestStage(int stage) {
+    _currentQuestStage = stage;
+    GamePreferences.setCurrentStage(stage);
+
+    notifyListeners();
+  }
 
   // Keep track of board state
   final List<BoardTileModel> _boardTiles = [];
@@ -105,6 +114,11 @@ class GameModel extends ChangeNotifier {
 
     notifyListeners();
     return result;
+  }
+
+  void loadSave() async {
+    setQuestStage(await GamePreferences.getCurrentStage());
+    _selectedElement = await GamePreferences.getSelectedElement();
   }
 
   void _initBoardTiles([int count = 16]) {
