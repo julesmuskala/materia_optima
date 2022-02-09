@@ -6,6 +6,7 @@ import 'package:materia_optima/core/tile_position.dart';
 import 'package:materia_optima/core/models/board_tile_model.dart';
 import 'package:materia_optima/core/match_pattern.dart';
 import 'package:materia_optima/core/game_preferences.dart';
+// import 'package:materia_optima/core/show_story_dialog.dart';
 
 class GameModel extends ChangeNotifier {
   GameModel() {
@@ -29,9 +30,13 @@ class GameModel extends ChangeNotifier {
   // Keep track of quest stages
   int _currentQuestStage = 0;
   int get currentQuestStage => _currentQuestStage;
-  void setQuestStage(int stage) {
+  void setQuestStage(int stage, {BuildContext? context}) {
     _currentQuestStage = stage;
     GamePreferences.setCurrentStage(stage);
+
+    // if (context != null) {
+    //   showStoryDialog(context, stage);
+    // }
 
     notifyListeners();
   }
@@ -109,6 +114,7 @@ class GameModel extends ChangeNotifier {
   }
 
   // Match pattern and increment stage
+  // bool finishGame({BuildContext? context}) {
   bool finishGame() {
     bool result = false;
     int resolvedQuestStage = matchPattern(boardTiles).unlockedByStage;
@@ -117,7 +123,7 @@ class GameModel extends ChangeNotifier {
     // Check for 2137 to discard AlchemyElement.materiaNulla
     if (resolvedQuestStage != 2137 && _currentQuestStage < resolvedQuestStage) {
       result = true;
-      setQuestStage(resolvedQuestStage);
+      setQuestStage(resolvedQuestStage); //, context: context);
     }
 
     notifyListeners();

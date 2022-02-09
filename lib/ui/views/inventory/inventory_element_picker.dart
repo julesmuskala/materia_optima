@@ -28,7 +28,7 @@ class _InventoryElementPickerState extends State<InventoryElementPicker> {
     return SizedBox(
         width: widget.width,
         child: Selector<GameModel,
-            Tuple3<AlchemyElement, VoidCallback<AlchemyElement>, int>>(
+            Tuple3<AlchemyElement, VoidCallbackParam<AlchemyElement>, int>>(
           selector: (_, provider) => Tuple3(
             provider.selectedElement,
             provider.selectElement,
@@ -48,7 +48,7 @@ class _InventoryElementPickerState extends State<InventoryElementPicker> {
   }
 
   List<Widget> _generateElementList(
-      {required VoidCallback<AlchemyElement> onElementPicked,
+      {required VoidCallbackParam<AlchemyElement> onElementPicked,
       required AlchemyElement selectedElement,
       required int currentQuestStage}) {
     List<AlchemyElement> elementsToRender = AlchemyElement.values;

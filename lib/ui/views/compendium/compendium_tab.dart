@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:materia_optima/utils/theme.dart';
+import 'package:materia_optima/core/show_story_dialog.dart';
 
 class CompendiumTab extends StatelessWidget {
   const CompendiumTab({
@@ -8,13 +9,13 @@ class CompendiumTab extends StatelessWidget {
     required this.width,
     required this.color,
     required this.text,
-    this.onPressed,
+    required this.triggerStage,
   }) : super(key: key);
 
   final double width;
   final Color color;
   final String text;
-  final VoidCallback? onPressed;
+  final int triggerStage;
 
   @override
   Widget build(BuildContext context) {
@@ -46,9 +47,9 @@ class CompendiumTab extends StatelessWidget {
             image: const AssetImage(
               'assets/images/compendium_tab_background.png',
             ),
-            child: InkWell(
-              onTap: onPressed,
-            ),
+            child: const InkWell(
+                // onTap: () => showStoryDialog(context, triggerStage),
+                ),
           ),
         ),
       ],

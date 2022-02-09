@@ -6,6 +6,7 @@ import 'package:materia_optima/utils/story.dart';
 import 'package:materia_optima/ui/views/compendium/compendium_tab.dart';
 import 'package:materia_optima/utils/theme.dart';
 import 'package:materia_optima/utils/types.dart';
+import 'package:materia_optima/core/show_story_dialog.dart';
 
 class CompendiumView extends StatefulWidget {
   const CompendiumView({
@@ -21,7 +22,6 @@ class CompendiumView extends StatefulWidget {
 
 class _CompendiumViewState extends State<CompendiumView> {
   final GlobalKey<AnimatedListState> _listKey = GlobalKey<AnimatedListState>();
-
   @override
   Widget build(BuildContext context) {
     return Center(
@@ -51,7 +51,7 @@ class _CompendiumViewState extends State<CompendiumView> {
                   child: SlideTransition(
                     position: animation.drive(
                       Tween<Offset>(
-                        begin: const Offset(-0.05, 0),
+                        begin: const Offset(-0.01, 0),
                         end: const Offset(0, 0),
                       ),
                     ),
@@ -63,6 +63,7 @@ class _CompendiumViewState extends State<CompendiumView> {
                           text: GameStory
                                   .lines[renderedEntries[index].titleKey] ??
                               'Error: no line found',
+                          triggerStage: renderedEntries[index].triggerStage,
                         ),
                         const SizedBox(
                           height: 20.0,
@@ -82,7 +83,7 @@ class _CompendiumViewState extends State<CompendiumView> {
   List<StoryEntry> _filterUnlockedEntries(
     int currentQuestStage, {
     required int lastEntriesLength,
-    required VoidCallback<int> setLength,
+    required VoidCallbackParam<int> setLength,
   }) {
     List<StoryEntry> returnedEntries = [];
 

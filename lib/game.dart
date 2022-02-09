@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:materia_optima/core/show_story_dialog.dart';
 import 'package:provider/provider.dart';
 
 import 'package:materia_optima/core/models/game_model.dart';
@@ -22,10 +23,10 @@ class _GameState extends State<Game> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-      child: ChangeNotifierProvider<GameModel>(
-        create: (_) => GameModel(),
-        child: const Scaffold(
-          body: LargeScreenView(),
+      child: Scaffold(
+        body: ChangeNotifierProvider<GameModel>(
+          create: (_) => GameModel(),
+          child: const LargeScreenView(),
         ),
       ),
     );

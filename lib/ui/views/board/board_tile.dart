@@ -34,7 +34,7 @@ class _BoardTileState extends State<BoardTile> {
       duration: widget.animationDuration,
       curve: Curves.ease,
       child: Selector<GameModel,
-          Tuple2<BoardTileModel?, VoidCallback<BoardTileModel>>>(
+          Tuple2<BoardTileModel?, VoidCallbackParam<BoardTileModel>>>(
         selector: (_, provider) => Tuple2(
           provider.nullTile,
           provider.moveTile,

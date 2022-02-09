@@ -1,16 +1,26 @@
 import 'dart:collection';
 import 'package:flutter/material.dart';
 
+import 'package:materia_optima/core/show_story_dialog.dart';
+
+// typedef SetStageCallback = void Function(int, {BuildContext? context});
+// typedef DialogCallback = void Function(
+//   BuildContext,
+//   // SetStageCallback?,
+// );
+
 class StoryEntry {
   StoryEntry({
     required this.titleKey,
     required this.descriptionKey,
+    required this.triggerStage,
     this.assetPath,
     this.dialogCallback,
   });
 
   final String titleKey;
   final String descriptionKey;
+  final int triggerStage;
   final String? assetPath;
   // Function called when dialog with story entry is closed
   final VoidCallback? dialogCallback;
@@ -18,6 +28,7 @@ class StoryEntry {
 
 abstract class GameStory {
   static const Map<String, String> lines = {
+    'error_fallback': 'Error: provided key is null',
     'app_title': 'Materia Optima',
     'app_subtitle': 'by Juliusz Muskala',
     // Semantic
@@ -44,14 +55,17 @@ abstract class GameStory {
     0: StoryEntry(
       titleKey: 'quest_title_0',
       descriptionKey: 'quest_desc_0',
+      triggerStage: 0,
     ),
     10: StoryEntry(
       titleKey: 'quest_title_10',
       descriptionKey: 'quest_desc_10',
+      triggerStage: 10,
     ),
     100: StoryEntry(
       titleKey: 'quest_title_100',
       descriptionKey: 'quest_desc_100',
+      triggerStage: 100,
     ),
   });
 }

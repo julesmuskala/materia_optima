@@ -23,9 +23,11 @@ abstract class GamePreferences {
   }
 
   static Future<int> getCurrentStage() async {
-    final prefs = await SharedPreferences.getInstance();
-    final int? stageValue = prefs.getInt(_currentQuestStageKey);
-    return stageValue ?? 0;
+    // final prefs = await SharedPreferences.getInstance();
+    // final int? stageValue = prefs.getInt(_currentQuestStageKey);
+    // return stageValue ?? 0;
+    // TODO: uncomment
+    return 0;
   }
 
   static int _serializeElement(AlchemyElement element) {

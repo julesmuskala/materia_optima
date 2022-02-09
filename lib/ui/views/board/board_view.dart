@@ -11,6 +11,8 @@ import 'package:materia_optima/utils/story.dart';
 import 'package:materia_optima/core/models/game_model.dart';
 import 'package:materia_optima/utils/types.dart';
 
+// typedef BoolContextCallback = bool Function({BuildContext context});
+
 class BoardView extends StatefulWidget {
   const BoardView({
     Key? key,
@@ -26,8 +28,10 @@ class BoardView extends StatefulWidget {
 class _BoardViewState extends State<BoardView> {
   @override
   Widget build(BuildContext context) {
-    return Selector<GameModel,
-            Tuple3<List<BoardTileModel>, VoidCallback<int>, BoolCallback>>(
+    return Selector<
+            GameModel,
+            Tuple3<List<BoardTileModel>, VoidCallbackParam<int>,
+                BoolCallback /* BoolContextCallback */ >>(
         selector: (_, provider) => Tuple3(
               provider.boardTiles,
               provider.resetBoardTiles,
@@ -66,7 +70,7 @@ class _BoardViewState extends State<BoardView> {
                 height: 35.0,
               ),
               FancyButton(
-                onPressed: () => _finishBoard(gameValue.item3),
+                onPressed: () => _finishBoard(gameValue.item3, context),
                 listenedKey: ListenedKeys.spaceKey,
                 description:
                     GameStory.lines['finish_board'] ?? 'Error: no line found',
@@ -85,8 +89,10 @@ class _BoardViewState extends State<BoardView> {
         });
   }
 
-  void _finishBoard(BoolCallback providerFunc) {
+  void _finishBoard(/* BoolContextCallback */ BoolCallback providerFunc,
+      BuildContext context) {
     // TODO: do sth with finishGame() result
+    // providerFunc.call(context: context);
     providerFunc.call();
   }
 
