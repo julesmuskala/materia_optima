@@ -31,12 +31,13 @@ class _InventoryTitleState extends State<InventoryTitle> {
       decoration: const BoxDecoration(
         boxShadow: GameTheme.boxShadow,
       ),
-      child: Consumer<GameModel>(
-        builder: (context, gameValue, child) {
+      child: Selector<GameModel, AlchemyElement>(
+        selector: (_, gameValue) => gameValue.selectedElement,
+        builder: (context, selectedElement, child) {
           return Stack(
             children: <Widget>[
               AnimatedColorFiltered(
-                endColor: gameValue.selectedElement.color,
+                endColor: selectedElement.color,
                 duration: widget.animationDuration,
                 child: Image.asset('assets/images/inventory_element_frame.png'),
               ),
@@ -46,12 +47,13 @@ class _InventoryTitleState extends State<InventoryTitle> {
                 alignment: Alignment.center,
                 duration: widget.animationDuration,
                 decoration: BoxDecoration(
-                  gradient: GameTheme.gradient(gameValue.selectedElement.color),
+                  gradient: GameTheme.gradient(selectedElement.color),
                 ),
                 child: Text(
-                  gameValue.selectedElement.name.toUpperCase(),
+                  selectedElement.name.toUpperCase(),
                   style: GameTypography.elementTitle(
-                      gameValue.selectedElement.color),
+                    selectedElement.color,
+                  ),
                 ),
               ),
             ],

@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:materia_optima/ui/shared/animated_color_filtered.dart';
 import 'package:provider/provider.dart';
+import 'package:tuple/tuple.dart';
 
 import 'package:materia_optima/utils/theme.dart';
 import 'package:materia_optima/core/alchemy_element.dart';
 import 'package:materia_optima/core/models/board_tile_model.dart';
 import 'package:materia_optima/core/models/game_model.dart';
+import 'package:materia_optima/ui/shared/animated_color_filtered.dart';
+import 'package:materia_optima/utils/types.dart';
 
 class BoardTile extends StatefulWidget {
   const BoardTile({
@@ -31,7 +33,12 @@ class _BoardTileState extends State<BoardTile> {
           Alignment(widget.tileModel.position.x, widget.tileModel.position.y),
       duration: widget.animationDuration,
       curve: Curves.ease,
-      child: Consumer<GameModel>(
+      child: Selector<GameModel,
+          Tuple2<BoardTileModel?, VoidCallback<BoardTileModel>>>(
+        selector: (_, provider) => Tuple2(
+          provider.nullTile,
+          provider.moveTile,
+        ),
         builder: (context, gameValue, child) {
           return AnimatedContainer(
             width: widget.dimension,
@@ -42,7 +49,7 @@ class _BoardTileState extends State<BoardTile> {
               color: _isNullTile ? Colors.transparent : GameColors.grey200,
               boxShadow: [
                 BoxShadow(
-                  color: _canMove(gameValue.nullTile)
+                  color: _canMove(gameValue.item1)
                       ? _getElementLightColor(
                           widget.tileModel.alchemyElement.color,
                         )
@@ -76,8 +83,8 @@ class _BoardTileState extends State<BoardTile> {
                         child: Material(
                           color: Colors.transparent,
                           child: InkWell(
-                            onTap: _canMove(gameValue.nullTile)
-                                ? () => gameValue.moveTile(widget.tileModel)
+                            onTap: _canMove(gameValue.item1)
+                                ? () => gameValue.item2.call(widget.tileModel)
                                 : null,
                           ),
                         ),

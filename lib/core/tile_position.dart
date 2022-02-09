@@ -1,3 +1,5 @@
+import 'package:flutter/material.dart';
+
 class TilePosition {
   final int index;
   final double x;
@@ -9,8 +11,15 @@ class TilePosition {
 
   @override
   String toString() {
-    return 'TilePosition($x, $y)';
+    return 'TilePosition($index, $x, $y)';
   }
+
+  @override
+  bool operator ==(Object other) =>
+      other is TilePosition && index == other.index;
+
+  @override
+  int get hashCode => index;
 
   static double _xFromIndex(int index) {
     switch (index) {

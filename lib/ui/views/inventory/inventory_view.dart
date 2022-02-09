@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:tuple/tuple.dart';
 
 import 'package:materia_optima/ui/shared/fancy_button.dart';
 import 'package:materia_optima/ui/views/inventory/inventory_element_picker.dart';
@@ -9,6 +10,7 @@ import 'package:materia_optima/core/models/game_model.dart';
 import 'package:materia_optima/ui/views/inventory/inventory_title.dart';
 import 'package:materia_optima/utils/story.dart';
 import 'package:materia_optima/core/listened_keys.dart';
+import 'package:materia_optima/utils/types.dart';
 
 class InventoryView extends StatefulWidget {
   const InventoryView({
@@ -31,15 +33,21 @@ class _InventoryViewState extends State<InventoryView> {
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<GameModel>(
+    return Selector<GameModel, Tuple2<AlchemyElement, BoolCallback>>(
+      selector: (_, gameValue) => Tuple2(
+        gameValue.selectedElement,
+        gameValue.addToBoard,
+      ),
+      child: InventoryElementPicker(
+        width: widget.width * 0.9,
+        elementDimension: widget.width * 0.9 * 0.09,
+      ),
       builder: (context, gameValue, child) {
+        // selectedElement, addToBoard
         return Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            InventoryElementPicker(
-              width: widget.width * 0.9,
-              elementDimension: widget.width * 0.9 * 0.09,
-            ),
+            child!,
             const SizedBox(
               height: 20.0,
             ),
@@ -61,8 +69,7 @@ class _InventoryViewState extends State<InventoryView> {
               width: widget.width * 0.9,
               height: 120.0,
               child: Text(
-                GameStory.lines[
-                        gameValue.selectedElement.scriptLineDescriptionKey] ??
+                GameStory.lines[gameValue.item1.scriptLineDescriptionKey] ??
                     'Error: no line found',
                 style: GameTypography.paragraph,
                 textAlign: TextAlign.justify,
@@ -76,11 +83,10 @@ class _InventoryViewState extends State<InventoryView> {
               description: 'Add to board',
               // Disable ability to add materia incognita
               // or materia prima to board
-              onPressed: (gameValue.selectedElement ==
-                          AlchemyElement.materiaIncognita ||
-                      gameValue.selectedElement == AlchemyElement.materiaPrima)
+              onPressed: (gameValue.item1 == AlchemyElement.materiaIncognita ||
+                      gameValue.item1 == AlchemyElement.materiaPrima)
                   ? null
-                  : () => _addToBoard(gameValue.addToBoard),
+                  : () => _addToBoard(gameValue.item2),
             ),
           ],
         );
@@ -88,7 +94,7 @@ class _InventoryViewState extends State<InventoryView> {
     );
   }
 
-  void _addToBoard(bool Function() providerFunc) {
+  void _addToBoard(BoolCallback providerFunc) {
     // TODO: do sth with addToBoard() result
     providerFunc.call();
   }

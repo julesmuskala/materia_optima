@@ -5,6 +5,7 @@ import 'package:materia_optima/core/models/game_model.dart';
 import 'package:materia_optima/utils/story.dart';
 import 'package:materia_optima/ui/views/compendium/compendium_tab.dart';
 import 'package:materia_optima/utils/theme.dart';
+import 'package:materia_optima/utils/types.dart';
 
 class CompendiumView extends StatefulWidget {
   const CompendiumView({
@@ -27,6 +28,8 @@ class _CompendiumViewState extends State<CompendiumView> {
       child: SizedBox(
         width: widget.width,
         child: Consumer<GameModel>(
+          // int currentQuestStage, int lastCompendiumListLength, VoidCallback<int> setLastCompendiumListLength
+          // TODO: change to Selector?
           builder: (context, gameValue, child) {
             final renderedEntries = _filterUnlockedEntries(
               gameValue.currentQuestStage,
@@ -76,8 +79,11 @@ class _CompendiumViewState extends State<CompendiumView> {
     );
   }
 
-  List<StoryEntry> _filterUnlockedEntries(int currentQuestStage,
-      {required int lastEntriesLength, required void Function(int) setLength}) {
+  List<StoryEntry> _filterUnlockedEntries(
+    int currentQuestStage, {
+    required int lastEntriesLength,
+    required VoidCallback<int> setLength,
+  }) {
     List<StoryEntry> returnedEntries = [];
 
     for (var entry in GameStory.storyEntries.entries) {

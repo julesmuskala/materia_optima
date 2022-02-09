@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:materia_optima/ui/shared/animated_color_filtered.dart';
-import 'package:materia_optima/utils/theme.dart';
 import 'package:provider/provider.dart';
+import 'package:tuple/tuple.dart';
 
 import 'package:materia_optima/core/models/game_model.dart';
 import 'package:materia_optima/core/alchemy_element.dart';
+import 'package:materia_optima/ui/shared/animated_color_filtered.dart';
+import 'package:materia_optima/utils/theme.dart';
+import 'package:materia_optima/utils/types.dart';
 
 class InventoryElementPicker extends StatefulWidget {
   const InventoryElementPicker({
@@ -25,21 +27,30 @@ class _InventoryElementPickerState extends State<InventoryElementPicker> {
   Widget build(BuildContext context) {
     return SizedBox(
         width: widget.width,
-        child: Consumer<GameModel>(
+        child: Selector<GameModel,
+            Tuple3<AlchemyElement, VoidCallback<AlchemyElement>, int>>(
+          selector: (_, provider) => Tuple3(
+            provider.selectedElement,
+            provider.selectElement,
+            provider.currentQuestStage,
+          ),
           builder: (context, gameValue, child) {
             return Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: _generateElementList(
-                  gameValue.selectElement, gameValue.selectedElement),
+                selectedElement: gameValue.item1,
+                onElementPicked: gameValue.item2,
+                currentQuestStage: gameValue.item3,
+              ),
             );
           },
         ));
   }
 
   List<Widget> _generateElementList(
-      void Function(AlchemyElement) onElementPicked,
-      AlchemyElement selectedElement) {
-    final currentQuestStage = Provider.of<GameModel>(context).currentQuestStage;
+      {required VoidCallback<AlchemyElement> onElementPicked,
+      required AlchemyElement selectedElement,
+      required int currentQuestStage}) {
     List<AlchemyElement> elementsToRender = AlchemyElement.values;
     elementsToRender = elementsToRender
       ..where((element) => element != AlchemyElement.materiaIncognita)

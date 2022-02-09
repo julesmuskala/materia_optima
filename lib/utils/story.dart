@@ -1,15 +1,19 @@
 import 'dart:collection';
+import 'package:flutter/material.dart';
 
 class StoryEntry {
   StoryEntry({
     required this.titleKey,
     required this.descriptionKey,
     this.assetPath,
+    this.dialogCallback,
   });
 
   final String titleKey;
   final String descriptionKey;
   final String? assetPath;
+  // Function called when dialog with story entry is closed
+  final VoidCallback? dialogCallback;
 }
 
 abstract class GameStory {

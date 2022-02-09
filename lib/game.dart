@@ -22,10 +22,10 @@ class _GameState extends State<Game> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-      child: Scaffold(
-        body: ChangeNotifierProvider<GameModel>(
-          create: (_) => GameModel(),
-          child: const LargeScreenView(),
+      child: ChangeNotifierProvider<GameModel>(
+        create: (_) => GameModel(),
+        child: const Scaffold(
+          body: LargeScreenView(),
         ),
       ),
     );
