@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:materia_optima/core/models/game_model.dart';
-import 'package:provider/provider.dart';
 
 import 'package:materia_optima/utils/theme.dart';
 import 'package:materia_optima/utils/story.dart';
-import 'package:materia_optima/core/listened_keys.dart';
+import 'package:materia_optima/core/types/listened_keys.dart';
 import 'package:materia_optima/ui/shared/fancy_button.dart';
 
 class StoryDialog extends StatefulWidget {

@@ -3,11 +3,11 @@ import 'package:provider/provider.dart';
 import 'package:tuple/tuple.dart';
 
 import 'package:materia_optima/utils/theme.dart';
-import 'package:materia_optima/core/alchemy_element.dart';
+import 'package:materia_optima/core/types/alchemy_element.dart';
 import 'package:materia_optima/core/models/board_tile_model.dart';
 import 'package:materia_optima/core/models/game_model.dart';
 import 'package:materia_optima/ui/shared/animated_color_filtered.dart';
-import 'package:materia_optima/utils/types.dart';
+import 'package:materia_optima/core/types/types.dart';
 
 class BoardTile extends StatefulWidget {
   const BoardTile({

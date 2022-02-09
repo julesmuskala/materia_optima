@@ -1,8 +1,8 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
 
-import 'package:materia_optima/core/alchemy_element.dart';
-import 'package:materia_optima/core/tile_position.dart';
+import 'package:materia_optima/core/types/alchemy_element.dart';
+import 'package:materia_optima/core/types/tile_position.dart';
 import 'package:materia_optima/core/models/board_tile_model.dart';
 import 'package:materia_optima/core/match_pattern.dart';
 import 'package:materia_optima/core/game_preferences.dart';

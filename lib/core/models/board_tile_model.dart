@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import 'package:materia_optima/core/tile_position.dart';
-import 'package:materia_optima/core/alchemy_element.dart';
+import 'package:materia_optima/core/types/tile_position.dart';
+import 'package:materia_optima/core/types/alchemy_element.dart';
 
 class BoardTileModel {
   TilePosition position;

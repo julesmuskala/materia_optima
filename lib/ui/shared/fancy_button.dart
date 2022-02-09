@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:materia_optima/core/listened_keys.dart';
+import 'package:materia_optima/core/types/listened_keys.dart';
 import 'package:materia_optima/utils/theme.dart';
 
 class FancyButton extends StatelessWidget {

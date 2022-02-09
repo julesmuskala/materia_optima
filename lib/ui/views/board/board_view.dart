@@ -5,11 +5,11 @@ import 'package:tuple/tuple.dart';
 import 'package:materia_optima/core/models/board_tile_model.dart';
 import 'package:materia_optima/ui/shared/fancy_button.dart';
 import 'package:materia_optima/ui/views/board/board_tile.dart';
-import 'package:materia_optima/core/listened_keys.dart';
+import 'package:materia_optima/core/types/listened_keys.dart';
 import 'package:materia_optima/utils/theme.dart';
 import 'package:materia_optima/utils/story.dart';
 import 'package:materia_optima/core/models/game_model.dart';
-import 'package:materia_optima/utils/types.dart';
+import 'package:materia_optima/core/types/types.dart';
 
 // typedef BoolContextCallback = bool Function({BuildContext context});
 

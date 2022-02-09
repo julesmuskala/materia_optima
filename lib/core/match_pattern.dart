@@ -2,7 +2,7 @@
 // Generated file. Do not edit.
 //
 
-import 'package:materia_optima/core/alchemy_element.dart';
+import 'package:materia_optima/core/types/alchemy_element.dart';
 import 'package:materia_optima/core/models/board_tile_model.dart';
 
 AlchemyElement matchPattern(List<BoardTileModel> boardTiles,

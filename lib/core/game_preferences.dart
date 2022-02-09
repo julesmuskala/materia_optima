@@ -1,4 +1,4 @@
-import 'package:materia_optima/core/alchemy_element.dart';
+import 'package:materia_optima/core/types/alchemy_element.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 abstract class GamePreferences {

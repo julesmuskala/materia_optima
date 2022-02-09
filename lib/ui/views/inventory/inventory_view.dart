@@ -4,13 +4,13 @@ import 'package:tuple/tuple.dart';
 
 import 'package:materia_optima/ui/shared/fancy_button.dart';
 import 'package:materia_optima/ui/views/inventory/inventory_element_picker.dart';
-import 'package:materia_optima/core/alchemy_element.dart';
+import 'package:materia_optima/core/types/alchemy_element.dart';
 import 'package:materia_optima/utils/theme.dart';
 import 'package:materia_optima/core/models/game_model.dart';
 import 'package:materia_optima/ui/views/inventory/inventory_title.dart';
 import 'package:materia_optima/utils/story.dart';
-import 'package:materia_optima/core/listened_keys.dart';
-import 'package:materia_optima/utils/types.dart';
+import 'package:materia_optima/core/types/listened_keys.dart';
+import 'package:materia_optima/core/types/types.dart';
 
 class InventoryView extends StatefulWidget {
   const InventoryView({
