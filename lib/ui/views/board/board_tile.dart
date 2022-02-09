@@ -12,7 +12,7 @@ class BoardTile extends StatefulWidget {
     Key? key,
     required this.tileModel,
     required this.dimension,
-    this.animationDuration = const Duration(milliseconds: 600),
+    this.animationDuration = GameTheme.standardAnimationDuration,
   }) : super(key: key);
 
   final BoardTileModel tileModel;

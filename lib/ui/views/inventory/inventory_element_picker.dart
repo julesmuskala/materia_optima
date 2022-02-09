@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:materia_optima/ui/shared/animated_color_filtered.dart';
+import 'package:materia_optima/utils/theme.dart';
 import 'package:provider/provider.dart';
 
 import 'package:materia_optima/core/models/game_model.dart';
@@ -28,20 +29,21 @@ class _InventoryElementPickerState extends State<InventoryElementPicker> {
           builder: (context, gameValue, child) {
             return Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: _generateElementList(gameValue.selectElement),
+              children: _generateElementList(
+                  gameValue.selectElement, gameValue.selectedElement),
             );
           },
         ));
   }
 
   List<Widget> _generateElementList(
-      void Function(AlchemyElement) onElementPicked) {
+      void Function(AlchemyElement) onElementPicked,
+      AlchemyElement selectedElement) {
     final currentQuestStage = Provider.of<GameModel>(context).currentQuestStage;
     List<AlchemyElement> elementsToRender = AlchemyElement.values;
     elementsToRender = elementsToRender
-        .where((element) => element != AlchemyElement.materiaIncognita)
-        .where((element) => element != AlchemyElement.materiaNulla)
-        .toList();
+      ..where((element) => element != AlchemyElement.materiaIncognita)
+      ..where((element) => element != AlchemyElement.materiaNulla).toList();
     final int renderedElementsCount = elementsToRender.length;
     elementsToRender = elementsToRender
         .where((element) => element.unlockedByStage <= currentQuestStage)
@@ -60,10 +62,21 @@ class _InventoryElementPickerState extends State<InventoryElementPicker> {
               children: <Widget>[
                 AnimatedColorFiltered(
                   endColor: element.color,
-                  child: Image.asset(
-                    'assets/icons/${element.iconPath}.png',
-                    filterQuality: FilterQuality
-                        .medium, // That's why I no longer use Ink.image
+                  child: AnimatedContainer(
+                    duration: GameTheme.standardAnimationDuration,
+                    decoration: BoxDecoration(
+                      color: Colors.transparent,
+                      boxShadow: selectedElement == element
+                          ? GameTheme.glow(element.color)
+                          : null,
+                      borderRadius:
+                          BorderRadius.circular(widget.elementDimension / 2),
+                    ),
+                    child: Image.asset(
+                      'assets/icons/${element.iconPath}.png',
+                      filterQuality: FilterQuality
+                          .medium, // That's why I no longer use Ink.image
+                    ),
                   ),
                 ),
                 Positioned.fill(

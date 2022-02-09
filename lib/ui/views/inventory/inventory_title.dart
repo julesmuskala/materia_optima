@@ -11,7 +11,7 @@ class InventoryTitle extends StatefulWidget {
     Key? key,
     required this.height,
     required this.width,
-    this.animationDuration = const Duration(milliseconds: 600),
+    this.animationDuration = GameTheme.standardAnimationDuration,
   }) : super(key: key);
 
   final double width;

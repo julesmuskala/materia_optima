@@ -39,7 +39,7 @@ class CompendiumTab extends StatelessWidget {
           child: Ink.image(
             colorFilter: ColorFilter.mode(
               color,
-              BlendMode.modulate,
+              GameTheme.standardBlendMode,
             ),
             width: width,
             height: width * 0.096,

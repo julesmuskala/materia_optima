@@ -121,6 +121,21 @@ abstract class GameTheme {
     ),
   ];
 
+  static List<BoxShadow> glow(Color color) {
+    color = color != GameColors.grey100 ? color : GameColors.white;
+    return [
+      BoxShadow(
+        color: Color.fromARGB(179, color.red, color.green, color.blue),
+        spreadRadius: 2,
+        blurRadius: 10,
+      ),
+    ];
+  }
+
+  static const Duration standardAnimationDuration = Duration(milliseconds: 600);
+
+  static const BlendMode standardBlendMode = BlendMode.modulate;
+
   static LinearGradient gradient(Color color) {
     var colorAlpha50 = Color.fromARGB(127, color.red, color.green, color.blue);
     var colorAlpha10 = Color.fromARGB(25, color.red, color.green, color.blue);

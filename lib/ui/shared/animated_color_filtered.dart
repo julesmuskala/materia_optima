@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:materia_optima/utils/theme.dart';
 
 class AnimatedColorFiltered extends StatefulWidget {
   const AnimatedColorFiltered({
     Key? key,
-    this.duration = const Duration(milliseconds: 600),
+    this.duration = GameTheme.standardAnimationDuration,
     required this.endColor,
-    this.blendMode = BlendMode.modulate,
+    this.blendMode = GameTheme.standardBlendMode,
     required this.child,
   }) : super(key: key);
 
