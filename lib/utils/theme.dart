@@ -21,77 +21,77 @@ abstract class GameTypography {
   static const FontWeight _bold = FontWeight.w700;
   static const FontWeight _regular = FontWeight.w400;
 
-  static const title = TextStyle(
-    fontFamily: _fontFamily,
-    fontWeight: _bold,
-    color: GameColors.white,
-    fontSize: 36,
-    shadows: GameTheme.shadow,
-  );
+  // static const title = TextStyle(
+  //   fontFamily: _fontFamily,
+  //   fontWeight: _bold,
+  //   color: GameColors.white,
+  //   fontSize: 36,
+  //   shadows: GameTheme.shadow,
+  // );
 
-  static const subtitle = TextStyle(
-    fontFamily: _fontFamily,
-    fontWeight: _regular,
-    color: GameColors.grey50,
-    fontSize: 20,
-    shadows: GameTheme.shadow,
-  );
+  // static const subtitle = TextStyle(
+  //   fontFamily: _fontFamily,
+  //   fontWeight: _regular,
+  //   color: GameColors.grey50,
+  //   fontSize: 20,
+  //   shadows: GameTheme.shadow,
+  // );
 
-  static const paragraph = TextStyle(
-    fontFamily: _fontFamily,
-    fontWeight: _regular,
-    color: GameColors.grey50,
-    fontSize: 14,
-  );
+  // static const paragraph = TextStyle(
+  //   fontFamily: _fontFamily,
+  //   fontWeight: _regular,
+  //   color: GameColors.grey50,
+  //   fontSize: 14,
+  // );
 
-  static TextStyle modifiedParagraph(Color color) {
-    return TextStyle(
-      fontFamily: _fontFamily,
-      fontWeight: _regular,
-      color: color,
-      fontSize: 14,
-    );
-  }
+  // static TextStyle modifiedParagraph(Color color) {
+  //   return TextStyle(
+  //     fontFamily: _fontFamily,
+  //     fontWeight: _regular,
+  //     color: color,
+  //     fontSize: 14,
+  //   );
+  // }
 
-  static TextStyle displayParagraph(Color color) {
-    return TextStyle(
-      fontFamily: _fontFamily,
-      fontWeight: _regular,
-      color: color == GameColors.grey50 ? GameColors.white : color,
-      fontSize: 14,
-      shadows: <Shadow>[
-        Shadow(
-          blurRadius: 10,
-          color: Color.fromARGB(
-            179,
-            color.red,
-            color.green,
-            color.blue,
-          ),
-        ),
-      ],
-    );
-  }
+  // static TextStyle displayParagraph(Color color) {
+  //   return TextStyle(
+  //     fontFamily: _fontFamily,
+  //     fontWeight: _regular,
+  //     color: color == GameColors.grey50 ? GameColors.white : color,
+  //     fontSize: 14,
+  //     shadows: <Shadow>[
+  //       Shadow(
+  //         blurRadius: 10,
+  //         color: Color.fromARGB(
+  //           179,
+  //           color.red,
+  //           color.green,
+  //           color.blue,
+  //         ),
+  //       ),
+  //     ],
+  //   );
+  // }
 
-  static TextStyle elementTitle(Color color) {
-    return TextStyle(
-      fontFamily: _fontFamily,
-      fontWeight: _bold,
-      color: GameColors.white,
-      fontSize: 20,
-      shadows: <Shadow>[
-        Shadow(
-          blurRadius: 10,
-          color: Color.fromARGB(
-            179,
-            color.red,
-            color.green,
-            color.blue,
-          ),
-        ),
-      ],
-    );
-  }
+  // static TextStyle elementTitle(Color color) {
+  //   return TextStyle(
+  //     fontFamily: _fontFamily,
+  //     fontWeight: _bold,
+  //     color: GameColors.white,
+  //     fontSize: 20,
+  //     shadows: <Shadow>[
+  //       Shadow(
+  //         blurRadius: 10,
+  //         color: Color.fromARGB(
+  //           179,
+  //           color.red,
+  //           color.green,
+  //           color.blue,
+  //         ),
+  //       ),
+  //     ],
+  //   );
+  // }
 
   static TextStyle responsiveTitle(ResponsiveLayoutSize size) {
     var fontSize = 36.0;
@@ -330,14 +330,14 @@ abstract class GameTheme {
           const ContinuousRectangleBorder(),
         ),
         // MaterialStateProperty.all<TextStyle>(GameTypography.paragraph)
-        textStyle: MaterialStateProperty.resolveWith(
-          (Set<MaterialState> states) {
-            if (states.contains(MaterialState.disabled)) {
-              return GameTypography.modifiedParagraph(GameColors.grey100);
-            }
-            return GameTypography.paragraph;
-          },
-        ),
+        // textStyle: MaterialStateProperty.resolveWith(
+        //   (Set<MaterialState> states) {
+        //     if (states.contains(MaterialState.disabled)) {
+        //       return GameTypography.modifiedParagraph(GameColors.grey100);
+        //     }
+        //     return GameTypography.paragraph;
+        //   },
+        // ),
       ),
     ),
     // highlightColor:
