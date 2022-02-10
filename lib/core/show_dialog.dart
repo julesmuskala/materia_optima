@@ -14,7 +14,6 @@ void showStoryDialog(
     builder: (_) {
       return StoryDialog(
         entry: entry,
-        width: 390.0,
       );
     },
   );
@@ -26,7 +25,6 @@ void showMirrorDialog(BuildContext context, StoryEntry entry) {
     builder: (_) {
       return StoryDialog(
         entry: entry,
-        width: 390.0,
       );
     },
   );

@@ -16,9 +16,11 @@ class BoardView extends StatefulWidget {
   const BoardView({
     Key? key,
     required this.width,
+    required this.height,
   }) : super(key: key);
 
   final double width;
+  final double height;
 
   @override
   _BoardViewState createState() => _BoardViewState();
@@ -56,7 +58,9 @@ class _BoardViewState extends State<BoardView> {
                   boxShadow: GameTheme.boxShadow,
                 ),
                 child: Padding(
-                  padding: const EdgeInsets.all(15.0),
+                  padding: EdgeInsets.all(
+                    widget.height * 0.015,
+                  ),
                   child: Stack(
                     children: _buildBoardTileList(
                       gameValue.item1,
@@ -65,8 +69,8 @@ class _BoardViewState extends State<BoardView> {
                   ),
                 ),
               ),
-              const SizedBox(
-                height: 35.0,
+              SizedBox(
+                height: widget.height * 0.02,
               ),
               FancyButton(
                 onPressed: () => _finishBoard(gameValue.item3, context),
@@ -74,8 +78,8 @@ class _BoardViewState extends State<BoardView> {
                 description:
                     GameStory.lines['finish_board'] ?? 'Error: no line found',
               ),
-              const SizedBox(
-                height: 70.0,
+              SizedBox(
+                height: widget.height * 0.06,
               ),
               FancyButton(
                 onPressed: () => gameValue.item2.call(16), // reset 16 tiles

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:materia_optima/utils/theme.dart';
 import 'package:materia_optima/utils/story.dart';
 import 'package:materia_optima/core/show_dialog.dart';
+import 'package:materia_optima/core/types/responsive_layout_size.dart';
 
 class CompendiumTab extends StatelessWidget {
   const CompendiumTab({
@@ -18,6 +19,8 @@ class CompendiumTab extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final screenSize = MediaQuery.of(context).size;
+
     return Stack(
       children: <Widget>[
         Container(
@@ -31,7 +34,10 @@ class CompendiumTab extends StatelessWidget {
             child: Text(
               GameStory.lines[entry.titleKey]?.toUpperCase() ??
                   'Error: no line found',
-              style: GameTypography.displayParagraph(color),
+              style: GameTypography.displayResponsiveParagraph(
+                getLayoutSize(screenSize.width),
+                color,
+              ),
             ),
           ),
         ),

@@ -11,14 +11,17 @@ import 'package:materia_optima/ui/views/inventory/inventory_title.dart';
 import 'package:materia_optima/utils/story.dart';
 import 'package:materia_optima/core/types/listened_keys.dart';
 import 'package:materia_optima/core/types/types.dart';
+import 'package:materia_optima/core/types/responsive_layout_size.dart';
 
 class InventoryView extends StatefulWidget {
   const InventoryView({
     Key? key,
     required this.width,
+    required this.height,
   }) : super(key: key);
 
   final double width;
+  final double height;
 
   @override
   _InventoryViewState createState() => _InventoryViewState();
@@ -27,6 +30,8 @@ class InventoryView extends StatefulWidget {
 class _InventoryViewState extends State<InventoryView> {
   @override
   Widget build(BuildContext context) {
+    final screenSize = MediaQuery.of(context).size;
+
     return Selector<GameModel, Tuple2<AlchemyElement, TypeCallback<bool>>>(
       selector: (_, gameValue) => Tuple2(
         gameValue.selectedElement,
@@ -42,35 +47,37 @@ class _InventoryViewState extends State<InventoryView> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             child!,
-            const SizedBox(
-              height: 20.0,
+            SizedBox(
+              height: widget.height * 0.02,
             ),
             Image.asset(
               'assets/images/inventory_divider.png',
               width: widget.width,
             ),
-            const SizedBox(
-              height: 20.0,
+            SizedBox(
+              height: widget.height * 0.02,
             ),
             InventoryTitle(
               width: widget.width * 0.9,
               height: widget.width * 0.9 * 0.18,
             ),
-            const SizedBox(
-              height: 20.0,
+            SizedBox(
+              height: widget.height * 0.02,
             ),
             SizedBox(
               width: widget.width * 0.9,
-              height: 120.0,
+              height: widget.height * 0.16,
               child: Text(
                 GameStory.lines[gameValue.item1.scriptLineDescriptionKey] ??
                     'Error: no line found',
-                style: GameTypography.paragraph,
+                style: GameTypography.responsiveParagraph(
+                  getLayoutSize(screenSize.width),
+                ),
                 textAlign: TextAlign.justify,
               ),
             ),
-            const SizedBox(
-              height: 20.0,
+            SizedBox(
+              height: widget.height * 0.02,
             ),
             FancyButton(
               listenedKey: ListenedKeys.enterKey,

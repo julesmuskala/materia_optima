@@ -5,6 +5,7 @@ import 'package:materia_optima/ui/views/compendium/compendium_view.dart';
 import 'package:materia_optima/ui/views/inventory/inventory_view.dart';
 import 'package:materia_optima/utils/story.dart';
 import 'package:materia_optima/utils/theme.dart';
+import 'package:materia_optima/core/types/responsive_layout_size.dart';
 
 class LargeScreenView extends StatelessWidget {
   const LargeScreenView({
@@ -13,49 +14,62 @@ class LargeScreenView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final screenSize = MediaQuery.of(context).size;
+
     return Padding(
-      padding: const EdgeInsets.all(50.0),
+      padding: EdgeInsets.all(screenSize.height * 0.05),
       child: Column(
         children: <Widget>[
           Text(
             GameStory.lines['app_title']?.toUpperCase() ??
                 'Error: no line found',
-            style: GameTypography.title,
+            style: GameTypography.responsiveTitle(
+              getLayoutSize(
+                screenSize.width,
+              ),
+            ),
           ),
-          const SizedBox(
-            height: 5.0,
+          SizedBox(
+            height: screenSize.height * 0.005,
           ),
           Text(
             GameStory.lines['app_subtitle'] ?? 'Error: no line found',
-            style: GameTypography.subtitle,
+            style: GameTypography.responsiveSubtitle(
+              getLayoutSize(
+                screenSize.width,
+              ),
+            ),
           ),
-          const SizedBox(
-            height: 25.0,
+          SizedBox(
+            height: screenSize.height * 0.025,
           ),
           Expanded(
             child: Row(
-              children: const <Widget>[
+              children: <Widget>[
                 Expanded(
                   flex: 8,
                   child: CompendiumView(
-                    width: 420.0,
-                    key: Key('compendium_view'),
+                    width: screenSize.width * 0.22,
+                    height: screenSize.height,
+                    key: const Key('compendium_view'),
                   ),
                 ),
-                Spacer(),
+                const Spacer(),
                 Expanded(
                   flex: 8,
                   child: BoardView(
-                    width: 420.0,
-                    key: Key('board_view'),
+                    width: screenSize.width * 0.22,
+                    height: screenSize.height,
+                    key: const Key('board_view'),
                   ),
                 ),
-                Spacer(),
+                const Spacer(),
                 Expanded(
                   flex: 8,
                   child: InventoryView(
-                    width: 420.0,
-                    key: Key('inventory_view'),
+                    width: screenSize.width * 0.22,
+                    height: screenSize.height,
+                    key: const Key('inventory_view'),
                   ),
                 ),
               ],

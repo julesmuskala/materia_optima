@@ -5,6 +5,7 @@ import 'package:materia_optima/ui/large_screen.dart';
 import 'package:materia_optima/utils/story.dart';
 import 'package:materia_optima/core/models/game_model.dart';
 import 'package:materia_optima/core/show_dialog.dart';
+import 'package:materia_optima/ui/shared/responsive_layout_builder.dart';
 
 class Game extends StatefulWidget {
   const Game({
@@ -16,23 +17,27 @@ class Game extends StatefulWidget {
 }
 
 class _GameState extends State<Game> {
-  late final _startStage =
-      Provider.of<GameModel>(context, listen: false).currentQuestStage;
-
   @override
   Widget build(BuildContext context) {
-    WidgetsBinding.instance.addPostFrameCallback((_) => _showInitDialog());
+    Future.delayed(
+      Duration.zero,
+      () => _showInitDialog(
+        Provider.of<GameModel>(context, listen: false).currentQuestStage,
+      ),
+    );
 
     return const SafeArea(
       child: Scaffold(
-        body: LargeScreenView(),
+        body: ResponsiveLayoutBuilder(
+          child: LargeScreenView(),
+        ),
       ),
     );
   }
 
-  void _showInitDialog() {
-    if (_startStage == 0) {
-      showStoryDialog(context, GameStory.storyEntries[0]!, isInitial: true);
-    }
+  void _showInitDialog(int startStage) {
+    if (startStage != 0) return;
+
+    showStoryDialog(context, GameStory.storyEntries[0]!, isInitial: true);
   }
 }

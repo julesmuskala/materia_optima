@@ -11,9 +11,11 @@ class CompendiumView extends StatefulWidget {
   const CompendiumView({
     Key? key,
     required this.width,
+    required this.height,
   }) : super(key: key);
 
   final double width;
+  final double height;
 
   @override
   _CompendiumViewState createState() => _CompendiumViewState();
@@ -61,8 +63,8 @@ class _CompendiumViewState extends State<CompendiumView> {
                           color: GameColors.grey50,
                           entry: renderedEntries[index],
                         ),
-                        const SizedBox(
-                          height: 20.0,
+                        SizedBox(
+                          height: widget.height * 0.02,
                         )
                       ],
                     ),

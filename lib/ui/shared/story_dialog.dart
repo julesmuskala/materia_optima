@@ -4,16 +4,15 @@ import 'package:materia_optima/utils/theme.dart';
 import 'package:materia_optima/utils/story.dart';
 import 'package:materia_optima/core/types/listened_keys.dart';
 import 'package:materia_optima/ui/shared/fancy_button.dart';
+import 'package:materia_optima/core/types/responsive_layout_size.dart';
 
 class StoryDialog extends StatefulWidget {
   const StoryDialog({
     Key? key,
     required this.entry,
-    required this.width,
   }) : super(key: key);
 
   final StoryEntry entry;
-  final double width;
 
   @override
   _StoryDialogState createState() => _StoryDialogState();
@@ -45,6 +44,8 @@ class _StoryDialogState extends State<StoryDialog>
 
   @override
   Widget build(BuildContext context) {
+    final screenSize = MediaQuery.of(context).size;
+
     return SlideTransition(
       position: _animation.drive(
         Tween<Offset>(
@@ -58,28 +59,35 @@ class _StoryDialogState extends State<StoryDialog>
           backgroundColor: GameColors.grey200,
           shape: const ContinuousRectangleBorder(),
           child: Padding(
-            padding: const EdgeInsets.all(25.0),
+            padding: EdgeInsets.all(screenSize.height * 0.03),
             child: SizedBox(
-              width: widget.width,
+              width: screenSize.width * 0.25,
+              height: screenSize.height * 0.35,
               child: Column(
-                mainAxisSize: MainAxisSize.min,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
-                  Text(
-                    GameStory.lines[widget.entry.titleKey]?.toUpperCase() ??
-                        'Error: no line found',
-                    style: GameTypography.elementTitle(GameColors.shadowBlack),
-                  ),
-                  const SizedBox(
-                    height: 30.0,
-                  ),
-                  Text(
-                    GameStory.lines[widget.entry.descriptionKey] ??
-                        'Error: no line found',
-                    style: GameTypography.paragraph,
-                    softWrap: true,
-                  ),
-                  const SizedBox(
-                    height: 30.0,
+                  Column(
+                    children: [
+                      Text(
+                        GameStory.lines[widget.entry.titleKey]?.toUpperCase() ??
+                            'Error: no line found',
+                        style: GameTypography.responsiveElementTitle(
+                          getLayoutSize(screenSize.width),
+                          GameColors.shadowBlack,
+                        ),
+                      ),
+                      SizedBox(
+                        height: screenSize.height * 0.03,
+                      ),
+                      Text(
+                        GameStory.lines[widget.entry.descriptionKey] ??
+                            'Error: no line found',
+                        style: GameTypography.responsiveParagraph(
+                          getLayoutSize(screenSize.width),
+                        ),
+                        softWrap: true,
+                      ),
+                    ],
                   ),
                   FancyButton(
                     listenedKey: ListenedKeys.xKey,

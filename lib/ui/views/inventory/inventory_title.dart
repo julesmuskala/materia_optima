@@ -5,6 +5,7 @@ import 'package:materia_optima/core/models/game_model.dart';
 import 'package:materia_optima/core/types/alchemy_element.dart';
 import 'package:materia_optima/utils/theme.dart';
 import 'package:materia_optima/ui/shared/animated_color_filtered.dart';
+import 'package:materia_optima/core/types/responsive_layout_size.dart';
 
 class InventoryTitle extends StatefulWidget {
   const InventoryTitle({
@@ -25,6 +26,8 @@ class InventoryTitle extends StatefulWidget {
 class _InventoryTitleState extends State<InventoryTitle> {
   @override
   Widget build(BuildContext context) {
+    final screenSize = MediaQuery.of(context).size;
+
     return Container(
       width: widget.width,
       height: widget.height,
@@ -51,7 +54,8 @@ class _InventoryTitleState extends State<InventoryTitle> {
                 ),
                 child: Text(
                   selectedElement.name.toUpperCase(),
-                  style: GameTypography.elementTitle(
+                  style: GameTypography.responsiveElementTitle(
+                    getLayoutSize(screenSize.width),
                     selectedElement.color,
                   ),
                 ),
