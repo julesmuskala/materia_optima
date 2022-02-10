@@ -92,7 +92,7 @@ extension AlchemyElementExtension on AlchemyElement {
     }
   }
 
-  int get unlockedByStage {
+  int? get unlockedByStage {
     switch (this) {
       case AlchemyElement.aether:
         return 400;
@@ -105,13 +105,13 @@ extension AlchemyElementExtension on AlchemyElement {
       case AlchemyElement.vermilion:
         return 500;
       case AlchemyElement.materiaIncognita:
-        return 2137;
+        return null;
       case AlchemyElement.materiaOptima:
         return 600;
       case AlchemyElement.materiaPrima:
         return 0;
       case AlchemyElement.materiaNulla:
-        return 2137;
+        return null;
     }
   }
 }

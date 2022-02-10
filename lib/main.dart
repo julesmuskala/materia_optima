@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import 'package:materia_optima/game.dart';
 import 'package:materia_optima/utils/story.dart';
 import 'package:materia_optima/utils/theme.dart';
+import 'package:materia_optima/core/models/game_model.dart';
 
 void main() => runApp(const MyApp());
 
@@ -16,7 +18,10 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: GameStory.lines['app_title'] ?? 'Error: no line found',
       theme: GameTheme.data,
-      home: const Game(),
+      home: ChangeNotifierProvider<GameModel>(
+        create: (_) => GameModel(),
+        child: const Game(),
+      ),
     );
   }
 }

@@ -10,8 +10,7 @@ import 'package:materia_optima/utils/theme.dart';
 import 'package:materia_optima/utils/story.dart';
 import 'package:materia_optima/core/models/game_model.dart';
 import 'package:materia_optima/core/types/types.dart';
-
-// typedef BoolContextCallback = bool Function({BuildContext context});
+import 'package:materia_optima/core/show_dialog.dart';
 
 class BoardView extends StatefulWidget {
   const BoardView({
@@ -31,7 +30,7 @@ class _BoardViewState extends State<BoardView> {
     return Selector<
             GameModel,
             Tuple3<List<BoardTileModel>, VoidCallbackParam<int>,
-                BoolCallback /* BoolContextCallback */ >>(
+                TypeCallback<int?>>>(
         selector: (_, provider) => Tuple3(
               provider.boardTiles,
               provider.resetBoardTiles,
@@ -89,15 +88,25 @@ class _BoardViewState extends State<BoardView> {
         });
   }
 
-  void _finishBoard(/* BoolContextCallback */ BoolCallback providerFunc,
-      BuildContext context) {
+  void _finishBoard(
+    TypeCallback<int?> providerFinishCallback,
+    BuildContext context,
+  ) {
     // TODO: do sth with finishGame() result
-    // providerFunc.call(context: context);
-    providerFunc.call();
+    var result = providerFinishCallback.call();
+    if (result != null) {
+      var entry = GameStory.storyEntries[result];
+      if (entry == null) {
+        throw Exception('Tried to show dialog for null entry (entry $result).');
+      }
+      showStoryDialog(context, entry);
+    }
   }
 
-  List<BoardTile> _buildBoardTileList(List<BoardTileModel> tileModels,
-      {required double dimension}) {
+  List<BoardTile> _buildBoardTileList(
+    List<BoardTileModel> tileModels, {
+    required double dimension,
+  }) {
     List<BoardTile> boardTiles = [];
 
     for (var tileModel in tileModels) {

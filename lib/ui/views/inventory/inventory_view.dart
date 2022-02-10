@@ -26,17 +26,11 @@ class InventoryView extends StatefulWidget {
 
 class _InventoryViewState extends State<InventoryView> {
   @override
-  void initState() {
-    // print(GameScript.scanDescription('1234~1234~1234'));
-    super.initState();
-  }
-
-  @override
   Widget build(BuildContext context) {
-    return Selector<GameModel, Tuple2<AlchemyElement, BoolCallback>>(
+    return Selector<GameModel, Tuple2<AlchemyElement, TypeCallback<bool>>>(
       selector: (_, gameValue) => Tuple2(
         gameValue.selectedElement,
-        gameValue.addToBoard,
+        gameValue.addTile,
       ),
       child: InventoryElementPicker(
         width: widget.width * 0.9,
@@ -86,7 +80,7 @@ class _InventoryViewState extends State<InventoryView> {
               onPressed: (gameValue.item1 == AlchemyElement.materiaIncognita ||
                       gameValue.item1 == AlchemyElement.materiaPrima)
                   ? null
-                  : () => _addToBoard(gameValue.item2),
+                  : () => _addTile(gameValue.item2),
             ),
           ],
         );
@@ -94,8 +88,8 @@ class _InventoryViewState extends State<InventoryView> {
     );
   }
 
-  void _addToBoard(BoolCallback providerFunc) {
+  void _addTile(TypeCallback<bool> providerAddTileCallback) {
     // TODO: do sth with addToBoard() result
-    providerFunc.call();
+    providerAddTileCallback.call();
   }
 }

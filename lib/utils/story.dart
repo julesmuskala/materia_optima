@@ -1,21 +1,15 @@
 import 'dart:collection';
-import 'package:flutter/material.dart';
 
 class StoryEntry {
   StoryEntry({
     required this.titleKey,
     required this.descriptionKey,
-    required this.triggerStage,
     this.assetPath,
-    this.dialogCallback,
   });
 
   final String titleKey;
   final String descriptionKey;
-  final int triggerStage;
   final String? assetPath;
-  // Function called when dialog with story entry is closed
-  final VoidCallback? dialogCallback;
 }
 
 abstract class GameStory {
@@ -47,17 +41,14 @@ abstract class GameStory {
     0: StoryEntry(
       titleKey: 'quest_title_0',
       descriptionKey: 'quest_desc_0',
-      triggerStage: 0,
     ),
     10: StoryEntry(
       titleKey: 'quest_title_10',
       descriptionKey: 'quest_desc_10',
-      triggerStage: 10,
     ),
     100: StoryEntry(
       titleKey: 'quest_title_100',
       descriptionKey: 'quest_desc_100',
-      triggerStage: 100,
     ),
   });
 }

@@ -8,17 +8,11 @@ import 'package:materia_optima/ui/shared/fancy_button.dart';
 class StoryDialog extends StatefulWidget {
   const StoryDialog({
     Key? key,
-    required this.titleKey,
-    required this.descriptionKey,
-    this.assetPath,
-    this.onClosed,
+    required this.entry,
     required this.width,
   }) : super(key: key);
 
-  final String titleKey;
-  final String descriptionKey;
-  final String? assetPath;
-  final VoidCallback? onClosed;
+  final StoryEntry entry;
   final double width;
 
   @override
@@ -71,7 +65,7 @@ class _StoryDialogState extends State<StoryDialog>
                 mainAxisSize: MainAxisSize.min,
                 children: <Widget>[
                   Text(
-                    GameStory.lines[widget.titleKey]?.toUpperCase() ??
+                    GameStory.lines[widget.entry.titleKey]?.toUpperCase() ??
                         'Error: no line found',
                     style: GameTypography.elementTitle(GameColors.shadowBlack),
                   ),
@@ -79,7 +73,7 @@ class _StoryDialogState extends State<StoryDialog>
                     height: 30.0,
                   ),
                   Text(
-                    GameStory.lines[widget.descriptionKey] ??
+                    GameStory.lines[widget.entry.descriptionKey] ??
                         'Error: no line found',
                     style: GameTypography.paragraph,
                     softWrap: true,
@@ -90,7 +84,7 @@ class _StoryDialogState extends State<StoryDialog>
                   FancyButton(
                     listenedKey: ListenedKeys.xKey,
                     description: 'Close',
-                    onPressed: () => _onClosed(context),
+                    onPressed: () => Navigator.pop(context),
                   ),
                 ],
               ),
@@ -99,15 +93,5 @@ class _StoryDialogState extends State<StoryDialog>
         ),
       ),
     );
-  }
-
-  void _onClosed(BuildContext context) {
-    Navigator.pop(context);
-    if (widget.onClosed != null) {
-      widget.onClosed!.call(
-          // context,
-          // Provider.of<GameModel>(context, listen: false).setQuestStage,
-          );
-    }
   }
 }

@@ -53,11 +53,12 @@ class _InventoryElementPickerState extends State<InventoryElementPicker> {
       required int currentQuestStage}) {
     List<AlchemyElement> elementsToRender = AlchemyElement.values;
     elementsToRender = elementsToRender
-      ..where((element) => element != AlchemyElement.materiaIncognita)
-      ..where((element) => element != AlchemyElement.materiaNulla).toList();
+        .where((element) => element != AlchemyElement.materiaIncognita)
+        .where((element) => element != AlchemyElement.materiaNulla)
+        .toList();
     final int renderedElementsCount = elementsToRender.length;
     elementsToRender = elementsToRender
-        .where((element) => element.unlockedByStage <= currentQuestStage)
+        .where((element) => element.unlockedByStage! <= currentQuestStage)
         .toList();
     final int knownElementsCount = elementsToRender.length;
     for (var i = 0; i < renderedElementsCount - knownElementsCount; i++) {

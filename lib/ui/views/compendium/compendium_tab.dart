@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:materia_optima/utils/theme.dart';
 import 'package:materia_optima/utils/story.dart';
+import 'package:materia_optima/core/show_dialog.dart';
 
 class CompendiumTab extends StatelessWidget {
   const CompendiumTab({
@@ -47,7 +48,7 @@ class CompendiumTab extends StatelessWidget {
               'assets/images/compendium_tab_background.png',
             ),
             child: InkWell(
-              onTap: () {},
+              onTap: () => showMirrorDialog(context, entry),
             ),
           ),
         ),

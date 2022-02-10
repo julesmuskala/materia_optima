@@ -30,13 +30,9 @@ class GameModel extends ChangeNotifier {
   // Keep track of quest stages
   int _currentQuestStage = 0;
   int get currentQuestStage => _currentQuestStage;
-  void setQuestStage(int stage, {BuildContext? context}) {
+  void setQuestStage(int stage) {
     _currentQuestStage = stage;
     GamePreferences.setCurrentStage(stage);
-
-    // if (context != null) {
-    //   showStoryDialog(context, stage);
-    // }
 
     notifyListeners();
   }
@@ -91,7 +87,7 @@ class GameModel extends ChangeNotifier {
   }
 
   // Add element to board
-  bool addToBoard() {
+  bool addTile() {
     if (_boardTiles.isEmpty) {
       throw Exception('Add element to board before initialization');
     }
@@ -114,20 +110,18 @@ class GameModel extends ChangeNotifier {
   }
 
   // Match pattern and increment stage
-  // bool finishGame({BuildContext? context}) {
-  bool finishGame() {
-    bool result = false;
-    int resolvedQuestStage = matchPattern(boardTiles).unlockedByStage;
+  int? finishGame() {
+    var matchedElement = matchPattern(boardTiles);
+    int? resolvedQuestStage = matchedElement.unlockedByStage;
 
     // Check if result is unlocking next stage
-    // Check for 2137 to discard AlchemyElement.materiaNulla
-    if (resolvedQuestStage != 2137 && _currentQuestStage < resolvedQuestStage) {
-      result = true;
-      setQuestStage(resolvedQuestStage); //, context: context);
+    // Check for null to discard not unlockable elements
+    if (resolvedQuestStage != null && _currentQuestStage < resolvedQuestStage) {
+      setQuestStage(resolvedQuestStage);
     }
 
     notifyListeners();
-    return result;
+    return resolvedQuestStage;
   }
 
   void loadSave() async {
