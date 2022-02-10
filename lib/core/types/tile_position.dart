@@ -1,5 +1,3 @@
-import 'package:flutter/material.dart';
-
 class TilePosition {
   final int index;
   final double x;

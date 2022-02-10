@@ -1,21 +1,19 @@
 import 'package:flutter/material.dart';
 
 import 'package:materia_optima/utils/theme.dart';
-import 'package:materia_optima/core/show_story_dialog.dart';
+import 'package:materia_optima/utils/story.dart';
 
 class CompendiumTab extends StatelessWidget {
   const CompendiumTab({
     Key? key,
     required this.width,
     required this.color,
-    required this.text,
-    required this.triggerStage,
+    required this.entry,
   }) : super(key: key);
 
   final double width;
   final Color color;
-  final String text;
-  final int triggerStage;
+  final StoryEntry entry;
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +28,8 @@ class CompendiumTab extends StatelessWidget {
           ),
           child: Center(
             child: Text(
-              text.toUpperCase(),
+              GameStory.lines[entry.titleKey]?.toUpperCase() ??
+                  'Error: no line found',
               style: GameTypography.displayParagraph(color),
             ),
           ),
@@ -47,9 +46,9 @@ class CompendiumTab extends StatelessWidget {
             image: const AssetImage(
               'assets/images/compendium_tab_background.png',
             ),
-            child: const InkWell(
-                // onTap: () => showStoryDialog(context, triggerStage),
-                ),
+            child: InkWell(
+              onTap: () {},
+            ),
           ),
         ),
       ],

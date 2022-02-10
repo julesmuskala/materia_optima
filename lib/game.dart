@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:materia_optima/core/show_story_dialog.dart';
 import 'package:provider/provider.dart';
 
 import 'package:materia_optima/core/models/game_model.dart';

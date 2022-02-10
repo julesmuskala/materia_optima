@@ -1,14 +1,6 @@
 import 'dart:collection';
 import 'package:flutter/material.dart';
 
-import 'package:materia_optima/core/show_story_dialog.dart';
-
-// typedef SetStageCallback = void Function(int, {BuildContext? context});
-// typedef DialogCallback = void Function(
-//   BuildContext,
-//   // SetStageCallback?,
-// );
-
 class StoryEntry {
   StoryEntry({
     required this.titleKey,

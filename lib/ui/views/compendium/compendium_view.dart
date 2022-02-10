@@ -6,7 +6,6 @@ import 'package:materia_optima/utils/story.dart';
 import 'package:materia_optima/ui/views/compendium/compendium_tab.dart';
 import 'package:materia_optima/utils/theme.dart';
 import 'package:materia_optima/core/types/types.dart';
-import 'package:materia_optima/core/show_story_dialog.dart';
 
 class CompendiumView extends StatefulWidget {
   const CompendiumView({
@@ -60,10 +59,7 @@ class _CompendiumViewState extends State<CompendiumView> {
                         CompendiumTab(
                           width: widget.width,
                           color: GameColors.grey50,
-                          text: GameStory
-                                  .lines[renderedEntries[index].titleKey] ??
-                              'Error: no line found',
-                          triggerStage: renderedEntries[index].triggerStage,
+                          entry: renderedEntries[index],
                         ),
                         const SizedBox(
                           height: 20.0,

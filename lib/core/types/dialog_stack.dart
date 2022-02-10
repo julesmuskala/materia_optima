@@ -7,7 +7,7 @@ class DialogStack {
 
   StoryEntry pop() => _list.removeLast();
 
+  StoryEntry get front => _list.last;
+
   int get size => _list.length;
 }
-
-// TODO: add semaphore to GameModel
