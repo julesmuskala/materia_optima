@@ -52,7 +52,7 @@ class _BoardViewState extends State<BoardView> {
                 decoration: const BoxDecoration(
                   color: GameColors.grey200,
                   image: DecorationImage(
-                    image: AssetImage('assets/images/board_background.png'),
+                    image: AssetImage('assets/ui/board_background.png'),
                     fit: BoxFit.cover,
                   ),
                   boxShadow: GameTheme.boxShadow,
@@ -70,7 +70,7 @@ class _BoardViewState extends State<BoardView> {
                 ),
               ),
               SizedBox(
-                height: widget.height * 0.02,
+                height: widget.height * 0.03,
               ),
               FancyButton(
                 onPressed: () => _finishBoard(gameValue.item3, context),
@@ -79,7 +79,7 @@ class _BoardViewState extends State<BoardView> {
                     GameStory.lines['finish_board'] ?? 'Error: no line found',
               ),
               SizedBox(
-                height: widget.height * 0.04,
+                height: widget.height * 0.06,
               ),
               FancyButton(
                 onPressed: () => gameValue.item2.call(16), // reset 16 tiles

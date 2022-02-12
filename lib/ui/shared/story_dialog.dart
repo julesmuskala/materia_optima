@@ -56,10 +56,15 @@ class _StoryDialogState extends State<StoryDialog>
         opacity: _animation,
         child: Dialog(
           backgroundColor: GameColors.grey200,
-          shape: const ContinuousRectangleBorder(),
+          shape: const ContinuousRectangleBorder(
+            side: BorderSide(
+              color: GameColors.grey50,
+              width: 2.5,
+            ),
+          ),
           child: Container(
             width: screenSize.width * 0.87,
-            height: screenSize.height * 0.35,
+            height: screenSize.height * 0.48,
             constraints: const BoxConstraints(
               maxWidth: 450.0,
             ),
@@ -70,6 +75,8 @@ class _StoryDialogState extends State<StoryDialog>
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: <Widget>[
                   Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       Text(
                         GameStory.lines[widget.entry.titleKey]?.toUpperCase() ??
@@ -89,10 +96,31 @@ class _StoryDialogState extends State<StoryDialog>
                       ),
                     ],
                   ),
-                  FancyButton(
-                    listenedKey: ListenedKeys.xKey,
-                    description: 'Close',
-                    onPressed: () => Navigator.pop(context),
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      widget.entry.assetPath != null
+                          ? Image.asset(
+                              'assets/${widget.entry.assetPath}',
+                              height: screenSize.height * 0.12,
+                              width: screenSize.height * 0.12,
+                              filterQuality: FilterQuality.medium,
+                            )
+                          : SizedBox(
+                              height: screenSize.height * 0.12,
+                              width: screenSize.height * 0.12,
+                            ),
+                      SizedBox(
+                        height: screenSize.height * 0.03,
+                      ),
+                      FancyButton(
+                        listenedKey: ListenedKeys.xKey,
+                        description: GameStory.lines['close_dialog'] ??
+                            'Error: no line found',
+                        onPressed: () => Navigator.pop(context),
+                      ),
+                    ],
                   ),
                 ],
               ),

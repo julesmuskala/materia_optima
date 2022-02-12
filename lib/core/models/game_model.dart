@@ -38,7 +38,6 @@ class GameModel extends ChangeNotifier {
   }
 
   // Used to track changes to the contents of compendium list
-  // TODO: change it so it is less
   int lastCompendiumListLength = 0;
   void setLastCompendiumListLength(int value) {
     lastCompendiumListLength = value;

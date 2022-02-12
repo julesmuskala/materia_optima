@@ -17,14 +17,14 @@ class PortraitScreen extends StatefulWidget {
 
 class _PortraitScreenState extends State<PortraitScreen>
     with TickerProviderStateMixin {
+  int _tab = 1;
+
   late final TabController _controller = TabController(
     length: 3,
     vsync: this,
-    initialIndex: 1,
+    initialIndex: _tab,
     animationDuration: GameTheme.standardAnimationDuration,
   );
-
-  int _tab = 1;
 
   @override
   void dispose() {

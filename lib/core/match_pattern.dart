@@ -28,6 +28,8 @@ AlchemyElement matchPattern(List<BoardTileModel> boardTiles,
         }
         if (tile.alchemyElement == AlchemyElement.rebis) {
           matchesFoundMap.update(AlchemyElement.caeleum, (value) => ++value, ifAbsent: () => 1);
+        }
+        if (tile.alchemyElement == AlchemyElement.caeleum) {
           matchesFoundMap.update(AlchemyElement.quebrith, (value) => ++value, ifAbsent: () => 1);
         }
         if (tile.alchemyElement == AlchemyElement.aether) {
@@ -44,6 +46,8 @@ AlchemyElement matchPattern(List<BoardTileModel> boardTiles,
         }
         if (tile.alchemyElement == AlchemyElement.rebis) {
           matchesFoundMap.update(AlchemyElement.caeleum, (value) => ++value, ifAbsent: () => 1);
+        }
+        if (tile.alchemyElement == AlchemyElement.caeleum) {
           matchesFoundMap.update(AlchemyElement.quebrith, (value) => ++value, ifAbsent: () => 1);
         }
         if (tile.alchemyElement == AlchemyElement.aether) {
@@ -54,11 +58,13 @@ AlchemyElement matchPattern(List<BoardTileModel> boardTiles,
       case 3:
         if (tile.alchemyElement == AlchemyElement.materiaPrima) {
           matchesFoundMap.update(AlchemyElement.rebis, (value) => ++value, ifAbsent: () => 1);
-          matchesFoundMap.update(AlchemyElement.caeleum, (value) => ++value, ifAbsent: () => 1);
-          matchesFoundMap.update(AlchemyElement.quebrith, (value) => ++value, ifAbsent: () => 1);
-        }
-        if (tile.alchemyElement == AlchemyElement.quebrith) {
           matchesFoundMap.update(AlchemyElement.aether, (value) => ++value, ifAbsent: () => 1);
+        }
+        if (tile.alchemyElement == AlchemyElement.rebis) {
+          matchesFoundMap.update(AlchemyElement.caeleum, (value) => ++value, ifAbsent: () => 1);
+        }
+        if (tile.alchemyElement == AlchemyElement.caeleum) {
+          matchesFoundMap.update(AlchemyElement.quebrith, (value) => ++value, ifAbsent: () => 1);
         }
         if (tile.alchemyElement == AlchemyElement.aether) {
           matchesFoundMap.update(AlchemyElement.vermilion, (value) => ++value, ifAbsent: () => 1);
@@ -74,9 +80,9 @@ AlchemyElement matchPattern(List<BoardTileModel> boardTiles,
         }
         if (tile.alchemyElement == AlchemyElement.caeleum) {
           matchesFoundMap.update(AlchemyElement.quebrith, (value) => ++value, ifAbsent: () => 1);
-          matchesFoundMap.update(AlchemyElement.aether, (value) => ++value, ifAbsent: () => 1);
         }
         if (tile.alchemyElement == AlchemyElement.quebrith) {
+          matchesFoundMap.update(AlchemyElement.aether, (value) => ++value, ifAbsent: () => 1);
           matchesFoundMap.update(AlchemyElement.vermilion, (value) => ++value, ifAbsent: () => 1);
           matchesFoundMap.update(AlchemyElement.materiaOptima, (value) => ++value, ifAbsent: () => 1);
         }
@@ -86,8 +92,6 @@ AlchemyElement matchPattern(List<BoardTileModel> boardTiles,
           matchesFoundMap.update(AlchemyElement.rebis, (value) => ++value, ifAbsent: () => 1);
           matchesFoundMap.update(AlchemyElement.caeleum, (value) => ++value, ifAbsent: () => 1);
           matchesFoundMap.update(AlchemyElement.quebrith, (value) => ++value, ifAbsent: () => 1);
-        }
-        if (tile.alchemyElement == AlchemyElement.quebrith) {
           matchesFoundMap.update(AlchemyElement.aether, (value) => ++value, ifAbsent: () => 1);
         }
         if (tile.alchemyElement == AlchemyElement.caeleum) {
@@ -102,9 +106,9 @@ AlchemyElement matchPattern(List<BoardTileModel> boardTiles,
           matchesFoundMap.update(AlchemyElement.rebis, (value) => ++value, ifAbsent: () => 1);
           matchesFoundMap.update(AlchemyElement.caeleum, (value) => ++value, ifAbsent: () => 1);
           matchesFoundMap.update(AlchemyElement.quebrith, (value) => ++value, ifAbsent: () => 1);
+          matchesFoundMap.update(AlchemyElement.aether, (value) => ++value, ifAbsent: () => 1);
         }
         if (tile.alchemyElement == AlchemyElement.quebrith) {
-          matchesFoundMap.update(AlchemyElement.aether, (value) => ++value, ifAbsent: () => 1);
           matchesFoundMap.update(AlchemyElement.vermilion, (value) => ++value, ifAbsent: () => 1);
           matchesFoundMap.update(AlchemyElement.materiaOptima, (value) => ++value, ifAbsent: () => 1);
         }
@@ -116,8 +120,10 @@ AlchemyElement matchPattern(List<BoardTileModel> boardTiles,
         }
         if (tile.alchemyElement == AlchemyElement.caeleum) {
           matchesFoundMap.update(AlchemyElement.quebrith, (value) => ++value, ifAbsent: () => 1);
-          matchesFoundMap.update(AlchemyElement.aether, (value) => ++value, ifAbsent: () => 1);
           matchesFoundMap.update(AlchemyElement.vermilion, (value) => ++value, ifAbsent: () => 1);
+        }
+        if (tile.alchemyElement == AlchemyElement.quebrith) {
+          matchesFoundMap.update(AlchemyElement.aether, (value) => ++value, ifAbsent: () => 1);
         }
         if (tile.alchemyElement == AlchemyElement.aether) {
           matchesFoundMap.update(AlchemyElement.materiaOptima, (value) => ++value, ifAbsent: () => 1);
@@ -130,9 +136,11 @@ AlchemyElement matchPattern(List<BoardTileModel> boardTiles,
         }
         if (tile.alchemyElement == AlchemyElement.caeleum) {
           matchesFoundMap.update(AlchemyElement.quebrith, (value) => ++value, ifAbsent: () => 1);
-          matchesFoundMap.update(AlchemyElement.aether, (value) => ++value, ifAbsent: () => 1);
           matchesFoundMap.update(AlchemyElement.vermilion, (value) => ++value, ifAbsent: () => 1);
           matchesFoundMap.update(AlchemyElement.materiaOptima, (value) => ++value, ifAbsent: () => 1);
+        }
+        if (tile.alchemyElement == AlchemyElement.quebrith) {
+          matchesFoundMap.update(AlchemyElement.aether, (value) => ++value, ifAbsent: () => 1);
         }
         break;
       case 9:
@@ -140,9 +148,9 @@ AlchemyElement matchPattern(List<BoardTileModel> boardTiles,
           matchesFoundMap.update(AlchemyElement.rebis, (value) => ++value, ifAbsent: () => 1);
           matchesFoundMap.update(AlchemyElement.caeleum, (value) => ++value, ifAbsent: () => 1);
           matchesFoundMap.update(AlchemyElement.quebrith, (value) => ++value, ifAbsent: () => 1);
+          matchesFoundMap.update(AlchemyElement.aether, (value) => ++value, ifAbsent: () => 1);
         }
         if (tile.alchemyElement == AlchemyElement.quebrith) {
-          matchesFoundMap.update(AlchemyElement.aether, (value) => ++value, ifAbsent: () => 1);
           matchesFoundMap.update(AlchemyElement.vermilion, (value) => ++value, ifAbsent: () => 1);
           matchesFoundMap.update(AlchemyElement.materiaOptima, (value) => ++value, ifAbsent: () => 1);
         }
@@ -152,8 +160,6 @@ AlchemyElement matchPattern(List<BoardTileModel> boardTiles,
           matchesFoundMap.update(AlchemyElement.rebis, (value) => ++value, ifAbsent: () => 1);
           matchesFoundMap.update(AlchemyElement.caeleum, (value) => ++value, ifAbsent: () => 1);
           matchesFoundMap.update(AlchemyElement.quebrith, (value) => ++value, ifAbsent: () => 1);
-        }
-        if (tile.alchemyElement == AlchemyElement.quebrith) {
           matchesFoundMap.update(AlchemyElement.aether, (value) => ++value, ifAbsent: () => 1);
         }
         if (tile.alchemyElement == AlchemyElement.caeleum) {
@@ -168,9 +174,9 @@ AlchemyElement matchPattern(List<BoardTileModel> boardTiles,
         }
         if (tile.alchemyElement == AlchemyElement.caeleum) {
           matchesFoundMap.update(AlchemyElement.quebrith, (value) => ++value, ifAbsent: () => 1);
-          matchesFoundMap.update(AlchemyElement.aether, (value) => ++value, ifAbsent: () => 1);
         }
         if (tile.alchemyElement == AlchemyElement.quebrith) {
+          matchesFoundMap.update(AlchemyElement.aether, (value) => ++value, ifAbsent: () => 1);
           matchesFoundMap.update(AlchemyElement.vermilion, (value) => ++value, ifAbsent: () => 1);
           matchesFoundMap.update(AlchemyElement.materiaOptima, (value) => ++value, ifAbsent: () => 1);
         }
@@ -178,17 +184,17 @@ AlchemyElement matchPattern(List<BoardTileModel> boardTiles,
       case 12:
         if (tile.alchemyElement == AlchemyElement.materiaPrima) {
           matchesFoundMap.update(AlchemyElement.rebis, (value) => ++value, ifAbsent: () => 1);
-          matchesFoundMap.update(AlchemyElement.caeleum, (value) => ++value, ifAbsent: () => 1);
-          matchesFoundMap.update(AlchemyElement.quebrith, (value) => ++value, ifAbsent: () => 1);
         }
-        if (tile.alchemyElement == AlchemyElement.quebrith) {
+        if (tile.alchemyElement == AlchemyElement.rebis) {
+          matchesFoundMap.update(AlchemyElement.caeleum, (value) => ++value, ifAbsent: () => 1);
+          matchesFoundMap.update(AlchemyElement.materiaOptima, (value) => ++value, ifAbsent: () => 1);
+        }
+        if (tile.alchemyElement == AlchemyElement.caeleum) {
+          matchesFoundMap.update(AlchemyElement.quebrith, (value) => ++value, ifAbsent: () => 1);
           matchesFoundMap.update(AlchemyElement.aether, (value) => ++value, ifAbsent: () => 1);
         }
         if (tile.alchemyElement == AlchemyElement.aether) {
           matchesFoundMap.update(AlchemyElement.vermilion, (value) => ++value, ifAbsent: () => 1);
-        }
-        if (tile.alchemyElement == AlchemyElement.rebis) {
-          matchesFoundMap.update(AlchemyElement.materiaOptima, (value) => ++value, ifAbsent: () => 1);
         }
         break;
       case 13:
@@ -197,9 +203,9 @@ AlchemyElement matchPattern(List<BoardTileModel> boardTiles,
         }
         if (tile.alchemyElement == AlchemyElement.rebis) {
           matchesFoundMap.update(AlchemyElement.caeleum, (value) => ++value, ifAbsent: () => 1);
-          matchesFoundMap.update(AlchemyElement.quebrith, (value) => ++value, ifAbsent: () => 1);
         }
         if (tile.alchemyElement == AlchemyElement.caeleum) {
+          matchesFoundMap.update(AlchemyElement.quebrith, (value) => ++value, ifAbsent: () => 1);
           matchesFoundMap.update(AlchemyElement.aether, (value) => ++value, ifAbsent: () => 1);
           matchesFoundMap.update(AlchemyElement.materiaOptima, (value) => ++value, ifAbsent: () => 1);
         }
@@ -213,10 +219,10 @@ AlchemyElement matchPattern(List<BoardTileModel> boardTiles,
         }
         if (tile.alchemyElement == AlchemyElement.rebis) {
           matchesFoundMap.update(AlchemyElement.caeleum, (value) => ++value, ifAbsent: () => 1);
-          matchesFoundMap.update(AlchemyElement.quebrith, (value) => ++value, ifAbsent: () => 1);
           matchesFoundMap.update(AlchemyElement.materiaOptima, (value) => ++value, ifAbsent: () => 1);
         }
         if (tile.alchemyElement == AlchemyElement.caeleum) {
+          matchesFoundMap.update(AlchemyElement.quebrith, (value) => ++value, ifAbsent: () => 1);
           matchesFoundMap.update(AlchemyElement.aether, (value) => ++value, ifAbsent: () => 1);
         }
         if (tile.alchemyElement == AlchemyElement.aether) {
@@ -226,17 +232,17 @@ AlchemyElement matchPattern(List<BoardTileModel> boardTiles,
       case 15:
         if (tile.alchemyElement == AlchemyElement.materiaPrima) {
           matchesFoundMap.update(AlchemyElement.rebis, (value) => ++value, ifAbsent: () => 1);
-          matchesFoundMap.update(AlchemyElement.caeleum, (value) => ++value, ifAbsent: () => 1);
-          matchesFoundMap.update(AlchemyElement.quebrith, (value) => ++value, ifAbsent: () => 1);
         }
-        if (tile.alchemyElement == AlchemyElement.quebrith) {
+        if (tile.alchemyElement == AlchemyElement.rebis) {
+          matchesFoundMap.update(AlchemyElement.caeleum, (value) => ++value, ifAbsent: () => 1);
+        }
+        if (tile.alchemyElement == AlchemyElement.caeleum) {
+          matchesFoundMap.update(AlchemyElement.quebrith, (value) => ++value, ifAbsent: () => 1);
           matchesFoundMap.update(AlchemyElement.aether, (value) => ++value, ifAbsent: () => 1);
+          matchesFoundMap.update(AlchemyElement.materiaOptima, (value) => ++value, ifAbsent: () => 1);
         }
         if (tile.alchemyElement == AlchemyElement.aether) {
           matchesFoundMap.update(AlchemyElement.vermilion, (value) => ++value, ifAbsent: () => 1);
-        }
-        if (tile.alchemyElement == AlchemyElement.caeleum) {
-          matchesFoundMap.update(AlchemyElement.materiaOptima, (value) => ++value, ifAbsent: () => 1);
         }
         break;
       default:

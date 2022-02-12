@@ -29,8 +29,6 @@ class _CompendiumViewState extends State<CompendiumView> {
       child: SizedBox(
         width: widget.width,
         child: Consumer<GameModel>(
-          // int currentQuestStage, int lastCompendiumListLength, VoidCallback<int> setLastCompendiumListLength
-          // TODO: change to Selector?
           builder: (context, gameValue, child) {
             final renderedEntries = _filterUnlockedEntries(
               gameValue.currentQuestStage,
@@ -60,7 +58,6 @@ class _CompendiumViewState extends State<CompendiumView> {
                       children: [
                         CompendiumTab(
                           width: widget.width,
-                          color: GameColors.grey50,
                           entry: renderedEntries[index],
                         ),
                         SizedBox(

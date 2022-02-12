@@ -48,7 +48,7 @@ class _InventoryViewState extends State<InventoryView> {
               height: widget.height * 0.02,
             ),
             Image.asset(
-              'assets/images/inventory_divider.png',
+              'assets/ui/inventory_divider.png',
               width: widget.width,
             ),
             SizedBox(

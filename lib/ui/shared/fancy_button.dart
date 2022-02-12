@@ -17,25 +17,33 @@ class FancyButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final screenHeight = MediaQuery.of(context).size.height;
+
     return ElevatedButton(
       onPressed: onPressed,
       style: ButtonStyle(
-        side: MaterialStateProperty.resolveWith((Set<MaterialState> states) {
-          if (states.contains(MaterialState.disabled)) {
+        side: MaterialStateProperty.resolveWith(
+          (Set<MaterialState> states) {
+            if (states.contains(MaterialState.disabled)) {
+              return const BorderSide(
+                color: GameColors.grey100,
+                width: 2.65,
+              );
+            }
             return const BorderSide(
-              color: GameColors.grey100,
-              width: 2.5,
+              color: GameColors.grey50,
+              width: 2.65,
             );
-          }
-          return const BorderSide(
-            color: GameColors.grey50,
-            width: 2.5,
-          );
-        }),
+          },
+        ),
+        padding: MaterialStateProperty.all<EdgeInsetsGeometry>(
+          const EdgeInsets.all(12.0),
+        ),
       ),
       child: RichText(
         text: TextSpan(
-          text: '${listenedKey.keyName} ',
+          text: '',
+          // text: '${listenedKey.keyName} ',
           style: onPressed != null
               ? GameTypography.modifiedParagraph(GameColors.orange)
               : GameTypography.modifiedParagraph(GameColors.grey100),

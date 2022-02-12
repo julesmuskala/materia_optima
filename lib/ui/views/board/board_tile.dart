@@ -67,7 +67,7 @@ class _BoardTileState extends State<BoardTile> {
                           endColor: widget.tileModel.alchemyElement.color,
                           duration: widget.animationDuration,
                           child: Image.asset(
-                            'assets/icons/${widget.tileModel.alchemyElement.iconPath}.png',
+                            'assets/element_icons/${widget.tileModel.alchemyElement.iconPath}.png',
                             width: widget.dimension / 2.5,
                             height: widget.dimension / 2.5,
                             filterQuality: FilterQuality.medium,
@@ -76,8 +76,8 @@ class _BoardTileState extends State<BoardTile> {
                       ),
                       AnimatedColorFiltered(
                         endColor: widget.tileModel.alchemyElement.color,
-                        child: Image.asset(
-                            'assets/images/board_tile_background.png'),
+                        child:
+                            Image.asset('assets/ui/board_tile_background.png'),
                       ),
                       Positioned.fill(
                         child: Material(

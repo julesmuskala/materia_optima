@@ -39,7 +39,7 @@ class _InventoryTitleState extends State<InventoryTitle> {
               AnimatedColorFiltered(
                 endColor: selectedElement.color,
                 duration: widget.animationDuration,
-                child: Image.asset('assets/images/inventory_element_frame.png'),
+                child: Image.asset('assets/ui/inventory_element_frame.png'),
               ),
               AnimatedContainer(
                 width: double.maxFinite,

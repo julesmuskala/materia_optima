@@ -85,7 +85,7 @@ class _InventoryElementPickerState extends State<InventoryElementPicker> {
                           BorderRadius.circular(widget.elementDimension / 2),
                     ),
                     child: Image.asset(
-                      'assets/icons/${element.iconPath}.png',
+                      'assets/element_icons/${element.iconPath}.png',
                       filterQuality: FilterQuality
                           .medium, // That's why I no longer use Ink.image
                     ),

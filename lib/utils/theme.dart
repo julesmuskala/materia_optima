@@ -57,7 +57,7 @@ abstract class GameTypography {
     return TextStyle(
       fontFamily: _fontFamily,
       fontWeight: _regular,
-      color: color == GameColors.grey50 ? GameColors.white : color,
+      color: GameColors.white,
       fontSize: 14,
       shadows: <Shadow>[
         Shadow(
@@ -170,8 +170,10 @@ abstract class GameTheme {
       selectedItemColor: GameColors.orange,
       unselectedItemColor: GameColors.grey100,
       selectedLabelStyle: GameTypography.modifiedParagraph(GameColors.orange),
-      unselectedLabelStyle:
-          GameTypography.modifiedParagraph(GameColors.grey100),
+      unselectedLabelStyle: GameTypography.modifiedParagraph(
+        GameColors.grey100,
+      ),
+      showUnselectedLabels: false,
     ),
     // dialogTheme:
     elevatedButtonTheme: ElevatedButtonThemeData(
@@ -181,12 +183,6 @@ abstract class GameTheme {
         enableFeedback: true,
         shadowColor: MaterialStateProperty.all<Color>(GameColors.shadowBlack),
         elevation: MaterialStateProperty.all<double>(3.0),
-        padding: MaterialStateProperty.all<EdgeInsetsGeometry>(
-          const EdgeInsets.symmetric(
-            vertical: 15.0,
-            horizontal: 15.0,
-          ),
-        ),
         shape: MaterialStateProperty.all<OutlinedBorder>(
           const ContinuousRectangleBorder(),
         ),
