@@ -4,7 +4,6 @@ import 'package:materia_optima/utils/theme.dart';
 import 'package:materia_optima/utils/story.dart';
 import 'package:materia_optima/core/types/listened_keys.dart';
 import 'package:materia_optima/ui/shared/fancy_button.dart';
-import 'package:materia_optima/core/types/responsive_layout_size.dart';
 
 class StoryDialog extends StatefulWidget {
   const StoryDialog({
@@ -58,21 +57,24 @@ class _StoryDialogState extends State<StoryDialog>
         child: Dialog(
           backgroundColor: GameColors.grey200,
           shape: const ContinuousRectangleBorder(),
-          child: Padding(
-            padding: EdgeInsets.all(screenSize.height * 0.03),
-            child: SizedBox(
-              width: screenSize.width * 0.25,
-              height: screenSize.height * 0.35,
+          child: Container(
+            width: screenSize.width * 0.87,
+            height: screenSize.height * 0.35,
+            constraints: const BoxConstraints(
+              maxWidth: 450.0,
+            ),
+            child: Padding(
+              padding: EdgeInsets.all(screenSize.height * 0.03),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: <Widget>[
                   Column(
                     children: [
                       Text(
                         GameStory.lines[widget.entry.titleKey]?.toUpperCase() ??
                             'Error: no line found',
-                        style: GameTypography.responsiveElementTitle(
-                          getLayoutSize(screenSize.width),
+                        style: GameTypography.elementTitle(
                           GameColors.shadowBlack,
                         ),
                       ),
@@ -82,9 +84,7 @@ class _StoryDialogState extends State<StoryDialog>
                       Text(
                         GameStory.lines[widget.entry.descriptionKey] ??
                             'Error: no line found',
-                        style: GameTypography.responsiveParagraph(
-                          getLayoutSize(screenSize.width),
-                        ),
+                        style: GameTypography.paragraph,
                         softWrap: true,
                       ),
                     ],

@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import 'package:materia_optima/ui/large_screen.dart';
+import 'package:materia_optima/ui/landscape_screen.dart';
+import 'package:materia_optima/ui/portrait_screen.dart';
 import 'package:materia_optima/utils/story.dart';
 import 'package:materia_optima/core/models/game_model.dart';
 import 'package:materia_optima/core/show_dialog.dart';
@@ -27,10 +28,10 @@ class _GameState extends State<Game> {
     );
 
     return const SafeArea(
-      child: Scaffold(
-        body: ResponsiveLayoutBuilder(
-          child: LargeScreenView(),
-        ),
+      child: ResponsiveLayoutBuilder(
+        landscape: LandscapeScreen(),
+        portrait: PortraitScreen(),
+        tooSmall: Placeholder(),
       ),
     );
   }

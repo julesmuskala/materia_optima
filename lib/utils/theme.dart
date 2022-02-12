@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:materia_optima/core/types/responsive_layout_size.dart';
+import 'package:materia_optima/core/types/responsive_layout.dart';
 
 abstract class GameColors {
   static const white = Color.fromARGB(255, 255, 255, 255);
@@ -21,149 +21,44 @@ abstract class GameTypography {
   static const FontWeight _bold = FontWeight.w700;
   static const FontWeight _regular = FontWeight.w400;
 
-  // static const title = TextStyle(
-  //   fontFamily: _fontFamily,
-  //   fontWeight: _bold,
-  //   color: GameColors.white,
-  //   fontSize: 36,
-  //   shadows: GameTheme.shadow,
-  // );
+  static const title = TextStyle(
+    fontFamily: _fontFamily,
+    fontWeight: _bold,
+    color: GameColors.white,
+    fontSize: 36,
+    shadows: GameTheme.shadow,
+  );
 
-  // static const subtitle = TextStyle(
-  //   fontFamily: _fontFamily,
-  //   fontWeight: _regular,
-  //   color: GameColors.grey50,
-  //   fontSize: 20,
-  //   shadows: GameTheme.shadow,
-  // );
+  static const subtitle = TextStyle(
+    fontFamily: _fontFamily,
+    fontWeight: _regular,
+    color: GameColors.grey50,
+    fontSize: 20,
+    shadows: GameTheme.shadow,
+  );
 
-  // static const paragraph = TextStyle(
-  //   fontFamily: _fontFamily,
-  //   fontWeight: _regular,
-  //   color: GameColors.grey50,
-  //   fontSize: 14,
-  // );
+  static const paragraph = TextStyle(
+    fontFamily: _fontFamily,
+    fontWeight: _regular,
+    color: GameColors.grey50,
+    fontSize: 14,
+  );
 
-  // static TextStyle modifiedParagraph(Color color) {
-  //   return TextStyle(
-  //     fontFamily: _fontFamily,
-  //     fontWeight: _regular,
-  //     color: color,
-  //     fontSize: 14,
-  //   );
-  // }
-
-  // static TextStyle displayParagraph(Color color) {
-  //   return TextStyle(
-  //     fontFamily: _fontFamily,
-  //     fontWeight: _regular,
-  //     color: color == GameColors.grey50 ? GameColors.white : color,
-  //     fontSize: 14,
-  //     shadows: <Shadow>[
-  //       Shadow(
-  //         blurRadius: 10,
-  //         color: Color.fromARGB(
-  //           179,
-  //           color.red,
-  //           color.green,
-  //           color.blue,
-  //         ),
-  //       ),
-  //     ],
-  //   );
-  // }
-
-  // static TextStyle elementTitle(Color color) {
-  //   return TextStyle(
-  //     fontFamily: _fontFamily,
-  //     fontWeight: _bold,
-  //     color: GameColors.white,
-  //     fontSize: 20,
-  //     shadows: <Shadow>[
-  //       Shadow(
-  //         blurRadius: 10,
-  //         color: Color.fromARGB(
-  //           179,
-  //           color.red,
-  //           color.green,
-  //           color.blue,
-  //         ),
-  //       ),
-  //     ],
-  //   );
-  // }
-
-  static TextStyle responsiveTitle(ResponsiveLayoutSize size) {
-    var fontSize = 36.0;
-
-    switch (size) {
-      case ResponsiveLayoutSize.large:
-        fontSize = 36.0;
-        break;
-      case ResponsiveLayoutSize.medium:
-        fontSize = 1.0;
-        break;
-      case ResponsiveLayoutSize.small:
-        fontSize = 1.0;
-        break;
-    }
-
-    return TextStyle(
-      fontFamily: _fontFamily,
-      fontWeight: _bold,
-      color: GameColors.white,
-      fontSize: fontSize,
-      shadows: GameTheme.shadow,
-    );
-  }
-
-  static TextStyle responsiveSubtitle(ResponsiveLayoutSize size) {
-    var fontSize = 20.0;
-
-    switch (size) {
-      case ResponsiveLayoutSize.large:
-        fontSize = 20.0;
-        break;
-      case ResponsiveLayoutSize.medium:
-        fontSize = 1.0;
-        break;
-      case ResponsiveLayoutSize.small:
-        fontSize = 1.0;
-        break;
-    }
-
+  static TextStyle modifiedParagraph(Color color) {
     return TextStyle(
       fontFamily: _fontFamily,
       fontWeight: _regular,
-      color: GameColors.grey50,
-      fontSize: fontSize,
-      shadows: GameTheme.shadow,
+      color: color,
+      fontSize: 14,
     );
   }
 
-  static TextStyle responsiveElementTitle(
-    ResponsiveLayoutSize size,
-    Color color,
-  ) {
-    var fontSize = 20.0;
-
-    switch (size) {
-      case ResponsiveLayoutSize.large:
-        fontSize = 20.0;
-        break;
-      case ResponsiveLayoutSize.medium:
-        fontSize = 1.0;
-        break;
-      case ResponsiveLayoutSize.small:
-        fontSize = 1.0;
-        break;
-    }
-
+  static TextStyle displayParagraph(Color color) {
     return TextStyle(
       fontFamily: _fontFamily,
-      fontWeight: _bold,
-      color: GameColors.white,
-      fontSize: fontSize,
+      fontWeight: _regular,
+      color: color == GameColors.grey50 ? GameColors.white : color,
+      fontSize: 14,
       shadows: <Shadow>[
         Shadow(
           blurRadius: 10,
@@ -178,78 +73,12 @@ abstract class GameTypography {
     );
   }
 
-  static TextStyle responsiveParagraph(ResponsiveLayoutSize size) {
-    var fontSize = 14.0;
-
-    switch (size) {
-      case ResponsiveLayoutSize.large:
-        fontSize = 14.0;
-        break;
-      case ResponsiveLayoutSize.medium:
-        fontSize = 1.0;
-        break;
-      case ResponsiveLayoutSize.small:
-        fontSize = 1.0;
-        break;
-    }
-
+  static TextStyle elementTitle(Color color) {
     return TextStyle(
       fontFamily: _fontFamily,
-      fontWeight: _regular,
-      color: GameColors.grey50,
-      fontSize: fontSize,
-    );
-  }
-
-  static TextStyle modifiedResponsiveParagraph(
-    ResponsiveLayoutSize size,
-    Color color,
-  ) {
-    var fontSize = 14.0;
-
-    switch (size) {
-      case ResponsiveLayoutSize.large:
-        fontSize = 14.0;
-        break;
-      case ResponsiveLayoutSize.medium:
-        fontSize = 1.0;
-        break;
-      case ResponsiveLayoutSize.small:
-        fontSize = 1.0;
-        break;
-    }
-
-    return TextStyle(
-      fontFamily: _fontFamily,
-      fontWeight: _regular,
-      color: color,
-      fontSize: fontSize,
-    );
-  }
-
-  static TextStyle displayResponsiveParagraph(
-    ResponsiveLayoutSize size,
-    Color color,
-  ) {
-    var fontSize = 14.0;
-
-    switch (size) {
-      case ResponsiveLayoutSize.large:
-        fontSize = 14.0;
-        break;
-      case ResponsiveLayoutSize.medium:
-        fontSize = 1.0;
-        break;
-      case ResponsiveLayoutSize.small:
-        fontSize = 1.0;
-        break;
-    }
-
-    return TextStyle(
-      fontFamily: _fontFamily,
-      fontWeight: _regular,
-      color: color == GameColors.grey50 ? GameColors.white : color,
-      fontSize: fontSize,
+      fontWeight: _bold,
+      color: GameColors.white,
+      fontSize: 20,
       shadows: <Shadow>[
         Shadow(
           blurRadius: 10,
@@ -313,11 +142,37 @@ abstract class GameTheme {
     );
   }
 
+  static Size preferredAppBarSize(Size screenSize) {
+    var layoutSize = ResponsiveLayoutBreakpoints.getLayoutSize(
+      screenSize.width,
+    );
+
+    if (layoutSize == ResponsiveLayoutSize.large) {
+      return Size.fromHeight(
+        (screenSize.height * 0.06) * 2 + 36 + 18,
+      );
+    }
+
+    return Size.fromHeight(
+      (screenSize.height * 0.04) * 2 + 36 + 18,
+    );
+  }
+
   static final ThemeData data = ThemeData(
-    // appBarTheme:
+    appBarTheme: const AppBarTheme(
+      backgroundColor: GameColors.grey200,
+      centerTitle: true,
+    ),
     backgroundColor: GameColors.grey200,
     // bottomAppBarTheme:
-    // bottomNavigationBarTheme:
+    bottomNavigationBarTheme: BottomNavigationBarThemeData(
+      backgroundColor: GameColors.grey200,
+      selectedItemColor: GameColors.orange,
+      unselectedItemColor: GameColors.grey100,
+      selectedLabelStyle: GameTypography.modifiedParagraph(GameColors.orange),
+      unselectedLabelStyle:
+          GameTypography.modifiedParagraph(GameColors.grey100),
+    ),
     // dialogTheme:
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ButtonStyle(
@@ -326,18 +181,15 @@ abstract class GameTheme {
         enableFeedback: true,
         shadowColor: MaterialStateProperty.all<Color>(GameColors.shadowBlack),
         elevation: MaterialStateProperty.all<double>(3.0),
+        padding: MaterialStateProperty.all<EdgeInsetsGeometry>(
+          const EdgeInsets.symmetric(
+            vertical: 16.0,
+            horizontal: 20.0,
+          ),
+        ),
         shape: MaterialStateProperty.all<OutlinedBorder>(
           const ContinuousRectangleBorder(),
         ),
-        // MaterialStateProperty.all<TextStyle>(GameTypography.paragraph)
-        // textStyle: MaterialStateProperty.resolveWith(
-        //   (Set<MaterialState> states) {
-        //     if (states.contains(MaterialState.disabled)) {
-        //       return GameTypography.modifiedParagraph(GameColors.grey100);
-        //     }
-        //     return GameTypography.paragraph;
-        //   },
-        // ),
       ),
     ),
     // highlightColor:

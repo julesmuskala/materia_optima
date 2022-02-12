@@ -11,7 +11,6 @@ import 'package:materia_optima/ui/views/inventory/inventory_title.dart';
 import 'package:materia_optima/utils/story.dart';
 import 'package:materia_optima/core/types/listened_keys.dart';
 import 'package:materia_optima/core/types/types.dart';
-import 'package:materia_optima/core/types/responsive_layout_size.dart';
 
 class InventoryView extends StatefulWidget {
   const InventoryView({
@@ -30,8 +29,6 @@ class InventoryView extends StatefulWidget {
 class _InventoryViewState extends State<InventoryView> {
   @override
   Widget build(BuildContext context) {
-    final screenSize = MediaQuery.of(context).size;
-
     return Selector<GameModel, Tuple2<AlchemyElement, TypeCallback<bool>>>(
       selector: (_, gameValue) => Tuple2(
         gameValue.selectedElement,
@@ -70,9 +67,7 @@ class _InventoryViewState extends State<InventoryView> {
               child: Text(
                 GameStory.lines[gameValue.item1.scriptLineDescriptionKey] ??
                     'Error: no line found',
-                style: GameTypography.responsiveParagraph(
-                  getLayoutSize(screenSize.width),
-                ),
+                style: GameTypography.paragraph,
                 textAlign: TextAlign.justify,
               ),
             ),
