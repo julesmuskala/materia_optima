@@ -183,8 +183,8 @@ abstract class GameTheme {
         elevation: MaterialStateProperty.all<double>(3.0),
         padding: MaterialStateProperty.all<EdgeInsetsGeometry>(
           const EdgeInsets.symmetric(
-            vertical: 16.0,
-            horizontal: 20.0,
+            vertical: 15.0,
+            horizontal: 15.0,
           ),
         ),
         shape: MaterialStateProperty.all<OutlinedBorder>(

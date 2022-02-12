@@ -79,7 +79,7 @@ class _BoardViewState extends State<BoardView> {
                     GameStory.lines['finish_board'] ?? 'Error: no line found',
               ),
               SizedBox(
-                height: widget.height * 0.06,
+                height: widget.height * 0.04,
               ),
               FancyButton(
                 onPressed: () => gameValue.item2.call(16), // reset 16 tiles

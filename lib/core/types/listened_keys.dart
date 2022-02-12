@@ -1,3 +1,6 @@
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+
 enum ListenedKeys {
   spaceKey,
   enterKey,
@@ -16,6 +19,19 @@ extension ListenedKeysExtension on ListenedKeys {
         return '[space]';
       case ListenedKeys.xKey:
         return '[X]';
+    }
+  }
+
+  LogicalKeyboardKey get logicalKeyValue {
+    switch (this) {
+      case ListenedKeys.enterKey:
+        return LogicalKeyboardKey.enter;
+      case ListenedKeys.rKey:
+        return LogicalKeyboardKey.keyR;
+      case ListenedKeys.spaceKey:
+        return LogicalKeyboardKey.space;
+      case ListenedKeys.xKey:
+        return LogicalKeyboardKey.keyX;
     }
   }
 }
