@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:materia_optima/utils/theme.dart';
 import 'package:materia_optima/core/types/alchemy_element.dart';
 import 'package:materia_optima/core/models/board_tile_model.dart';
-import 'package:materia_optima/ui/views/board/board_tile_inside.dart';
 
 class BoardTile extends StatelessWidget {
   const BoardTile({
@@ -37,19 +36,21 @@ class BoardTile extends StatelessWidget {
                       tileModel.alchemyElement.color,
                     )
                   : Colors.transparent,
-              spreadRadius: 2,
+              // spreadRadius: 2,
               blurRadius: 10,
             ),
           ],
         ),
         child: !_isNullTile
-            ? BoardTileInside(
-                color: tileModel.alchemyElement.color,
-                duration: GameTheme.standardAnimationDuration,
-                iconPath: tileModel.alchemyElement.iconPath,
-                underscoreName: tileModel.alchemyElement.underscoreName,
-                dimension: dimension,
-                onTap: _canMove() ? () => tileModel..move(tileModel) : null,
+            ? Material(
+                child: Ink.image(
+                  image: AssetImage(
+                    'assets/element_tiles/${tileModel.alchemyElement.underscoreName}.webp',
+                  ),
+                  child: InkWell(
+                    onTap: _canMove() ? () => tileModel.move(tileModel) : null,
+                  ),
+                ),
               )
             : null,
       ),

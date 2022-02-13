@@ -28,10 +28,10 @@ flutter:
   assets:
     - assets/ui/
     - assets/element_icons/
+    - assets/element_tiles/
     - assets/patterns/
     - assets/ui/inventory_element/
     - assets/ui/compendium_tab/
-    - assets/ui/board_tile/
 
   fonts:
     - family: RobotoCondensed
