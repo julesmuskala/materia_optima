@@ -12,7 +12,7 @@ import 'package:materia_optima/core/models/game_model.dart';
 import 'package:materia_optima/core/types/types.dart';
 import 'package:materia_optima/core/show_dialog.dart';
 
-class BoardView extends StatefulWidget {
+class BoardView extends StatelessWidget {
   const BoardView({
     Key? key,
     required this.width,
@@ -23,78 +23,73 @@ class BoardView extends StatefulWidget {
   final double height;
 
   @override
-  _BoardViewState createState() => _BoardViewState();
-}
-
-class _BoardViewState extends State<BoardView> {
-  @override
   Widget build(BuildContext context) {
     return Selector<
-            GameModel,
-            Tuple3<List<BoardTileModel>, VoidCallbackParam<int>,
-                TypeCallback<int?>>>(
-        selector: (_, provider) => Tuple3(
-              provider.boardTiles,
-              provider.resetBoardTiles,
-              provider.finishGame,
+        GameModel,
+        Tuple3<List<BoardTileModel>, VoidCallbackParam<int>,
+            TypeCallback<int?>>>(
+      selector: (_, provider) => Tuple3(
+        provider.boardTiles,
+        provider.resetBoardTiles,
+        provider.finishGame,
+      ),
+      builder: (context, gameValue, child) {
+        return Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Container(
+              constraints: BoxConstraints(
+                maxHeight: width,
+                maxWidth: width,
+              ),
+              height: width,
+              width: width,
+              decoration: const BoxDecoration(
+                color: GameColors.grey200,
+                image: DecorationImage(
+                  image: AssetImage('assets/ui/board_background.png'),
+                  fit: BoxFit.cover,
+                ),
+                boxShadow: GameTheme.boxShadow,
+              ),
+              child: Padding(
+                padding: EdgeInsets.all(
+                  height * 0.015,
+                ),
+                child: Stack(
+                  children: _buildBoardTileList(
+                    gameValue.item1,
+                    dimension: width * 0.22,
+                  ),
+                ),
+              ),
             ),
-        builder: (context, gameValue, child) {
-          return Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              Container(
-                constraints: BoxConstraints(
-                  maxHeight: widget.width,
-                  maxWidth: widget.width,
-                ),
-                height: widget.width,
-                width: widget.width,
-                decoration: const BoxDecoration(
-                  color: GameColors.grey200,
-                  image: DecorationImage(
-                    image: AssetImage('assets/ui/board_background.png'),
-                    fit: BoxFit.cover,
-                  ),
-                  boxShadow: GameTheme.boxShadow,
-                ),
-                child: Padding(
-                  padding: EdgeInsets.all(
-                    widget.height * 0.015,
-                  ),
-                  child: Stack(
-                    children: _buildBoardTileList(
-                      gameValue.item1,
-                      dimension: widget.width * 0.22,
-                    ),
-                  ),
-                ),
-              ),
-              SizedBox(
-                height: widget.height * 0.03,
-              ),
-              FancyButton(
-                onPressed: () => _finishBoard(gameValue.item3, context),
-                listenedKey: ListenedKeys.spaceKey,
-                description: GameStory.getLine('finish_board'),
-              ),
-              SizedBox(
-                height: widget.height * 0.06,
-              ),
-              FancyButton(
-                onPressed: () => gameValue.item2.call(16), // reset 16 tiles
-                listenedKey: ListenedKeys.rKey,
-                description: GameStory.getLine('reset_board'),
-              ),
-            ],
-          );
-        });
+            SizedBox(
+              height: height * 0.03,
+            ),
+            FancyButton(
+              onPressed: () => _finishBoard(gameValue.item3, context),
+              listenedKey: ListenedKeys.spaceKey,
+              description: GameStory.getLine('finish_board'),
+            ),
+            SizedBox(
+              height: height * 0.06,
+            ),
+            FancyButton(
+              onPressed: () => gameValue.item2.call(16), // reset 16 tiles
+              listenedKey: ListenedKeys.rKey,
+              description: GameStory.getLine('reset_board'),
+            ),
+          ],
+        );
+      },
+    );
   }
 
   void _finishBoard(
     TypeCallback<int?> providerFinishCallback,
     BuildContext context,
   ) {
-    // TODO: do sth with finishGame() result
     var result = providerFinishCallback.call();
     if (result != null) {
       var entry = GameStory.storyEntries[result];

@@ -67,42 +67,34 @@ class _InventoryElementPickerState extends State<InventoryElementPicker> {
 
     return elementsToRender
         .map(
-          (element) => SizedBox(
+          (element) => AnimatedContainer(
+            duration: GameTheme.standardAnimationDuration,
+            decoration: BoxDecoration(
+              color: Colors.transparent,
+              boxShadow: selectedElement == element
+                  ? GameTheme.glow(element.color)
+                  : null,
+              borderRadius: BorderRadius.circular(
+                widget.elementDimension / 2,
+              ),
+            ),
             width: widget.elementDimension,
             height: widget.elementDimension,
-            child: Stack(
-              children: <Widget>[
-                AnimatedColorFiltered(
-                  endColor: element.color,
-                  child: AnimatedContainer(
-                    duration: GameTheme.standardAnimationDuration,
-                    decoration: BoxDecoration(
-                      color: Colors.transparent,
-                      boxShadow: selectedElement == element
-                          ? GameTheme.glow(element.color)
-                          : null,
-                      borderRadius:
-                          BorderRadius.circular(widget.elementDimension / 2),
-                    ),
-                    child: Image.asset(
-                      'assets/element_icons/${element.iconPath}.png',
-                      filterQuality: FilterQuality
-                          .medium, // That's why I no longer use Ink.image
-                    ),
-                  ),
+            child: Material(
+              clipBehavior: Clip.antiAlias,
+              borderRadius: BorderRadius.circular(widget.elementDimension / 2),
+              color: Colors.transparent,
+              child: Ink.image(
+                width: widget.elementDimension,
+                height: widget.elementDimension,
+                image: AssetImage(
+                  'assets/element_icons/${element.iconPath}.webp',
                 ),
-                Positioned.fill(
-                  child: Material(
-                    clipBehavior: Clip.antiAlias,
-                    borderRadius:
-                        BorderRadius.circular(widget.elementDimension / 2),
-                    color: Colors.transparent,
-                    child: InkWell(
-                      onTap: () => onElementPicked.call(element),
-                    ),
-                  ),
+                // fit: BoxFit.cover,
+                child: InkWell(
+                  onTap: () => onElementPicked(element),
                 ),
-              ],
+              ),
             ),
           ),
         )

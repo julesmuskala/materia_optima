@@ -76,36 +76,36 @@ abstract class GameStory {
     0: StoryEntry(
       titleKey: 'quest_title_0',
       descriptionKey: 'quest_desc_0',
-      assetPath: 'patterns/rebis_recipe.png',
+      assetPath: 'patterns/rebis_recipe.webp',
     ),
     100: StoryEntry(
       titleKey: 'quest_title_100',
       descriptionKey: 'quest_desc_100',
-      assetPath: 'patterns/caeleum_recipe.png',
+      assetPath: 'patterns/caeleum_recipe.webp',
       compendiumColor: GameColors.green,
     ),
     200: StoryEntry(
       titleKey: 'quest_title_200',
       descriptionKey: 'quest_desc_200',
-      assetPath: 'patterns/quebrith_recipe.png',
+      assetPath: 'patterns/quebrith_recipe.webp',
       compendiumColor: GameColors.blue,
     ),
     300: StoryEntry(
       titleKey: 'quest_title_300',
       descriptionKey: 'quest_desc_300',
-      assetPath: 'patterns/aether_recipe.png',
+      assetPath: 'patterns/aether_recipe.webp',
       compendiumColor: GameColors.violet,
     ),
     400: StoryEntry(
       titleKey: 'quest_title_400',
       descriptionKey: 'quest_desc_400',
-      assetPath: 'patterns/vermilion_recipe.png',
+      assetPath: 'patterns/vermilion_recipe.webp',
       compendiumColor: GameColors.orange,
     ),
     500: StoryEntry(
       titleKey: 'quest_title_500',
       descriptionKey: 'quest_desc_500',
-      assetPath: 'patterns/materia_optima_recipe.png',
+      assetPath: 'patterns/materia_optima_recipe.webp',
       compendiumColor: GameColors.yellow,
     ),
     600: StoryEntry(

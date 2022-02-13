@@ -41,7 +41,7 @@ abstract class GameTypography {
     fontFamily: _fontFamily,
     fontWeight: _regular,
     color: GameColors.grey50,
-    fontSize: 14,
+    fontSize: 16,
   );
 
   static TextStyle modifiedParagraph(Color color) {
@@ -116,8 +116,7 @@ abstract class GameTheme {
     return [
       BoxShadow(
         color: Color.fromARGB(179, color.red, color.green, color.blue),
-        spreadRadius: 2,
-        blurRadius: 10,
+        blurRadius: 8,
       ),
     ];
   }

@@ -91,7 +91,6 @@ class _InventoryViewState extends State<InventoryView> {
   }
 
   void _addTile(TypeCallback<bool> providerAddTileCallback) {
-    // TODO: do sth with addToBoard() result
     bool result = providerAddTileCallback.call();
 
     if (!result) {

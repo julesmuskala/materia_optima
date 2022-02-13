@@ -8,6 +8,7 @@ import 'package:materia_optima/core/models/board_tile_model.dart';
 import 'package:materia_optima/core/models/game_model.dart';
 import 'package:materia_optima/ui/shared/animated_color_filtered.dart';
 import 'package:materia_optima/core/types/types.dart';
+import 'package:materia_optima/ui/views/board/board_tile_inside.dart';
 
 class BoardTile extends StatefulWidget {
   const BoardTile({
@@ -60,36 +61,14 @@ class _BoardTileState extends State<BoardTile> {
               ],
             ),
             child: !_isNullTile
-                ? Stack(
-                    children: <Widget>[
-                      Center(
-                        child: AnimatedColorFiltered(
-                          endColor: widget.tileModel.alchemyElement.color,
-                          duration: widget.animationDuration,
-                          child: Image.asset(
-                            'assets/element_icons/${widget.tileModel.alchemyElement.iconPath}.png',
-                            width: widget.dimension / 2.5,
-                            height: widget.dimension / 2.5,
-                            filterQuality: FilterQuality.medium,
-                          ),
-                        ),
-                      ),
-                      AnimatedColorFiltered(
-                        endColor: widget.tileModel.alchemyElement.color,
-                        child:
-                            Image.asset('assets/ui/board_tile_background.png'),
-                      ),
-                      Positioned.fill(
-                        child: Material(
-                          color: Colors.transparent,
-                          child: InkWell(
-                            onTap: _canMove(gameValue.item1)
-                                ? () => gameValue.item2.call(widget.tileModel)
-                                : null,
-                          ),
-                        ),
-                      ),
-                    ],
+                ? BoardTileInside(
+                    color: widget.tileModel.alchemyElement.color,
+                    duration: widget.animationDuration,
+                    iconPath: widget.tileModel.alchemyElement.iconPath,
+                    dimension: widget.dimension / 2.5,
+                    onTap: _canMove(gameValue.item1)
+                        ? () => gameValue.item2.call(widget.tileModel)
+                        : null,
                   )
                 : null,
           );
