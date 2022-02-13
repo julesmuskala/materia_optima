@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 import 'package:materia_optima/core/types/alchemy_element.dart';
 import 'package:materia_optima/utils/theme.dart';
-import 'package:materia_optima/ui/shared/animated_color_filtered.dart';
 
 class InventoryTitle extends StatelessWidget {
   const InventoryTitle({
@@ -26,10 +25,14 @@ class InventoryTitle extends StatelessWidget {
       ),
       child: Stack(
         children: <Widget>[
-          AnimatedColorFiltered(
-            endColor: selectedElement.color,
-            duration: GameTheme.standardAnimationDuration,
-            child: Image.asset('assets/ui/inventory_element_frame.png'),
+          FadeInImage(
+            placeholder: const AssetImage(
+              'assets/ui/inventory_element/frame_materia_prima.webp',
+            ),
+            fadeInDuration: GameTheme.standardAnimationDuration,
+            image: AssetImage(
+              'assets/ui/inventory_element/frame_${selectedElement.underscoreName}.webp',
+            ),
           ),
           AnimatedContainer(
             width: double.maxFinite,

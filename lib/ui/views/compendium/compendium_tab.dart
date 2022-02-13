@@ -16,44 +16,44 @@ class CompendiumTab extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: <Widget>[
-        Container(
-          width: width,
-          height: width * 0.096,
-          decoration: BoxDecoration(
-            gradient: GameTheme.gradient(
-              entry.compendiumColor ?? GameColors.grey50,
-            ),
-            boxShadow: GameTheme.boxShadow,
-          ),
-          child: Center(
-            child: Text(
-              GameStory.getLine(entry.titleKey).toUpperCase(),
-              style: GameTypography.displayParagraph(
+    return SizedBox(
+      width: width,
+      height: width * 0.096,
+      child: Stack(
+        children: <Widget>[
+          Container(
+            width: width,
+            height: width * 0.096,
+            decoration: BoxDecoration(
+              gradient: GameTheme.gradient(
                 entry.compendiumColor ?? GameColors.grey50,
+              ),
+              boxShadow: GameTheme.boxShadow,
+            ),
+            child: Center(
+              child: Text(
+                GameStory.getLine(entry.titleKey).toUpperCase(),
+                style: GameTypography.displayParagraph(
+                  entry.compendiumColor ?? GameColors.grey50,
+                ),
               ),
             ),
           ),
-        ),
-        Material(
-          color: Colors.transparent,
-          child: Ink.image(
-            colorFilter: ColorFilter.mode(
-              entry.compendiumColor ?? GameColors.grey50,
-              GameTheme.standardBlendMode,
-            ),
+          Image(
             width: width,
             height: width * 0.096,
-            image: const AssetImage(
-              'assets/ui/compendium_tab_background.png',
+            image: AssetImage(
+              'assets/ui/compendium_tab/bar_${entry.rarity}.webp',
             ),
+          ),
+          Material(
+            color: Colors.transparent,
             child: InkWell(
               onTap: () => showMirrorDialog(context, entry),
             ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }

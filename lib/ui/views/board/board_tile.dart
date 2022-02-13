@@ -47,7 +47,8 @@ class BoardTile extends StatelessWidget {
                 color: tileModel.alchemyElement.color,
                 duration: GameTheme.standardAnimationDuration,
                 iconPath: tileModel.alchemyElement.iconPath,
-                dimension: dimension / 2.5,
+                underscoreName: tileModel.alchemyElement.underscoreName,
+                dimension: dimension,
                 onTap: _canMove() ? () => tileModel..move(tileModel) : null,
               )
             : null,

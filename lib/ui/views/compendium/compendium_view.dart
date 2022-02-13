@@ -44,7 +44,7 @@ class CompendiumView extends StatelessWidget {
                   child: SlideTransition(
                     position: animation.drive(
                       Tween<Offset>(
-                        begin: const Offset(-0.01, 0),
+                        begin: const Offset(-0.05, 0),
                         end: const Offset(0, 0),
                       ),
                     ),

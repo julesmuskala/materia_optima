@@ -15,7 +15,7 @@ enum AlchemyElement {
 }
 
 extension AlchemyElementExtension on AlchemyElement {
-  String get _underscoreName {
+  String get underscoreName {
     switch (this) {
       case AlchemyElement.aether:
       case AlchemyElement.caeleum:
@@ -42,14 +42,14 @@ extension AlchemyElementExtension on AlchemyElement {
       case AlchemyElement.rebis:
       case AlchemyElement.vermilion:
         {
-          var rawValue = _underscoreName;
+          var rawValue = underscoreName;
           return '${rawValue[0].toUpperCase()}${rawValue.substring(1)}';
         }
       case AlchemyElement.materiaNulla:
       case AlchemyElement.materiaOptima:
       case AlchemyElement.materiaPrima:
         {
-          var rawValue = _underscoreName.split('_').join(' ');
+          var rawValue = underscoreName.split('_').join(' ');
           return '${rawValue[0].toUpperCase()}${rawValue.substring(1)}';
         }
       case AlchemyElement.materiaIncognita:
@@ -62,11 +62,11 @@ extension AlchemyElementExtension on AlchemyElement {
       throw Exception('Access non-existent image asset');
     }
 
-    return '${_underscoreName}_icon';
+    return '${underscoreName}_icon';
   }
 
   String get scriptLineDescriptionKey {
-    return '${_underscoreName}_desc';
+    return '${underscoreName}_desc';
   }
 
   Color get color {

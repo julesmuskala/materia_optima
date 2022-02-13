@@ -14,6 +14,7 @@ dependencies:
     sdk: flutter
   provider: ^6.0.2
   shared_preferences: ^2.0.13
+  transparent_image: ^2.0.0
   tuple: ^2.0.0
 
 dev_dependencies:
@@ -28,6 +29,9 @@ flutter:
     - assets/ui/
     - assets/element_icons/
     - assets/patterns/
+    - assets/ui/inventory_element/
+    - assets/ui/compendium_tab/
+    - assets/ui/board_tile/
 
   fonts:
     - family: RobotoCondensed

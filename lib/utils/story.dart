@@ -9,12 +9,14 @@ class StoryEntry {
     required this.descriptionKey,
     this.compendiumColor,
     this.assetPath,
+    this.rarity = 'common',
   });
 
   final String titleKey;
   final String descriptionKey;
   final Color? compendiumColor;
   final String? assetPath;
+  final String rarity;
 }
 
 abstract class GameStory {
@@ -83,35 +85,41 @@ abstract class GameStory {
       descriptionKey: 'quest_desc_100',
       assetPath: 'patterns/caeleum_recipe.webp',
       compendiumColor: GameColors.green,
+      rarity: 'uncommon',
     ),
     200: StoryEntry(
       titleKey: 'quest_title_200',
       descriptionKey: 'quest_desc_200',
       assetPath: 'patterns/quebrith_recipe.webp',
       compendiumColor: GameColors.blue,
+      rarity: 'rare',
     ),
     300: StoryEntry(
       titleKey: 'quest_title_300',
       descriptionKey: 'quest_desc_300',
       assetPath: 'patterns/aether_recipe.webp',
       compendiumColor: GameColors.violet,
+      rarity: 'unique',
     ),
     400: StoryEntry(
       titleKey: 'quest_title_400',
       descriptionKey: 'quest_desc_400',
       assetPath: 'patterns/vermilion_recipe.webp',
       compendiumColor: GameColors.orange,
+      rarity: 'exceptional',
     ),
     500: StoryEntry(
       titleKey: 'quest_title_500',
       descriptionKey: 'quest_desc_500',
       assetPath: 'patterns/materia_optima_recipe.webp',
       compendiumColor: GameColors.yellow,
+      rarity: 'legendary',
     ),
     600: StoryEntry(
       titleKey: 'quest_title_600',
       descriptionKey: 'quest_desc_600',
       compendiumColor: GameColors.white,
+      rarity: 'optima',
     ),
     2137: StoryEntry(
       titleKey: 'helper_title_2137',
