@@ -1,11 +1,11 @@
 {
-    "name": "materia_optima",
-    "short_name": "materia_optima",
+    "name": "Materia optima",
+    "short_name": "Materia optima",
     "start_url": ".",
-    "display": "standalone",
-    "background_color": "#0175C2",
-    "theme_color": "#0175C2",
-    "description": "A new Flutter project.",
+    "display": "browser",
+    "background_color": "#121212",
+    "theme_color": "#FB7102",
+    "description": "My entry for Flutter Puzzle Hack",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
     "icons": [

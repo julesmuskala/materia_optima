@@ -64,7 +64,6 @@ class _StoryDialogState extends State<StoryDialog>
           ),
           child: Container(
             width: screenSize.width * 0.87,
-            height: screenSize.height * 0.48,
             constraints: const BoxConstraints(
               maxWidth: 450.0,
             ),
@@ -73,14 +72,15 @@ class _StoryDialogState extends State<StoryDialog>
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisSize: MainAxisSize.min,
                 children: <Widget>[
                   Column(
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisSize: MainAxisSize.min,
                     children: [
                       Text(
-                        GameStory.lines[widget.entry.titleKey]?.toUpperCase() ??
-                            'Error: no line found',
+                        GameStory.getLine(widget.entry.titleKey).toUpperCase(),
                         style: GameTypography.elementTitle(
                           GameColors.shadowBlack,
                         ),
@@ -89,16 +89,19 @@ class _StoryDialogState extends State<StoryDialog>
                         height: screenSize.height * 0.03,
                       ),
                       Text(
-                        GameStory.lines[widget.entry.descriptionKey] ??
-                            'Error: no line found',
+                        GameStory.getLine(widget.entry.descriptionKey),
                         style: GameTypography.paragraph,
                         softWrap: true,
+                      ),
+                      SizedBox(
+                        height: screenSize.height * 0.03,
                       ),
                     ],
                   ),
                   Column(
                     mainAxisAlignment: MainAxisAlignment.end,
                     crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisSize: MainAxisSize.min,
                     children: [
                       widget.entry.assetPath != null
                           ? Image.asset(
@@ -107,17 +110,16 @@ class _StoryDialogState extends State<StoryDialog>
                               width: screenSize.height * 0.12,
                               filterQuality: FilterQuality.medium,
                             )
-                          : SizedBox(
-                              height: screenSize.height * 0.12,
-                              width: screenSize.height * 0.12,
+                          : const SizedBox(
+                              height: 0.0,
+                              width: 0.0,
                             ),
                       SizedBox(
                         height: screenSize.height * 0.03,
                       ),
                       FancyButton(
                         listenedKey: ListenedKeys.xKey,
-                        description: GameStory.lines['close_dialog'] ??
-                            'Error: no line found',
+                        description: GameStory.getLine('close_dialog'),
                         onPressed: () => Navigator.pop(context),
                       ),
                     ],

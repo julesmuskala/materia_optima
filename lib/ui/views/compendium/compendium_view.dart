@@ -4,7 +4,6 @@ import 'package:provider/provider.dart';
 import 'package:materia_optima/core/models/game_model.dart';
 import 'package:materia_optima/utils/story.dart';
 import 'package:materia_optima/ui/views/compendium/compendium_tab.dart';
-import 'package:materia_optima/utils/theme.dart';
 import 'package:materia_optima/core/types/types.dart';
 
 class CompendiumView extends StatefulWidget {

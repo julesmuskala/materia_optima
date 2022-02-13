@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: GameStory.lines['app_title'] ?? 'Error: no line found',
+      title: GameStory.getLine('app_title'),
       theme: GameTheme.data,
       home: ChangeNotifierProvider<GameModel>(
         create: (_) => GameModel(),

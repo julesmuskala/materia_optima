@@ -28,31 +28,48 @@ abstract class GameStory {
     'close_dialog': 'Close',
     // Element descriptions
     'materia_nulla_desc': 'Wow, just wow! How did you...',
+    'materia_incognita_desc': 'Who knows what it is?',
     'materia_prima_desc':
-        'Nullam pulvinar volutpat ex, at molestie justo rutrum in. Ut vel justo vitae nisl pellentesque pharetra in id ante. Sed mattis felis dolor, in venenatis turpis efficitur aliquet. Curabitur fermentum, magna tempor fermentum aliquet, turpis elit cursus dui, iaculis commodo sem felis vitae neque.',
+        'Materia prima is the most basic element all matter in our known universe is derived from. Its magical potency is very low and in order to be useful, it needs to be fused into heavier, superior elements.',
+    'rebis_desc':
+        'Rebis is the most basic of superior elements. Sometimes called “fool\'s meteria optima”, as it is the first element every beginner alchemist amalgamates. For its relatively low volatility and pleasant green glow, it is often used by lower classes in jewelry.',
+    'caeleum_desc':
+        'Caeleum is named after one of the islands of the Southern Archipelago, where during summer nights waves take on this element\'s brilliant blue hue and its glow.',
+    'quebrith_desc':
+        'Quebrith due to its purple color, so uncommon in nature and relative inaccessibility to the lower classes, is highly valued by the upper echelons. It is used in makeup, cosmetics, and even as food coloring. Although, it is also said to cause shortness of breath and skin reddening akin to sunburn.',
+    'aether_desc':
+        'Aether was the symbol of Konstantian Reformation. After the last of Great Reformers were executed, it was banned and its possession was punished by death. Today, aether is still heavily regulated but a license for its handling may be obtained by joining the Imperial Alchemy Revival Guild.',
+    'vermilion_desc':
+        'Vermilion is most well known for its strange scent. In small amounts, it has a fruity and floral, overall pleasant smell nonetheless when handled in higher amounts it reeks of decay and feces. Due to that property and the fact that vermilion odor lingers even for weeks, it is used as an aromatic substance in lavish perfumes.',
+    'materia_optima_desc':
+        'Materia optima is a pinnacle of creation, the most perfect element in the known universe.',
     // Story entries
     'quest_title_0': 'Welcome to Materia Optima',
     'quest_desc_0':
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis placerat, enim nec varius blandit, mi dui interdum orci.',
+        'Materia optima is a game about discovery and achieving alchemical prowess. You can do it by arranging tiles on the board in special patterns. You can do it by clicking on a glowing tile that is adjacent to empty space. Try it out! And then try to arrange tiles in the pattern below.',
     'quest_title_100': 'Rebis discovered',
     'quest_desc_100':
-        'Nunc pellentesque pellentesque sodales. Fusce vel lectus erat. Nullam pulvinar, erat pulvinar egestas ultrices, enim turpis condimentum urna, mollis porttitor mauris arcu vitae mi.',
+        'All recipes in Materia optima (except for the first one) require the usage of superior elements. You can add them to the board in the inventory menu to the left. Try selecting Rebis by clicking on the green circle in the inventory menu and then adding it to the board by clicking on the button below. And then try to arrange tiles in the pattern below.',
     'quest_title_200': 'Caeleum discovered',
-    'quest_desc_200':
-        'Nunc pellentesque pellentesque sodales. Fusce vel lectus erat. Nullam pulvinar, erat pulvinar egestas ultrices, enim turpis condimentum urna, mollis porttitor mauris arcu vitae mi.',
+    'quest_desc_200': 'Cool! Now go on.',
     'quest_title_300': 'Quebrith discovered',
-    'quest_desc_300':
-        'Nunc pellentesque pellentesque sodales. Fusce vel lectus erat. Nullam pulvinar, erat pulvinar egestas ultrices, enim turpis condimentum urna, mollis porttitor mauris arcu vitae mi.',
+    'quest_desc_300': 'Cool! Now go on.',
     'quest_title_400': 'Aether discovered',
-    'quest_desc_400':
-        'Nunc pellentesque pellentesque sodales. Fusce vel lectus erat. Nullam pulvinar, erat pulvinar egestas ultrices, enim turpis condimentum urna, mollis porttitor mauris arcu vitae mi.',
+    'quest_desc_400': 'Cool! Now go on.',
     'quest_title_500': 'Vermilion discovered',
-    'quest_desc_500':
-        'Nunc pellentesque pellentesque sodales. Fusce vel lectus erat. Nullam pulvinar, erat pulvinar egestas ultrices, enim turpis condimentum urna, mollis porttitor mauris arcu vitae mi.',
+    'quest_desc_500': 'Cool! Now go on.',
     'quest_title_600': 'Materia optima discovered',
     'quest_desc_600':
-        'Nunc pellentesque pellentesque sodales. Fusce vel lectus erat. Nullam pulvinar, erat pulvinar egestas ultrices, enim turpis condimentum urna, mollis porttitor mauris arcu vitae mi.',
+        'Thank you very much for play-testing! Remember to fill out the form I provided. Cheers!',
+    'helper_title_2137': 'Amalgamation failed',
+    'helper_desc_2137':
+        'Hey, that pattern is incomplete! You can always open previous dialogs in the compendium menu to the right, by clicking on its title.',
+    'helper_title_6969': 'No more space on the board',
+    'helper_desc_6969':
+        'There is no free space left to fill with superior elements. You need to reset the board before adding any new element tiles.',
   };
+
+  static String getLine(String key) => lines[key] ?? 'Error: no line found';
 
   static final LinkedHashMap<int, StoryEntry> storyEntries =
       LinkedHashMap.from({
@@ -95,6 +112,14 @@ abstract class GameStory {
       titleKey: 'quest_title_600',
       descriptionKey: 'quest_desc_600',
       compendiumColor: GameColors.white,
+    ),
+    2137: StoryEntry(
+      titleKey: 'helper_title_2137',
+      descriptionKey: 'helper_desc_2137',
+    ),
+    6969: StoryEntry(
+      titleKey: 'helper_title_6969',
+      descriptionKey: 'helper_desc_6969',
     ),
   });
 }

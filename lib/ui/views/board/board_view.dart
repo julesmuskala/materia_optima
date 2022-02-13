@@ -75,8 +75,7 @@ class _BoardViewState extends State<BoardView> {
               FancyButton(
                 onPressed: () => _finishBoard(gameValue.item3, context),
                 listenedKey: ListenedKeys.spaceKey,
-                description:
-                    GameStory.lines['finish_board'] ?? 'Error: no line found',
+                description: GameStory.getLine('finish_board'),
               ),
               SizedBox(
                 height: widget.height * 0.06,
@@ -84,8 +83,7 @@ class _BoardViewState extends State<BoardView> {
               FancyButton(
                 onPressed: () => gameValue.item2.call(16), // reset 16 tiles
                 listenedKey: ListenedKeys.rKey,
-                description:
-                    GameStory.lines['reset_board'] ?? 'Error: no line found',
+                description: GameStory.getLine('reset_board'),
               ),
             ],
           );
@@ -104,6 +102,12 @@ class _BoardViewState extends State<BoardView> {
         throw Exception('Tried to show dialog for null entry (entry $result).');
       }
       showStoryDialog(context, entry);
+    } else {
+      var entry = GameStory.storyEntries[2137];
+      if (entry == null) {
+        throw Exception('Tried to show dialog for null entry (entry 2137).');
+      }
+      showMirrorDialog(context, entry);
     }
   }
 

@@ -11,6 +11,7 @@ import 'package:materia_optima/ui/views/inventory/inventory_title.dart';
 import 'package:materia_optima/utils/story.dart';
 import 'package:materia_optima/core/types/listened_keys.dart';
 import 'package:materia_optima/core/types/types.dart';
+import 'package:materia_optima/core/show_dialog.dart';
 
 class InventoryView extends StatefulWidget {
   const InventoryView({
@@ -65,8 +66,7 @@ class _InventoryViewState extends State<InventoryView> {
               width: widget.width * 0.9,
               height: widget.height * 0.16,
               child: Text(
-                GameStory.lines[gameValue.item1.scriptLineDescriptionKey] ??
-                    'Error: no line found',
+                GameStory.getLine(gameValue.item1.scriptLineDescriptionKey),
                 style: GameTypography.paragraph,
                 textAlign: TextAlign.justify,
               ),
@@ -92,6 +92,14 @@ class _InventoryViewState extends State<InventoryView> {
 
   void _addTile(TypeCallback<bool> providerAddTileCallback) {
     // TODO: do sth with addToBoard() result
-    providerAddTileCallback.call();
+    bool result = providerAddTileCallback.call();
+
+    if (!result) {
+      var entry = GameStory.storyEntries[6969];
+      if (entry == null) {
+        throw Exception('Tried to show dialog for null entry (entry 6969).');
+      }
+      showMirrorDialog(context, entry);
+    }
   }
 }

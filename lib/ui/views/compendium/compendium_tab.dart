@@ -29,8 +29,7 @@ class CompendiumTab extends StatelessWidget {
           ),
           child: Center(
             child: Text(
-              GameStory.lines[entry.titleKey]?.toUpperCase() ??
-                  'Error: no line found',
+              GameStory.getLine(entry.titleKey).toUpperCase(),
               style: GameTypography.displayParagraph(
                 entry.compendiumColor ?? GameColors.grey50,
               ),

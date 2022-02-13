@@ -46,12 +46,11 @@ class _PortraitScreenState extends State<PortraitScreen>
           child: Column(
             children: [
               Text(
-                GameStory.lines['app_title']?.toUpperCase() ??
-                    'Error: no line found',
+                GameStory.getLine('app_title').toUpperCase(),
                 style: GameTypography.title,
               ),
               Text(
-                GameStory.lines['app_subtitle'] ?? 'Error: no line found',
+                GameStory.getLine('app_subtitle'),
                 style: GameTypography.subtitle,
               ),
             ],
