@@ -8,22 +8,18 @@ import 'package:materia_optima/core/models/game_model.dart';
 import 'package:materia_optima/core/show_dialog.dart';
 import 'package:materia_optima/ui/shared/responsive_layout_builder.dart';
 
-class Game extends StatefulWidget {
+class Game extends StatelessWidget {
   const Game({
     Key? key,
   }) : super(key: key);
 
-  @override
-  _GameState createState() => _GameState();
-}
-
-class _GameState extends State<Game> {
   @override
   Widget build(BuildContext context) {
     Future.delayed(
       Duration.zero,
       () => _showInitDialog(
         Provider.of<GameModel>(context, listen: false).currentQuestStage,
+        context,
       ),
     );
 
@@ -36,7 +32,7 @@ class _GameState extends State<Game> {
     );
   }
 
-  void _showInitDialog(int startStage) {
+  void _showInitDialog(int startStage, BuildContext context) {
     if (startStage != 0) return;
 
     showStoryDialog(context, GameStory.storyEntries[0]!, isInitial: true);

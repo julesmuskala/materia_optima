@@ -26,12 +26,13 @@ class BoardView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Selector<
         GameModel,
-        Tuple3<List<BoardTileModel>, VoidCallbackParam<int>,
-            TypeCallback<int?>>>(
-      selector: (_, provider) => Tuple3(
+        Tuple4<List<BoardTileModel>, VoidCallbackParam<int>, TypeCallback<int?>,
+            BoardTileModel?>>(
+      selector: (_, provider) => Tuple4(
         provider.boardTiles,
         provider.resetBoardTiles,
         provider.finishGame,
+        provider.nullTile,
       ),
       builder: (context, gameValue, child) {
         return Column(
@@ -60,6 +61,7 @@ class BoardView extends StatelessWidget {
                   children: _buildBoardTileList(
                     gameValue.item1,
                     dimension: width * 0.22,
+                    nullTile: gameValue.item4,
                   ),
                 ),
               ),
@@ -109,6 +111,7 @@ class BoardView extends StatelessWidget {
   List<BoardTile> _buildBoardTileList(
     List<BoardTileModel> tileModels, {
     required double dimension,
+    required BoardTileModel? nullTile,
   }) {
     List<BoardTile> boardTiles = [];
 
@@ -117,6 +120,7 @@ class BoardView extends StatelessWidget {
         BoardTile(
           tileModel: tileModel,
           dimension: dimension,
+          nullTile: nullTile,
         ),
       );
     }

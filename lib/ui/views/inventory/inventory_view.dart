@@ -13,7 +13,7 @@ import 'package:materia_optima/core/types/listened_keys.dart';
 import 'package:materia_optima/core/types/types.dart';
 import 'package:materia_optima/core/show_dialog.dart';
 
-class InventoryView extends StatefulWidget {
+class InventoryView extends StatelessWidget {
   const InventoryView({
     Key? key,
     required this.width,
@@ -24,11 +24,6 @@ class InventoryView extends StatefulWidget {
   final double height;
 
   @override
-  _InventoryViewState createState() => _InventoryViewState();
-}
-
-class _InventoryViewState extends State<InventoryView> {
-  @override
   Widget build(BuildContext context) {
     return Selector<GameModel, Tuple2<AlchemyElement, TypeCallback<bool>>>(
       selector: (_, gameValue) => Tuple2(
@@ -36,8 +31,8 @@ class _InventoryViewState extends State<InventoryView> {
         gameValue.addTile,
       ),
       child: InventoryElementPicker(
-        width: widget.width * 0.9,
-        elementDimension: widget.width * 0.9 * 0.09,
+        width: width * 0.9,
+        elementDimension: width * 0.9 * 0.09,
       ),
       builder: (context, gameValue, child) {
         // selectedElement, addToBoard
@@ -46,25 +41,26 @@ class _InventoryViewState extends State<InventoryView> {
           children: <Widget>[
             child!,
             SizedBox(
-              height: widget.height * 0.02,
+              height: height * 0.02,
             ),
             Image.asset(
               'assets/ui/inventory_divider.png',
-              width: widget.width,
+              width: width,
             ),
             SizedBox(
-              height: widget.height * 0.02,
+              height: height * 0.02,
             ),
             InventoryTitle(
-              width: widget.width * 0.9,
-              height: widget.width * 0.9 * 0.18,
+              width: width * 0.9,
+              height: width * 0.9 * 0.18,
+              selectedElement: gameValue.item1,
             ),
             SizedBox(
-              height: widget.height * 0.02,
+              height: height * 0.02,
             ),
             SizedBox(
-              width: widget.width * 0.9,
-              height: widget.height * 0.16,
+              width: width * 0.9,
+              height: height * 0.16,
               child: Text(
                 GameStory.getLine(gameValue.item1.scriptLineDescriptionKey),
                 style: GameTypography.paragraph,
@@ -72,7 +68,7 @@ class _InventoryViewState extends State<InventoryView> {
               ),
             ),
             SizedBox(
-              height: widget.height * 0.02,
+              height: height * 0.02,
             ),
             FancyButton(
               listenedKey: ListenedKeys.enterKey,
@@ -82,7 +78,7 @@ class _InventoryViewState extends State<InventoryView> {
               onPressed: (gameValue.item1 == AlchemyElement.materiaIncognita ||
                       gameValue.item1 == AlchemyElement.materiaPrima)
                   ? null
-                  : () => _addTile(gameValue.item2),
+                  : () => _addTile(gameValue.item2, context),
             ),
           ],
         );
@@ -90,7 +86,10 @@ class _InventoryViewState extends State<InventoryView> {
     );
   }
 
-  void _addTile(TypeCallback<bool> providerAddTileCallback) {
+  void _addTile(
+    TypeCallback<bool> providerAddTileCallback,
+    BuildContext context,
+  ) {
     bool result = providerAddTileCallback.call();
 
     if (!result) {

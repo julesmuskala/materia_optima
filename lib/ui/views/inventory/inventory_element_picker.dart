@@ -4,11 +4,10 @@ import 'package:tuple/tuple.dart';
 
 import 'package:materia_optima/core/models/game_model.dart';
 import 'package:materia_optima/core/types/alchemy_element.dart';
-import 'package:materia_optima/ui/shared/animated_color_filtered.dart';
 import 'package:materia_optima/utils/theme.dart';
 import 'package:materia_optima/core/types/types.dart';
 
-class InventoryElementPicker extends StatefulWidget {
+class InventoryElementPicker extends StatelessWidget {
   const InventoryElementPicker({
     Key? key,
     required this.width,
@@ -19,32 +18,28 @@ class InventoryElementPicker extends StatefulWidget {
   final double elementDimension;
 
   @override
-  _InventoryElementPickerState createState() => _InventoryElementPickerState();
-}
-
-class _InventoryElementPickerState extends State<InventoryElementPicker> {
-  @override
   Widget build(BuildContext context) {
     return SizedBox(
-        width: widget.width,
-        child: Selector<GameModel,
-            Tuple3<AlchemyElement, VoidCallbackParam<AlchemyElement>, int>>(
-          selector: (_, provider) => Tuple3(
-            provider.selectedElement,
-            provider.selectElement,
-            provider.currentQuestStage,
-          ),
-          builder: (context, gameValue, child) {
-            return Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: _generateElementList(
-                selectedElement: gameValue.item1,
-                onElementPicked: gameValue.item2,
-                currentQuestStage: gameValue.item3,
-              ),
-            );
-          },
-        ));
+      width: width,
+      child: Selector<GameModel,
+          Tuple3<AlchemyElement, VoidCallbackParam<AlchemyElement>, int>>(
+        selector: (_, provider) => Tuple3(
+          provider.selectedElement,
+          provider.selectElement,
+          provider.currentQuestStage,
+        ),
+        builder: (context, gameValue, child) {
+          return Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: _generateElementList(
+              selectedElement: gameValue.item1,
+              onElementPicked: gameValue.item2,
+              currentQuestStage: gameValue.item3,
+            ),
+          );
+        },
+      ),
+    );
   }
 
   List<Widget> _generateElementList(
@@ -75,18 +70,18 @@ class _InventoryElementPickerState extends State<InventoryElementPicker> {
                   ? GameTheme.glow(element.color)
                   : null,
               borderRadius: BorderRadius.circular(
-                widget.elementDimension / 2,
+                elementDimension / 2,
               ),
             ),
-            width: widget.elementDimension,
-            height: widget.elementDimension,
+            width: elementDimension,
+            height: elementDimension,
             child: Material(
               clipBehavior: Clip.antiAlias,
-              borderRadius: BorderRadius.circular(widget.elementDimension / 2),
+              borderRadius: BorderRadius.circular(elementDimension / 2),
               color: Colors.transparent,
               child: Ink.image(
-                width: widget.elementDimension,
-                height: widget.elementDimension,
+                width: elementDimension,
+                height: elementDimension,
                 image: AssetImage(
                   'assets/element_icons/${element.iconPath}.webp',
                 ),

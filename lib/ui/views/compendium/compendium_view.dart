@@ -6,8 +6,8 @@ import 'package:materia_optima/utils/story.dart';
 import 'package:materia_optima/ui/views/compendium/compendium_tab.dart';
 import 'package:materia_optima/core/types/types.dart';
 
-class CompendiumView extends StatefulWidget {
-  const CompendiumView({
+class CompendiumView extends StatelessWidget {
+  CompendiumView({
     Key? key,
     required this.width,
     required this.height,
@@ -16,17 +16,12 @@ class CompendiumView extends StatefulWidget {
   final double width;
   final double height;
 
-  @override
-  _CompendiumViewState createState() => _CompendiumViewState();
-}
-
-class _CompendiumViewState extends State<CompendiumView> {
   final GlobalKey<AnimatedListState> _listKey = GlobalKey<AnimatedListState>();
   @override
   Widget build(BuildContext context) {
     return Center(
       child: SizedBox(
-        width: widget.width,
+        width: width,
         child: Consumer<GameModel>(
           builder: (context, gameValue, child) {
             final renderedEntries = _filterUnlockedEntries(
@@ -56,11 +51,11 @@ class _CompendiumViewState extends State<CompendiumView> {
                     child: Column(
                       children: [
                         CompendiumTab(
-                          width: widget.width,
+                          width: width,
                           entry: renderedEntries[index],
                         ),
                         SizedBox(
-                          height: widget.height * 0.02,
+                          height: height * 0.02,
                         )
                       ],
                     ),

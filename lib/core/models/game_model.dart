@@ -140,6 +140,7 @@ class GameModel extends ChangeNotifier {
               ? AlchemyElement.materiaPrima
               : AlchemyElement.materiaNulla,
           position: TilePosition(i),
+          move: moveTile,
         ),
       );
     }
