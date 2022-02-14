@@ -26,7 +26,7 @@ class CompendiumTab extends StatelessWidget {
             height: width * 0.096,
             decoration: BoxDecoration(
               gradient: GameTheme.gradient(
-                entry.compendiumColor ?? GameColors.grey50,
+                entry.compendiumColor,
               ),
               boxShadow: GameTheme.boxShadow,
             ),
@@ -34,7 +34,7 @@ class CompendiumTab extends StatelessWidget {
               child: Text(
                 GameStory.getLine(entry.titleKey).toUpperCase(),
                 style: GameTypography.displayParagraph(
-                  entry.compendiumColor ?? GameColors.grey50,
+                  entry.compendiumColor,
                 ),
               ),
             ),

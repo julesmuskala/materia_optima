@@ -1,18 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import 'package:materia_optima/utils/theme.dart';
 import 'package:materia_optima/utils/story.dart';
 import 'package:materia_optima/core/types/listened_keys.dart';
 import 'package:materia_optima/ui/shared/fancy_button.dart';
 import 'package:materia_optima/ui/shared/story_dialog_animation.dart';
+import 'package:materia_optima/core/models/game_model.dart';
+import 'package:materia_optima/core/types/types.dart';
+import 'package:materia_optima/core/show_dialog.dart';
 
 class StoryDialog extends StatelessWidget {
   const StoryDialog({
     Key? key,
     required this.entry,
+    required this.canUseProvider,
   }) : super(key: key);
 
   final StoryEntry entry;
+  final bool canUseProvider;
 
   @override
   Widget build(BuildContext context) {
@@ -47,7 +53,7 @@ class StoryDialog extends StatelessWidget {
                     Text(
                       GameStory.getLine(entry.titleKey).toUpperCase(),
                       style: GameTypography.elementTitle(
-                        GameColors.shadowBlack,
+                        entry.compendiumColor,
                       ),
                     ),
                     SizedBox(
@@ -82,11 +88,26 @@ class StoryDialog extends StatelessWidget {
                     SizedBox(
                       height: screenSize.height * 0.03,
                     ),
-                    FancyButton(
-                      listenedKey: ListenedKeys.xKey,
-                      description: GameStory.getLine('close_dialog'),
-                      onPressed: () => Navigator.pop(context),
-                    ),
+                    canUseProvider
+                        ? Selector<GameModel, VoidCallbackParam<int>>(
+                            selector: (_, provider) => provider.setQuestStage,
+                            builder: (context, setQuestStage, child) {
+                              return FancyButton(
+                                listenedKey: ListenedKeys.xKey,
+                                description: GameStory.getLine('close_dialog'),
+                                onPressed: () => _handlePress(
+                                  context,
+                                  setQuestStage,
+                                  entry.followUpStage,
+                                ),
+                              );
+                            },
+                          )
+                        : FancyButton(
+                            listenedKey: ListenedKeys.xKey,
+                            description: GameStory.getLine('close_dialog'),
+                            onPressed: () => Navigator.pop(context),
+                          ),
                   ],
                 ),
               ],
@@ -95,5 +116,21 @@ class StoryDialog extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  void _handlePress(
+    BuildContext context,
+    VoidCallbackParam<int> setQuestStage,
+    int? followUpStage,
+  ) {
+    Navigator.pop(context);
+    if (followUpStage != null) {
+      setQuestStage(followUpStage);
+      showStoryDialog(
+        context,
+        GameStory.storyEntries[followUpStage]!,
+        gameModel: Provider.of<GameModel>(context, listen: false),
+      );
+    }
   }
 }

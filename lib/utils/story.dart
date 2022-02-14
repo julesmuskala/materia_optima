@@ -7,16 +7,18 @@ class StoryEntry {
   StoryEntry({
     required this.titleKey,
     required this.descriptionKey,
-    this.compendiumColor,
+    this.compendiumColor = GameColors.grey50,
     this.assetPath,
     this.rarity = 'common',
+    this.followUpStage,
   });
 
   final String titleKey;
   final String descriptionKey;
-  final Color? compendiumColor;
+  final Color compendiumColor;
   final String? assetPath;
   final String rarity;
+  final int? followUpStage;
 }
 
 abstract class GameStory {

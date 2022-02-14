@@ -35,6 +35,11 @@ class Game extends StatelessWidget {
   void _showInitDialog(int startStage, BuildContext context) {
     if (startStage != 0) return;
 
-    showStoryDialog(context, GameStory.storyEntries[0]!, isInitial: true);
+    showStoryDialog(
+      context,
+      GameStory.storyEntries[0]!,
+      gameModel: Provider.of<GameModel>(context, listen: false),
+      isInitial: true,
+    );
   }
 }

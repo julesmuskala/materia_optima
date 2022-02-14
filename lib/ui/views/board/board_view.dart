@@ -98,7 +98,11 @@ class BoardView extends StatelessWidget {
       if (entry == null) {
         throw Exception('Tried to show dialog for null entry (entry $result).');
       }
-      showStoryDialog(context, entry);
+      showStoryDialog(
+        context,
+        entry,
+        gameModel: Provider.of<GameModel>(context, listen: false),
+      );
     } else {
       var entry = GameStory.storyEntries[2137];
       if (entry == null) {
