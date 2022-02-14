@@ -41,7 +41,7 @@ class _PortraitScreenState extends State<PortraitScreen>
         preferredSize: GameTheme.preferredAppBarSize(screenSize),
         child: Padding(
           padding: EdgeInsets.all(
-            screenSize.height * 0.03,
+            screenSize.height * 0.01,
           ),
           child: Column(
             children: [
@@ -61,17 +61,17 @@ class _PortraitScreenState extends State<PortraitScreen>
         controller: _controller,
         children: <Widget>[
           CompendiumView(
-            width: screenSize.width * 0.87,
+            width: screenSize.width * 0.8,
             height: screenSize.height,
             key: const Key('compendium_view'),
           ),
           BoardView(
-            width: screenSize.width * 0.87,
+            width: screenSize.width * 0.8,
             height: screenSize.height,
             key: const Key('board_view'),
           ),
           InventoryView(
-            width: screenSize.width * 0.87,
+            width: screenSize.width * 0.8,
             height: screenSize.height,
             key: const Key('inventory_view'),
           ),

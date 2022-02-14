@@ -75,7 +75,7 @@ class BoardView extends StatelessWidget {
               description: GameStory.getLine('finish_board'),
             ),
             SizedBox(
-              height: height * 0.06,
+              height: height * 0.03,
             ),
             FancyButton(
               onPressed: () => gameValue.item2.call(16), // reset 16 tiles

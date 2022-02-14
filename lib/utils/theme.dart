@@ -121,7 +121,7 @@ abstract class GameTheme {
     ];
   }
 
-  static const Duration standardAnimationDuration = Duration(milliseconds: 600);
+  static const Duration standardAnimationDuration = Duration(milliseconds: 500);
 
   static const BlendMode standardBlendMode = BlendMode.modulate;
 
@@ -195,7 +195,7 @@ abstract class GameTheme {
           },
         ),
         padding: MaterialStateProperty.all<EdgeInsetsGeometry>(
-          const EdgeInsets.all(18.0),
+          const EdgeInsets.symmetric(horizontal: 18.0),
         ),
         enableFeedback: true,
         shadowColor: MaterialStateProperty.all<Color>(GameColors.shadowBlack),
