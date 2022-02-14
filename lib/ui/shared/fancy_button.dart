@@ -19,41 +19,11 @@ class FancyButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return ElevatedButton(
       onPressed: onPressed,
-      style: ButtonStyle(
-        side: MaterialStateProperty.resolveWith(
-          (Set<MaterialState> states) {
-            if (states.contains(MaterialState.disabled)) {
-              return const BorderSide(
-                color: GameColors.grey100,
-                width: 2.65,
-              );
-            }
-            return const BorderSide(
-              color: GameColors.grey50,
-              width: 2.65,
-            );
-          },
-        ),
-        padding: MaterialStateProperty.all<EdgeInsetsGeometry>(
-          const EdgeInsets.all(12.0),
-        ),
-      ),
-      child: RichText(
-        text: TextSpan(
-          text: '',
-          // text: '${listenedKey.keyName} ',
-          style: onPressed != null
-              ? GameTypography.modifiedParagraph(GameColors.orange)
-              : GameTypography.modifiedParagraph(GameColors.grey100),
-          children: <TextSpan>[
-            TextSpan(
-              text: description,
-              style: onPressed != null
-                  ? GameTypography.modifiedParagraph(GameColors.white)
-                  : GameTypography.modifiedParagraph(GameColors.grey100),
-            ),
-          ],
-        ),
+      child: Text(
+        description,
+        style: onPressed == null
+            ? GameTypography.modifiedParagraph(GameColors.grey100)
+            : GameTypography.modifiedParagraph(GameColors.grey200),
       ),
     );
   }

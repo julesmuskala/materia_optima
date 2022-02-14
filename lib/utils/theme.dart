@@ -49,7 +49,7 @@ abstract class GameTypography {
       fontFamily: _fontFamily,
       fontWeight: _regular,
       color: color,
-      fontSize: 14,
+      fontSize: 16,
     );
   }
 
@@ -58,7 +58,7 @@ abstract class GameTypography {
       fontFamily: _fontFamily,
       fontWeight: _regular,
       color: GameColors.white,
-      fontSize: 14,
+      fontSize: 16,
       shadows: <Shadow>[
         Shadow(
           blurRadius: 10,
@@ -178,12 +178,34 @@ abstract class GameTheme {
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ButtonStyle(
         alignment: Alignment.center,
-        backgroundColor: MaterialStateProperty.all<Color>(GameColors.grey200),
+        backgroundColor: MaterialStateProperty.resolveWith(
+          (Set<MaterialState> states) {
+            if (states.contains(MaterialState.disabled)) {
+              return GameColors.grey200;
+            }
+            return GameColors.grey50;
+          },
+        ),
+        padding: MaterialStateProperty.all<EdgeInsetsGeometry>(
+          const EdgeInsets.all(18.0),
+        ),
         enableFeedback: true,
         shadowColor: MaterialStateProperty.all<Color>(GameColors.shadowBlack),
         elevation: MaterialStateProperty.all<double>(3.0),
         shape: MaterialStateProperty.all<OutlinedBorder>(
-          const ContinuousRectangleBorder(),
+          RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(20.0),
+          ),
+        ),
+        side: MaterialStateBorderSide.resolveWith(
+          (states) {
+            if (states.contains(MaterialState.disabled)) {
+              return const BorderSide(
+                color: GameColors.grey100,
+              );
+            }
+            return null;
+          },
         ),
       ),
     ),
