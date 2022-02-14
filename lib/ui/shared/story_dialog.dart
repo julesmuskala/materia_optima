@@ -26,13 +26,6 @@ class StoryDialog extends StatelessWidget {
 
     return StoryDialogAnimation(
       dialogContent: Dialog(
-        backgroundColor: GameColors.grey200,
-        shape: const ContinuousRectangleBorder(
-          side: BorderSide(
-            color: GameColors.grey50,
-            width: 2.5,
-          ),
-        ),
         child: Container(
           width: screenSize.width * 0.87,
           constraints: const BoxConstraints(

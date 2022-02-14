@@ -19,7 +19,10 @@ class BoardTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AnimatedAlign(
-      alignment: Alignment(tileModel.position.x, tileModel.position.y),
+      alignment: Alignment(
+        tileModel.position.x,
+        tileModel.position.y,
+      ),
       duration: GameTheme.standardAnimationDuration,
       curve: Curves.ease,
       child: AnimatedContainer(

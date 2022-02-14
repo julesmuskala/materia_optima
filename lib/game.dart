@@ -7,6 +7,8 @@ import 'package:materia_optima/utils/story.dart';
 import 'package:materia_optima/core/models/game_model.dart';
 import 'package:materia_optima/core/show_dialog.dart';
 import 'package:materia_optima/ui/shared/responsive_layout_builder.dart';
+import 'package:materia_optima/core/types/responsive_layout.dart';
+import 'package:materia_optima/ui/too_small.dart';
 
 class Game extends StatelessWidget {
   const Game({
@@ -15,11 +17,14 @@ class Game extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final _screenWidth = MediaQuery.of(context).size.width;
+
     Future.delayed(
       Duration.zero,
       () => _showInitDialog(
         Provider.of<GameModel>(context, listen: false).currentQuestStage,
         context,
+        _screenWidth,
       ),
     );
 
@@ -27,13 +32,21 @@ class Game extends StatelessWidget {
       child: ResponsiveLayoutBuilder(
         landscape: LandscapeScreen(),
         portrait: PortraitScreen(),
-        tooSmall: Placeholder(),
+        tooSmall: TooSmall(),
       ),
     );
   }
 
-  void _showInitDialog(int startStage, BuildContext context) {
-    if (startStage != 0) return;
+  void _showInitDialog(
+    int startStage,
+    BuildContext context,
+    double screenWidth,
+  ) {
+    if (startStage != 0 ||
+        ResponsiveLayoutBreakpoints.getLayoutSize(screenWidth) ==
+            ResponsiveLayoutSize.extraSmall) {
+      return;
+    }
 
     showStoryDialog(
       context,

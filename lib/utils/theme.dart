@@ -174,7 +174,15 @@ abstract class GameTheme {
       ),
       showUnselectedLabels: false,
     ),
-    // dialogTheme:
+    dialogTheme: const DialogTheme(
+      shape: ContinuousRectangleBorder(
+        side: BorderSide(
+          color: GameColors.grey50,
+          width: 2.5,
+        ),
+      ),
+      backgroundColor: GameColors.grey200,
+    ),
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ButtonStyle(
         alignment: Alignment.center,

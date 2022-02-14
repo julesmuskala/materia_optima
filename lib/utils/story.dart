@@ -26,6 +26,8 @@ abstract class GameStory {
     'error_fallback': 'Error: provided key is null',
     'app_title': 'Materia Optima',
     'app_subtitle': 'by Juliusz Muskala',
+    'screen_too_small':
+        'The most unfortunate part is that this screen is too small to be supported...\n😢',
     // Semantic
     'finish_board': 'Start amalgamation',
     'reset_board': 'Clear board',
