@@ -44,6 +44,14 @@ abstract class GameTypography {
     fontSize: 16,
   );
 
+  static const paragraphLink = TextStyle(
+    fontFamily: _fontFamily,
+    fontWeight: _regular,
+    color: GameColors.blue,
+    decoration: TextDecoration.underline,
+    fontSize: 16,
+  );
+
   static TextStyle modifiedParagraph(Color color) {
     return TextStyle(
       fontFamily: _fontFamily,

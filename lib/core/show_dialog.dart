@@ -20,6 +20,7 @@ void showStoryDialog(
         child: StoryDialog(
           entry: entry,
           canUseProvider: true,
+          showRepoLink: isInitial,
         ),
       );
     },

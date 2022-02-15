@@ -9,16 +9,19 @@ import 'package:materia_optima/ui/shared/story_dialog_animation.dart';
 import 'package:materia_optima/core/models/game_model.dart';
 import 'package:materia_optima/core/types/types.dart';
 import 'package:materia_optima/core/show_dialog.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class StoryDialog extends StatelessWidget {
   const StoryDialog({
     Key? key,
     required this.entry,
     required this.canUseProvider,
+    this.showRepoLink = false,
   }) : super(key: key);
 
   final StoryEntry entry;
   final bool canUseProvider;
+  final bool showRepoLink;
 
   @override
   Widget build(BuildContext context) {
@@ -57,6 +60,24 @@ class StoryDialog extends StatelessWidget {
                       style: GameTypography.paragraph,
                       softWrap: true,
                     ),
+                    showRepoLink
+                        ? SizedBox(
+                            width: double.maxFinite,
+                            child: InkWell(
+                              splashColor: Colors.transparent,
+                              focusColor: Colors.transparent,
+                              hoverColor: Colors.transparent,
+                              highlightColor: Colors.transparent,
+                              enableFeedback: false,
+                              onTap: _launchGithub,
+                              child: Text(
+                                GameStory.getLine('repo_link'),
+                                style: GameTypography.paragraphLink,
+                                softWrap: true,
+                              ),
+                            ),
+                          )
+                        : const SizedBox.shrink(),
                     SizedBox(
                       height: screenSize.height * 0.03,
                     ),
@@ -124,6 +145,12 @@ class StoryDialog extends StatelessWidget {
         GameStory.storyEntries[followUpStage]!,
         gameModel: Provider.of<GameModel>(context, listen: false),
       );
+    }
+  }
+
+  void _launchGithub() async {
+    if (!await launch('https://github.com/julesmuskala/')) {
+      throw 'Could not launch GitHub';
     }
   }
 }

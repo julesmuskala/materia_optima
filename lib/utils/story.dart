@@ -28,19 +28,20 @@ abstract class GameStory {
     'app_subtitle': 'by Juliusz Muskala',
     'screen_too_small':
         'The most unfortunate part is that this screen is too small to be supported...\n😢',
+    'repo_link': 'You can find source code and credits on GitHub.',
     // Semantic
     'finish_board': 'Start amalgamation',
     'reset_board': 'Clear board',
     'close_dialog': 'Close',
-    // Element descriptions
+    // Materia descriptions
     'materia_nulla_desc': 'Wow, just wow! How did you...',
     'materia_incognita_desc': 'Who knows what it is?',
     'materia_prima_desc':
-        'Materia prima is the most basic element all matter in our known universe is derived from. Its magical potency is very low and in order to be useful, it needs to be fused into heavier, superior elements.',
+        'Materia prima is the most basic materia all matter in our known universe is derived from. Its magical potency is very low and in order to be useful, it needs to be fused into heavier, superior materiae.',
     'rebis_desc':
-        'Rebis is the most basic of superior elements. Sometimes called “fool\'s meteria optima”, as it is the first element every beginner alchemist amalgamates. For its relatively low volatility and pleasant green glow, it is often used by lower classes in jewelry.',
+        'Rebis is the most basic of superior materiae. Sometimes called “fool\'s meteria optima”, as it is the first materia every beginner alchemist amalgamates. For its relatively low volatility and pleasant green glow, it is often used by lower classes in jewelry.',
     'caeleum_desc':
-        'Caeleum is named after one of the islands of the Southern Archipelago, where during summer nights waves take on this element\'s brilliant blue hue and its glow.',
+        'Caeleum is named after one of the islands of the Southern Archipelago, where during summer nights waves take on this materia\'s brilliant blue hue and its glow.',
     'quebrith_desc':
         'Quebrith due to its purple color, so uncommon in nature and relative inaccessibility to the lower classes, is highly valued by the upper echelons. It is used in makeup, cosmetics, and even as food coloring. Although, it is also said to cause shortness of breath and skin reddening akin to sunburn.',
     'aether_desc':
@@ -48,14 +49,14 @@ abstract class GameStory {
     'vermilion_desc':
         'Vermilion is most well known for its strange scent. In small amounts, it has a fruity and floral, overall pleasant smell nonetheless when handled in higher amounts it reeks of decay and feces. Due to that property and the fact that vermilion odor lingers even for weeks, it is used as an aromatic substance in lavish perfumes.',
     'materia_optima_desc':
-        'Materia optima is a pinnacle of creation, the most perfect element in the known universe.',
+        'Materia optima is a pinnacle of creation, the most perfect materia in the known universe.',
     // Story entries
     'quest_title_0': 'Welcome to Materia Optima',
     'quest_desc_0':
         'Materia optima is a game about discovery and achieving alchemical prowess. You can do it by arranging tiles on the board in special patterns. You can do it by clicking on a glowing tile that is adjacent to empty space. Try it out! And then try to arrange tiles in the pattern below.',
     'quest_title_100': 'Rebis discovered',
     'quest_desc_100':
-        'All recipes in Materia optima (except for the first one) require the usage of superior elements. You can add them to the board in the inventory menu to the left. Try selecting Rebis by clicking on the green circle in the inventory menu and then adding it to the board by clicking on the button below. And then try to arrange tiles in the pattern below.',
+        'All recipes in Materia optima (except for the first one) require the usage of superior materiae. You can add them to the board in the inventory menu to the left. Try selecting Rebis by clicking on the green circle in the inventory menu and then adding it to the board by clicking on the button below. And then try to arrange tiles in the pattern below.',
     'quest_title_200': 'Caeleum discovered',
     'quest_desc_200': 'Cool! Now go on.',
     'quest_title_300': 'Quebrith discovered',
@@ -72,7 +73,7 @@ abstract class GameStory {
         'Hey, that pattern is incomplete! You can always open previous dialogs in the compendium menu to the right, by clicking on its title.',
     'helper_title_6969': 'No more space on the board',
     'helper_desc_6969':
-        'There is no free space left to fill with superior elements. You need to reset the board before adding any new element tiles.',
+        'There is no free space left to fill with superior materiae. You need to reset the board before adding any new materia tiles.',
   };
 
   static String getLine(String key) => lines[key] ?? 'Error: no line found';

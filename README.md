@@ -19,3 +19,4 @@ This project uses:
 - shared_preferences package under [BSD-3-Clause license](legal/shared_preferences_license)
 - transparent_image package under [MIT license](legal/transparent_image_license)
 - tuple package under [BSD-2-Clause license](legal/tuple_license)
+- url_launcher package under [BSD-3-Clause license](legal/url_launcher_license)
