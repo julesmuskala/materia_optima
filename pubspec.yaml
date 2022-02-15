@@ -50,4 +50,5 @@ flutter_icons:
 flutter_native_splash:
   color: "#121212"
   image: assets/icons/aether_icon.png
+  web: false
 
