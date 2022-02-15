@@ -1,16 +1,21 @@
-# materia_optima
+# Materia optima
 
-A new Flutter project.
+Materia optima is an alchemy-themed puzzle game about achieving alchemical prowess. It features tile arranging mechanic, representing the alchemical process during which players can produce various materiae (elements). Gameplay is intertwined with a story presented from the perspective of the player character’s ancestor, who lived through Konstantian Wars, fought over the freedom to perform alchemy.
 
-## Getting Started
+## Try it out
 
-This project is a starting point for a Flutter application.
+Try out Materia optima by visiting this website or by running `flutter run -d chrome --release`. Furthermore, the game fully supports Linux, ~~Windows~~ and Android.
 
-A few resources to get you started if this is your first Flutter project:
+## Credits
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+Game designed, developed and written by [Juliusz Muskala](https://github.com/julesmuskala).
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+This project uses:
+
+- Flutter and Dart under [BSD 3-Clause license](legal/flutter_license)
+- flutter_launcher_icons package under [MIT license](legal/flutter_launcher_icons_license)
+- flutter_native_splash package under [MIT license](legal/flutter_native_splash_license)
+- provider package under [MIT license](legal/provider_license)
+- shared_preferences package under [BSD-3-Clause license](legal/shared_preferences_license)
+- transparent_image package under [MIT license](legal/transparent_image_license)
+- tuple package under [BSD-2-Clause license](legal/tuple_license)
