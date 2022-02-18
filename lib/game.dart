@@ -19,20 +19,23 @@ class Game extends StatelessWidget {
   Widget build(BuildContext context) {
     final _screenWidth = MediaQuery.of(context).size.width;
 
-    Future.delayed(
-      Duration.zero,
-      () => _showInitDialog(
-        Provider.of<GameModel>(context, listen: false).currentQuestStage,
-        context,
-        _screenWidth,
-      ),
-    );
-
-    return const SafeArea(
-      child: ResponsiveLayoutBuilder(
-        landscape: LandscapeScreen(),
-        portrait: PortraitScreen(),
-        tooSmall: TooSmall(),
+    return SafeArea(
+      child: FutureBuilder(
+        future: Future.delayed(
+          Duration.zero,
+          () => _showInitDialog(
+            Provider.of<GameModel>(context, listen: false).currentQuestStage,
+            context,
+            _screenWidth,
+          ),
+        ),
+        builder: (context, snapshot) {
+          return const ResponsiveLayoutBuilder(
+            landscape: LandscapeScreen(),
+            portrait: PortraitScreen(),
+            tooSmall: TooSmall(),
+          );
+        },
       ),
     );
   }

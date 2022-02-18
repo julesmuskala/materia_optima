@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import 'package:materia_optima/utils/theme.dart';
 import 'package:materia_optima/utils/story.dart';
@@ -9,10 +10,9 @@ import 'package:materia_optima/ui/shared/story_dialog_animation.dart';
 import 'package:materia_optima/core/models/game_model.dart';
 import 'package:materia_optima/core/types/types.dart';
 import 'package:materia_optima/core/show_dialog.dart';
-import 'package:url_launcher/url_launcher.dart';
 
-class StoryDialog extends StatelessWidget {
-  const StoryDialog({
+class TutorialDialog extends StatelessWidget {
+  const TutorialDialog({
     Key? key,
     required this.entry,
     required this.canUseProvider,
@@ -33,9 +33,7 @@ class StoryDialog extends StatelessWidget {
             maxWidth: 450.0,
           ),
           child: Padding(
-            padding: EdgeInsets.all(
-              screenSize.height * 0.03,
-            ),
+            padding: EdgeInsets.all(screenSize.height * 0.03),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.center,
@@ -61,6 +59,22 @@ class StoryDialog extends StatelessWidget {
                       softWrap: true,
                     ),
                     SizedBox(
+                      width: double.maxFinite,
+                      child: InkWell(
+                        splashColor: Colors.transparent,
+                        focusColor: Colors.transparent,
+                        hoverColor: Colors.transparent,
+                        highlightColor: Colors.transparent,
+                        enableFeedback: false,
+                        onTap: _launchGithub,
+                        child: Text(
+                          GameStory.getLine('repo_link'),
+                          style: GameTypography.paragraphLink,
+                          softWrap: true,
+                        ),
+                      ),
+                    ),
+                    SizedBox(
                       height: screenSize.height * 0.03,
                     ),
                   ],
@@ -70,13 +84,11 @@ class StoryDialog extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    entry.assetPath != null
-                        ? Image.asset(
-                            'assets/${entry.assetPath}',
-                            height: screenSize.height * 0.12,
-                            width: screenSize.height * 0.12,
-                          )
-                        : const SizedBox.shrink(),
+                    Image.asset(
+                      'assets/patterns/tutorial.webp',
+                      height: screenSize.height * 0.12,
+                      width: screenSize.height * 0.12,
+                    ),
                     SizedBox(
                       height: screenSize.height * 0.03,
                     ),
