@@ -191,27 +191,27 @@ abstract class GameTheme {
       ),
       backgroundColor: GameColors.grey200,
     ),
-    elevatedButtonTheme: ElevatedButtonThemeData(
-      style: ButtonStyle(
-        alignment: Alignment.center,
-        backgroundColor: MaterialStateProperty.resolveWith<Color>(
-          (Set<MaterialState> states) {
-            if (states.contains(MaterialState.disabled)) {
-              return GameColors.grey100;
-            }
-            return GameColors.grey50;
-          },
-        ),
-        padding: MaterialStateProperty.all<EdgeInsetsGeometry>(
-          const EdgeInsets.symmetric(horizontal: 10.0),
-        ),
-        enableFeedback: true,
-        elevation: MaterialStateProperty.all<double>(3.0),
-        shape: MaterialStateProperty.all<OutlinedBorder>(
-          const ContinuousRectangleBorder(),
-        ),
-      ),
-    ),
+    // elevatedButtonTheme: ElevatedButtonThemeData(
+    //   style: ButtonStyle(
+    //     animationDuration: GameTheme.standardAnimationDuration,
+    //     alignment: Alignment.center,
+    //     backgroundColor: MaterialStateProperty.resolveWith<Color>(
+    //       (Set<MaterialState> states) {
+    //         if (states.contains(MaterialState.disabled)) {
+    //           return GameColors.grey100;
+    //         }
+    //         return GameColors.grey50;
+    //       },
+    //     ),
+    //     padding: MaterialStateProperty.all<EdgeInsetsGeometry>(
+    //       const EdgeInsets.all(10.0),
+    //     ),
+    //     elevation: MaterialStateProperty.all<double>(0),
+    //     shape: MaterialStateProperty.all<OutlinedBorder>(
+    //       const ContinuousRectangleBorder(),
+    //     ),
+    //   ),
+    // ),
     // highlightColor:
     // hoverColor:
     // indicatorColor:

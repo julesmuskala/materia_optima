@@ -24,17 +24,27 @@ class FancyButton extends StatelessWidget {
         border: Border(
           bottom: BorderSide(
             color: onPressed != null ? GameColors.grey100 : GameColors.grey200,
-            width: 3.0,
+            width: 5.0,
           ),
         ),
       ),
-      child: ElevatedButton(
-        onPressed: onPressed,
-        child: Text(
-          description,
-          style: onPressed != null
-              ? GameTypography.modifiedParagraph(GameColors.grey200)
-              : GameTypography.modifiedParagraph(GameColors.grey50),
+      child: Material(
+        color: Colors.transparent,
+        shape: const ContinuousRectangleBorder(),
+        child: Ink(
+          color: onPressed != null ? GameColors.grey50 : GameColors.grey100,
+          child: InkWell(
+            onTap: onPressed,
+            child: Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: Text(
+                description,
+                style: onPressed != null
+                    ? GameTypography.modifiedParagraph(GameColors.grey200)
+                    : GameTypography.modifiedParagraph(GameColors.grey50),
+              ),
+            ),
+          ),
         ),
       ),
     );
