@@ -30,6 +30,7 @@ class InventoryTitle extends StatelessWidget {
               'assets/ui/inventory_element/frame_materia_prima.webp',
             ),
             fadeInDuration: GameTheme.standardAnimationDuration,
+            fadeOutDuration: GameTheme.standardAnimationDuration,
             image: AssetImage(
               'assets/ui/inventory_element/frame_${selectedElement.underscoreName}.webp',
             ),

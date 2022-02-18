@@ -9,7 +9,6 @@ import 'package:materia_optima/ui/shared/story_dialog_animation.dart';
 import 'package:materia_optima/core/models/game_model.dart';
 import 'package:materia_optima/core/types/types.dart';
 import 'package:materia_optima/core/show_dialog.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 class StoryDialog extends StatelessWidget {
   const StoryDialog({
@@ -123,12 +122,6 @@ class StoryDialog extends StatelessWidget {
         GameStory.storyEntries[followUpStage]!,
         gameModel: Provider.of<GameModel>(context, listen: false),
       );
-    }
-  }
-
-  void _launchGithub() async {
-    if (!await launch('https://github.com/julesmuskala/')) {
-      throw 'Could not launch GitHub';
     }
   }
 }

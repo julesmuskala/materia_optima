@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:transparent_image/transparent_image.dart';
 
 import 'package:materia_optima/utils/theme.dart';
 import 'package:materia_optima/core/types/alchemy_element.dart';
@@ -45,15 +46,31 @@ class BoardTile extends StatelessWidget {
           ],
         ),
         child: !_isNullTile
-            ? Material(
-                child: Ink.image(
-                  image: AssetImage(
-                    'assets/element_tiles/${tileModel.alchemyElement.underscoreName}.webp',
+            ? Stack(
+                children: [
+                  FadeInImage(
+                    placeholder:
+                        tileModel.alchemyElement == AlchemyElement.materiaPrima
+                            ? MemoryImage(kTransparentImage) as ImageProvider
+                            : const AssetImage(
+                                'assets/element_tiles/materia_prima.webp',
+                              ),
+                    fadeInDuration: GameTheme.standardAnimationDuration,
+                    fadeOutDuration: GameTheme.standardAnimationDuration,
+                    image: AssetImage(
+                      'assets/element_tiles/${tileModel.alchemyElement.underscoreName}.webp',
+                    ),
                   ),
-                  child: InkWell(
-                    onTap: _canMove() ? () => tileModel.move(tileModel) : null,
-                  ),
-                ),
+                  Positioned.fill(
+                    child: Material(
+                      color: Colors.transparent,
+                      child: InkWell(
+                        onTap:
+                            _canMove() ? () => tileModel.move(tileModel) : null,
+                      ),
+                    ),
+                  )
+                ],
               )
             : null,
       ),

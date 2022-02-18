@@ -62,7 +62,7 @@ abstract class GameStory {
         'Most of recipes in Materia optima require the usage of superior materiae. To add them to the board, select materia icons in the Inventory tab (to the left) then proceed by clicking appropriate button.\nYou can always open unlocked dialogs by clicking on their title in the Compendium tab (to the right).',
     'quest_title_150': 'Battle of Peterlin',
     'quest_desc_150':
-        '"You should have seen their faces, the purest fear. I do not enjoy killing and neither does our Lord, but sometimes there is a merit in it. Franzians won, mister Franz\'s sacrifice was not in vain.\nAs I said before, good sir Octave is a wonderful leader. Although hails from the Southern Archipelago, he was one of the first Franzians. His zeal is immense, and that is, what really matters.\nYour dear friend,\nCv."\nAnd so does this pattern, you think, as you take one last good look at it before it fades completely.',
+        '"You should have seen their faces, the purest fear. I do not enjoy killing and neither does our Lord, but sometimes there is a merit in it. Franzians won, mister Franz\'s sacrifice was not in vain.\nAs I said before, good sir Octave is a wonderful leader. Although hails from the Southern Archipelago, he was one of the first Franzians. His zeal is immense, and that is, what really matters.\nYour dear friend,\nCv."\nAnd so does this pattern, you think, as you take one last good look at it as it fades.',
     'quest_title_200': 'Caeleum discovered',
     'quest_desc_200':
         '"Although decisive, Peterlin skirmish did little to further franzian cause. The true power in the region, lied with the city of Ekielsk. Ruled by a baroness who adopted the franzian teaching even before the heretic\'s execution, it was a perfect spot for the Royal Army\'s siege."\n- Reymond the Elder, Francian revolt',
@@ -122,7 +122,7 @@ abstract class GameStory {
       titleKey: 'quest_title_100',
       descriptionKey: 'quest_desc_100',
       compendiumColor: GameColors.green,
-      followUpStage: 650,
+      followUpStage: 150,
       rarity: 'uncommon',
     ),
     150: StoryEntry(
