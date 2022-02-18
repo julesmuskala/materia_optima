@@ -17,13 +17,24 @@ class FancyButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ElevatedButton(
-      onPressed: onPressed,
-      child: Text(
-        description,
-        style: onPressed == null
-            ? GameTypography.modifiedParagraph(GameColors.grey100)
-            : GameTypography.modifiedParagraph(GameColors.grey200),
+    return Container(
+      decoration: BoxDecoration(
+        boxShadow: onPressed != null ? GameTheme.boxShadow : null,
+        border: Border(
+          bottom: BorderSide(
+            color: onPressed != null ? GameColors.grey100 : GameColors.grey200,
+            width: 3.0,
+          ),
+        ),
+      ),
+      child: ElevatedButton(
+        onPressed: onPressed,
+        child: Text(
+          description,
+          style: onPressed != null
+              ? GameTypography.modifiedParagraph(GameColors.grey200)
+              : GameTypography.modifiedParagraph(GameColors.grey50),
+        ),
       ),
     );
   }

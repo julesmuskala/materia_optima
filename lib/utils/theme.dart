@@ -194,34 +194,21 @@ abstract class GameTheme {
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ButtonStyle(
         alignment: Alignment.center,
-        backgroundColor: MaterialStateProperty.resolveWith(
+        backgroundColor: MaterialStateProperty.resolveWith<Color>(
           (Set<MaterialState> states) {
             if (states.contains(MaterialState.disabled)) {
-              return GameColors.grey200;
+              return GameColors.grey100;
             }
             return GameColors.grey50;
           },
         ),
         padding: MaterialStateProperty.all<EdgeInsetsGeometry>(
-          const EdgeInsets.symmetric(horizontal: 18.0),
+          const EdgeInsets.symmetric(horizontal: 10.0),
         ),
         enableFeedback: true,
-        shadowColor: MaterialStateProperty.all<Color>(GameColors.shadowBlack),
         elevation: MaterialStateProperty.all<double>(3.0),
         shape: MaterialStateProperty.all<OutlinedBorder>(
-          RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(20.0),
-          ),
-        ),
-        side: MaterialStateBorderSide.resolveWith(
-          (states) {
-            if (states.contains(MaterialState.disabled)) {
-              return const BorderSide(
-                color: GameColors.grey100,
-              );
-            }
-            return null;
-          },
+          const ContinuousRectangleBorder(),
         ),
       ),
     ),
