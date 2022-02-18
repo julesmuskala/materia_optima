@@ -17,7 +17,8 @@ class FancyButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return AnimatedContainer(
+      duration: GameTheme.standardAnimationDuration,
       decoration: BoxDecoration(
         boxShadow: onPressed != null ? GameTheme.boxShadow : null,
         border: Border(

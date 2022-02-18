@@ -127,6 +127,16 @@ class TutorialDialog extends StatelessWidget {
     VoidCallbackParam<int> setQuestStage,
     int? followUpStage,
   ) {
+    precacheImage(
+      const AssetImage('assets/ui/compendium_tab/bar_common.webp'),
+      context,
+    );
+    precacheImage(
+      const AssetImage(
+        'assets/ui/inventory_element/frame_materia_incognita.webp',
+      ),
+      context,
+    );
     Navigator.pop(context);
     if (followUpStage != null) {
       setQuestStage(followUpStage);

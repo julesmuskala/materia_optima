@@ -9,6 +9,7 @@ import 'package:materia_optima/ui/shared/story_dialog_animation.dart';
 import 'package:materia_optima/core/models/game_model.dart';
 import 'package:materia_optima/core/types/types.dart';
 import 'package:materia_optima/core/show_dialog.dart';
+import 'package:materia_optima/core/types/alchemy_element.dart';
 
 class StoryDialog extends StatelessWidget {
   const StoryDialog({
@@ -114,6 +115,23 @@ class StoryDialog extends StatelessWidget {
     VoidCallbackParam<int> setQuestStage,
     int? followUpStage,
   ) {
+    if (entry.unlockedElement != null) {
+      precacheImage(
+        AssetImage(
+            'assets/element_tiles/${entry.unlockedElement!.underscoreName}.webp'),
+        context,
+      );
+      precacheImage(
+        AssetImage('assets/ui/compendium_tab/bar_${entry.rarity}.webp'),
+        context,
+      );
+      precacheImage(
+        AssetImage(
+          'assets/ui/inventory_element/frame_${entry.unlockedElement!.underscoreName}.webp',
+        ),
+        context,
+      );
+    }
     Navigator.pop(context);
     if (followUpStage != null) {
       setQuestStage(followUpStage);

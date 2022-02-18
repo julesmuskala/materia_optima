@@ -2,6 +2,7 @@ import 'dart:collection';
 import 'package:flutter/material.dart';
 
 import 'package:materia_optima/utils/theme.dart';
+import 'package:materia_optima/core/types/alchemy_element.dart';
 
 class StoryEntry {
   StoryEntry({
@@ -11,6 +12,7 @@ class StoryEntry {
     this.assetPath,
     this.rarity = 'common',
     this.followUpStage,
+    this.unlockedElement,
   });
 
   final String titleKey;
@@ -19,6 +21,7 @@ class StoryEntry {
   final String? assetPath;
   final String rarity;
   final int? followUpStage;
+  final AlchemyElement? unlockedElement;
 }
 
 abstract class GameStory {
@@ -124,6 +127,7 @@ abstract class GameStory {
       compendiumColor: GameColors.green,
       followUpStage: 150,
       rarity: 'uncommon',
+      unlockedElement: AlchemyElement.rebis,
     ),
     150: StoryEntry(
       titleKey: 'quest_title_150',
@@ -136,6 +140,7 @@ abstract class GameStory {
       compendiumColor: GameColors.blue,
       followUpStage: 250,
       rarity: 'rare',
+      unlockedElement: AlchemyElement.caeleum,
     ),
     250: StoryEntry(
       titleKey: 'quest_title_250',
@@ -148,6 +153,7 @@ abstract class GameStory {
       compendiumColor: GameColors.violet,
       followUpStage: 320,
       rarity: 'unique',
+      unlockedElement: AlchemyElement.quebrith,
     ),
     320: StoryEntry(
       titleKey: 'quest_title_320',
@@ -165,6 +171,7 @@ abstract class GameStory {
       compendiumColor: GameColors.orange,
       rarity: 'exceptional',
       followUpStage: 450,
+      unlockedElement: AlchemyElement.aether,
     ),
     450: StoryEntry(
       titleKey: 'quest_title_450',
@@ -177,6 +184,7 @@ abstract class GameStory {
       compendiumColor: GameColors.yellow,
       rarity: 'legendary',
       followUpStage: 550,
+      unlockedElement: AlchemyElement.vermilion,
     ),
     550: StoryEntry(
       titleKey: 'quest_title_550',
@@ -189,6 +197,7 @@ abstract class GameStory {
       compendiumColor: GameColors.white,
       rarity: 'optima',
       followUpStage: 650,
+      unlockedElement: AlchemyElement.materiaOptima,
     ),
     650: StoryEntry(
       titleKey: 'quest_title_650',
