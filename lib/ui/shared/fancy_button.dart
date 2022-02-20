@@ -36,7 +36,10 @@ class FancyButton extends StatelessWidget {
           child: InkWell(
             onTap: onPressed,
             child: Padding(
-              padding: const EdgeInsets.all(10.0),
+              padding: const EdgeInsets.symmetric(
+                horizontal: 10.0,
+                vertical: 5.0,
+              ),
               child: Text(
                 description,
                 style: onPressed != null
