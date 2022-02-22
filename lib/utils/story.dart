@@ -13,6 +13,7 @@ class StoryEntry {
     this.rarity = 'common',
     this.followUpStage,
     this.unlockedElement,
+    this.audioPath,
   });
 
   final String titleKey;
@@ -22,6 +23,7 @@ class StoryEntry {
   final String rarity;
   final int? followUpStage;
   final AlchemyElement? unlockedElement;
+  final String? audioPath;
 }
 
 abstract class GameStory {
@@ -120,6 +122,7 @@ abstract class GameStory {
       titleKey: 'quest_title_50',
       descriptionKey: 'quest_desc_50',
       assetPath: 'patterns/rebis_recipe.webp',
+      audioPath: 'effect_50.mp3',
     ),
     100: StoryEntry(
       titleKey: 'quest_title_100',
@@ -133,6 +136,7 @@ abstract class GameStory {
       titleKey: 'quest_title_150',
       descriptionKey: 'quest_desc_150',
       assetPath: 'patterns/caeleum_recipe.webp',
+      audioPath: 'effect_150.mp3',
     ),
     200: StoryEntry(
       titleKey: 'quest_title_200',
@@ -146,6 +150,7 @@ abstract class GameStory {
       titleKey: 'quest_title_250',
       descriptionKey: 'quest_desc_250',
       assetPath: 'patterns/quebrith_recipe.webp',
+      audioPath: 'effect_250.mp3',
     ),
     300: StoryEntry(
       titleKey: 'quest_title_300',
@@ -154,11 +159,13 @@ abstract class GameStory {
       followUpStage: 320,
       rarity: 'unique',
       unlockedElement: AlchemyElement.quebrith,
+      audioPath: 'effect_300.mp3',
     ),
     320: StoryEntry(
       titleKey: 'quest_title_320',
       descriptionKey: 'quest_desc_320',
       followUpStage: 360,
+      audioPath: 'effect_320.mp3',
     ),
     360: StoryEntry(
       titleKey: 'quest_title_360',
@@ -177,6 +184,7 @@ abstract class GameStory {
       titleKey: 'quest_title_450',
       descriptionKey: 'quest_desc_450',
       assetPath: 'patterns/vermilion_recipe.webp',
+      audioPath: 'effect_450.mp3',
     ),
     500: StoryEntry(
       titleKey: 'quest_title_500',
@@ -204,14 +212,17 @@ abstract class GameStory {
       descriptionKey: 'quest_desc_650',
       compendiumColor: GameColors.white,
       rarity: 'optima',
+      audioPath: 'effect_650.mp3',
     ),
     2137: StoryEntry(
       titleKey: 'helper_title_2137',
       descriptionKey: 'helper_desc_2137',
+      audioPath: 'effect_fail.mp3',
     ),
     6969: StoryEntry(
       titleKey: 'helper_title_6969',
       descriptionKey: 'helper_desc_6969',
+      audioPath: 'effect_fail.mp3',
     ),
   });
 }

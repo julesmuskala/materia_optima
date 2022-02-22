@@ -26,6 +26,7 @@ class StoryDialog extends StatelessWidget {
     final screenSize = MediaQuery.of(context).size;
 
     return StoryDialogAnimation(
+      audioPath: entry.audioPath,
       dialogContent: Dialog(
         child: Container(
           width: screenSize.width * 0.87,
