@@ -62,7 +62,7 @@ class _StoryDialogAnimationState extends State<StoryDialogAnimation>
 
   void _playAudio() async {
     if (widget.audioPath != null) {
-      await _audioPlayer.setAsset('sound_effects/${widget.audioPath}');
+      await _audioPlayer.setAsset('assets/sound_effects/${widget.audioPath}');
       await _audioPlayer.play();
     }
   }
