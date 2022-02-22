@@ -10,23 +10,32 @@ import 'package:materia_optima/ui/shared/responsive_layout_builder.dart';
 import 'package:materia_optima/core/types/responsive_layout.dart';
 import 'package:materia_optima/ui/too_small.dart';
 
-class Game extends StatelessWidget {
+class Game extends StatefulWidget {
   const Game({
     Key? key,
   }) : super(key: key);
 
   @override
+  State<Game> createState() => _GameState();
+}
+
+class _GameState extends State<Game> {
+  bool _dialogShown = false;
+
+  @override
   Widget build(BuildContext context) {
     final _screenWidth = MediaQuery.of(context).size.width;
 
-    Future.delayed(
-      Duration.zero,
-      () => _showInitDialog(
-        Provider.of<GameModel>(context, listen: false).currentQuestStage,
-        context,
-        _screenWidth,
-      ),
-    );
+    if (!_dialogShown) {
+      Future.delayed(
+        Duration.zero,
+        () => _showInitDialog(
+          Provider.of<GameModel>(context, listen: false).currentQuestStage,
+          context,
+          _screenWidth,
+        ),
+      );
+    }
 
     return const SafeArea(
       child: ResponsiveLayoutBuilder(
@@ -42,6 +51,7 @@ class Game extends StatelessWidget {
     BuildContext context,
     double screenWidth,
   ) {
+    _dialogShown = true;
     if (startStage != 0 ||
         ResponsiveLayoutBreakpoints.getLayoutSize(screenWidth) ==
             ResponsiveLayoutSize.extraSmall) {
