@@ -40,7 +40,7 @@ class _StoryDialogAnimationState extends State<StoryDialogAnimation>
   void dispose() {
     _controller.reverse();
     _controller.dispose();
-    _audioPlayer.dispose();
+    _disposeAudio();
     super.dispose();
   }
 
@@ -65,5 +65,10 @@ class _StoryDialogAnimationState extends State<StoryDialogAnimation>
       await _audioPlayer.setAsset('assets/sound_effects/${widget.audioPath}');
       await _audioPlayer.play();
     }
+  }
+
+  void _disposeAudio() async {
+    await _audioPlayer.stop();
+    await _audioPlayer.dispose();
   }
 }

@@ -4,7 +4,7 @@ Materia optima is an alchemy-themed puzzle game about achieving alchemical prowe
 
 ## Try it out
 
-Try out Materia optima by visiting this website or by running `flutter run -d chrome --release`. Furthermore, the game fully supports ~~Linux~~, ~~Windows~~, and Android.
+Try out Materia optima by visiting this website or by running `flutter run -d chrome --release`. Furthermore, the game fully supports Android.
 
 ## Credits
 
