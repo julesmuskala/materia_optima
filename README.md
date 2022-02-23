@@ -21,5 +21,4 @@ This project uses:
 - tuple package under [BSD-2-Clause license](legal/tuple_license)
 - url_launcher package under [BSD-3-Clause license](legal/url_launcher_license)
 - just_audio package under [Apache-2.0 license](legal/just_audio_license)
-- just_audio_libwinmedia package under [MIT license](legal/just_audio_libwinmedia_license)
 - YouTube Library sound effects
