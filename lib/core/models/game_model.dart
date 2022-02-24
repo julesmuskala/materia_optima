@@ -54,6 +54,7 @@ class GameModel extends ChangeNotifier {
   // Keep track of how many tiles where replaced
   // with selected element
   int _tilesNotFiled = 0;
+  int get tilesNotFilled => _tilesNotFiled;
 
   // Move all tiles to their default positions
   // and replace elements with materia prima
@@ -68,7 +69,7 @@ class GameModel extends ChangeNotifier {
       _boardTiles[i].position = TilePosition(i);
     }
     _nullTile = _findNullTile();
-    _tilesNotFiled = count - 2; // account for null space
+    _tilesNotFiled = count - 1; // account for null space
 
     notifyListeners();
   }
@@ -90,7 +91,7 @@ class GameModel extends ChangeNotifier {
     if (_boardTiles.isEmpty) {
       throw Exception('Add element to board before initialization');
     }
-    if (_tilesNotFiled < 0) {
+    if (_tilesNotFiled <= 0) {
       notifyListeners();
       return false;
     }
@@ -145,7 +146,7 @@ class GameModel extends ChangeNotifier {
       );
     }
     _nullTile = _findNullTile();
-    _tilesNotFiled = count - 2; // account for null space
+    _tilesNotFiled = count - 1; // account for null space
 
     notifyListeners();
   }

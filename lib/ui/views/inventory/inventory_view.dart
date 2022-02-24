@@ -25,10 +25,11 @@ class InventoryView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Selector<GameModel, Tuple2<AlchemyElement, TypeCallback<bool>>>(
-      selector: (_, gameValue) => Tuple2(
+    return Selector<GameModel, Tuple3<AlchemyElement, TypeCallback<bool>, int>>(
+      selector: (_, gameValue) => Tuple3(
         gameValue.selectedElement,
         gameValue.addTile,
+        gameValue.tilesNotFilled,
       ),
       child: InventoryElementPicker(
         width: width * 0.9,
@@ -58,13 +59,16 @@ class InventoryView extends StatelessWidget {
             SizedBox(
               height: height * 0.02,
             ),
-            SizedBox(
+            Container(
               width: width * 0.9,
-              height: height * 0.2,
+              constraints: BoxConstraints(
+                minHeight: height * 0.2,
+              ),
               child: Text(
                 GameStory.getLine(gameValue.item1.scriptLineDescriptionKey),
                 style: GameTypography.paragraph,
                 textAlign: TextAlign.justify,
+                softWrap: true,
               ),
             ),
             SizedBox(
@@ -72,11 +76,12 @@ class InventoryView extends StatelessWidget {
             ),
             FancyButton(
               listenedKey: ListenedKeys.enterKey,
-              description: 'Add to board',
+              description: 'Add to board (${gameValue.item3} free tiles left)',
               // Disable ability to add materia incognita
               // or materia prima to board
               onPressed: (gameValue.item1 == AlchemyElement.materiaIncognita ||
-                      gameValue.item1 == AlchemyElement.materiaPrima)
+                      gameValue.item1 == AlchemyElement.materiaPrima ||
+                      gameValue.item3 <= 0)
                   ? null
                   : () => _addTile(gameValue.item2, context),
             ),
