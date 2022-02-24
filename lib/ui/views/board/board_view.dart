@@ -26,13 +26,14 @@ class BoardView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Selector<
         GameModel,
-        Tuple4<List<BoardTileModel>, VoidCallbackParam<int>, TypeCallback<int?>,
-            BoardTileModel?>>(
-      selector: (_, provider) => Tuple4(
+        Tuple5<List<BoardTileModel>, VoidCallbackParam<int>, TypeCallback<int?>,
+            BoardTileModel?, int>>(
+      selector: (_, provider) => Tuple5(
         provider.boardTiles,
         provider.resetBoardTiles,
         provider.finishGame,
         provider.nullTile,
+        provider.tilesNotFilled,
       ),
       builder: (context, gameValue, child) {
         return Column(
@@ -78,7 +79,9 @@ class BoardView extends StatelessWidget {
               height: height * 0.03,
             ),
             FancyButton(
-              onPressed: () => gameValue.item2.call(16), // reset 16 tiles
+              onPressed: gameValue.item5 != 15
+                  ? () => gameValue.item2.call(16)
+                  : null, // reset 16 tiles
               listenedKey: ListenedKeys.rKey,
               description: GameStory.getLine('reset_board'),
             ),

@@ -87,13 +87,16 @@ class GameModel extends ChangeNotifier {
   }
 
   // Add element to board
-  bool addTile() {
+  void addTile() {
     if (_boardTiles.isEmpty) {
       throw Exception('Add element to board before initialization');
     }
+    if (_selectedElement == AlchemyElement.materiaPrima) {
+      return _addMateriaPrima();
+    }
     if (_tilesNotFiled <= 0) {
       notifyListeners();
-      return false;
+      return;
     }
     var randomIndex = _random.nextInt(_boardTiles.length);
     while (_boardTiles[randomIndex].alchemyElement !=
@@ -105,8 +108,19 @@ class GameModel extends ChangeNotifier {
     _tilesNotFiled--;
 
     notifyListeners();
+  }
 
-    return true;
+  void _addMateriaPrima() {
+    if (_tilesNotFiled == 15) return;
+    var randomIndex = _random.nextInt(_boardTiles.length);
+    while (_boardTiles[randomIndex].alchemyElement ==
+        AlchemyElement.materiaPrima) {
+      randomIndex = _random.nextInt(_boardTiles.length);
+    }
+    _boardTiles[randomIndex].alchemyElement = AlchemyElement.materiaPrima;
+    _tilesNotFiled++;
+
+    notifyListeners();
   }
 
   // Match pattern and increment stage

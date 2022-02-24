@@ -25,7 +25,7 @@ class InventoryView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Selector<GameModel, Tuple3<AlchemyElement, TypeCallback<bool>, int>>(
+    return Selector<GameModel, Tuple3<AlchemyElement, VoidCallback, int>>(
       selector: (_, gameValue) => Tuple3(
         gameValue.selectedElement,
         gameValue.addTile,
@@ -77,11 +77,10 @@ class InventoryView extends StatelessWidget {
             FancyButton(
               listenedKey: ListenedKeys.enterKey,
               description: 'Add to board (${gameValue.item3} free tiles left)',
-              // Disable ability to add materia incognita
-              // or materia prima to board
-              onPressed: (gameValue.item1 == AlchemyElement.materiaIncognita ||
-                      gameValue.item1 == AlchemyElement.materiaPrima ||
-                      gameValue.item3 <= 0)
+              // onPressed: (gameValue.item1 == AlchemyElement.materiaIncognita ||
+              //         gameValue.item1 == AlchemyElement.materiaPrima ||
+              //         gameValue.item3 <= 0)
+              onPressed: _blockOnPressed(gameValue.item1, gameValue.item3)
                   ? null
                   : () => _addTile(gameValue.item2, context),
             ),
@@ -91,18 +90,31 @@ class InventoryView extends StatelessWidget {
     );
   }
 
+  bool _blockOnPressed(AlchemyElement selectedElement, int tilesNotFilled) {
+    if (selectedElement == AlchemyElement.materiaIncognita) {
+      return true;
+    }
+    if (selectedElement == AlchemyElement.materiaPrima) {
+      return tilesNotFilled == 15;
+    }
+
+    return tilesNotFilled <= 0;
+  }
+
   void _addTile(
-    TypeCallback<bool> providerAddTileCallback,
+    VoidCallback providerAddTileCallback,
     BuildContext context,
   ) {
-    bool result = providerAddTileCallback.call();
+    // bool result = providerAddTileCallback.call();
 
-    if (!result) {
-      var entry = GameStory.storyEntries[6969];
-      if (entry == null) {
-        throw Exception('Tried to show dialog for null entry (entry 6969).');
-      }
-      showMirrorDialog(context, entry);
-    }
+    // if (!result) {
+    //   var entry = GameStory.storyEntries[6969];
+    //   if (entry == null) {
+    //     throw Exception('Tried to show dialog for null entry (entry 6969).');
+    //   }
+    //   showMirrorDialog(context, entry);
+    // }
+
+    providerAddTileCallback.call();
   }
 }
