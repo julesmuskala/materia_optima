@@ -150,7 +150,7 @@ class TutorialDialog extends StatelessWidget {
   }
 
   void _launchGithub() async {
-    if (!await launch('https://github.com/julesmuskala/')) {
+    if (!await launch('https://github.com/julesmuskala/materia_optima')) {
       throw 'Could not launch GitHub';
     }
   }
