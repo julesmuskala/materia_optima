@@ -57,6 +57,7 @@ class TutorialDialog extends StatelessWidget {
                       GameStory.getLine(entry.descriptionKey),
                       style: GameTypography.paragraph,
                       softWrap: true,
+                      textAlign: TextAlign.justify,
                     ),
                     SizedBox(
                       width: double.maxFinite,

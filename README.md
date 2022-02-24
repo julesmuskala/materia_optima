@@ -1,10 +1,10 @@
 # Materia optima
 
-Materia optima is an alchemy-themed puzzle game about achieving alchemical prowess. It features tile arranging mechanic, representing the alchemical process during which players can produce various materiae (elements). Gameplay is intertwined with a story presented from the perspective of the player character’s ancestor, who lived through Konstantian Wars, fought over the freedom to perform alchemy.
+Materia optima is a game based on the concept of slide puzzle with an alchemical twist. Player creates various materiae (alchemical ingredients) by arranging tiles and discovers the game's plot.
 
 ## Try it out
 
-Try out Materia optima by visiting this website or by running `flutter run -d chrome --release`. Furthermore, the game fully supports Android.
+Try out Materia optima by visiting [this website]() or by running `flutter run -d chrome --release`. Furthermore, the game fully supports Android.
 
 ## Credits
 
@@ -21,4 +21,4 @@ This project uses:
 - tuple package under [BSD-2-Clause license](legal/tuple_license)
 - url_launcher package under [BSD-3-Clause license](legal/url_launcher_license)
 - just_audio package under [Apache-2.0 license](legal/just_audio_license)
-- YouTube Library sound effects
+- YouTube Sound Library free sound effects and music

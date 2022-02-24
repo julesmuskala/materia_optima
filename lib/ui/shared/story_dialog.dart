@@ -60,6 +60,7 @@ class StoryDialog extends StatelessWidget {
                       GameStory.getLine(entry.descriptionKey),
                       style: GameTypography.paragraph,
                       softWrap: true,
+                      textAlign: TextAlign.justify,
                     ),
                     SizedBox(
                       height: screenSize.height * 0.03,
