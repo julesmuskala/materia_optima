@@ -51,10 +51,14 @@ class LandscapeScreen extends StatelessWidget {
             const Spacer(),
             Expanded(
               flex: 8,
-              child: BoardView(
-                width: screenSize.width * 0.22,
-                height: screenSize.height,
-                key: const Key('board_view'),
+              child: ListView(
+                children: [
+                  BoardView(
+                    width: screenSize.width * 0.22,
+                    height: screenSize.height,
+                    key: const Key('board_view'),
+                  ),
+                ],
               ),
             ),
             const Spacer(),

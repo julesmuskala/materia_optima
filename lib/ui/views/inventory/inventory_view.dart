@@ -70,7 +70,6 @@ class InventoryView extends StatelessWidget {
                 child: Text(
                   GameStory.getLine(gameValue.item1.scriptLineDescriptionKey),
                   style: GameTypography.paragraph,
-                  textAlign: TextAlign.justify,
                   softWrap: true,
                 ),
               ),
