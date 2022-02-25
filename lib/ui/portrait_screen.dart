@@ -65,15 +65,23 @@ class _PortraitScreenState extends State<PortraitScreen>
             height: screenSize.height,
             key: const Key('compendium_view'),
           ),
-          BoardView(
-            width: screenSize.width * 0.8,
-            height: screenSize.height,
-            key: const Key('board_view'),
+          ListView(
+            children: [
+              BoardView(
+                width: screenSize.width * 0.8,
+                height: screenSize.height,
+                key: const Key('board_view'),
+              ),
+            ],
           ),
-          InventoryView(
-            width: screenSize.width * 0.8,
-            height: screenSize.height,
-            key: const Key('inventory_view'),
+          ListView(
+            children: [
+              InventoryView(
+                width: screenSize.width * 0.8,
+                height: screenSize.height,
+                key: const Key('inventory_view'),
+              ),
+            ],
           ),
         ],
       ),
@@ -84,6 +92,8 @@ class _PortraitScreenState extends State<PortraitScreen>
             _tab = value;
           });
         },
+        iconSize: 20.0,
+        selectedFontSize: 12.0,
         currentIndex: _tab,
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
