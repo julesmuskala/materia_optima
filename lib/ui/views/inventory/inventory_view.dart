@@ -33,7 +33,7 @@ class InventoryView extends StatelessWidget {
       ),
       child: InventoryElementPicker(
         width: width * 0.9,
-        elementDimension: width * 0.9 * 0.09,
+        elementDimension: width * 0.9 * 0.11,
       ),
       builder: (context, gameValue, child) {
         // selectedElement, addToBoard
@@ -59,16 +59,20 @@ class InventoryView extends StatelessWidget {
             SizedBox(
               height: height * 0.02,
             ),
-            Container(
-              width: width * 0.9,
-              constraints: BoxConstraints(
-                minHeight: height * 0.2,
-              ),
-              child: Text(
-                GameStory.getLine(gameValue.item1.scriptLineDescriptionKey),
-                style: GameTypography.paragraph,
-                textAlign: TextAlign.justify,
-                softWrap: true,
+            AnimatedSize(
+              duration: GameTheme.standardAnimationDuration,
+              alignment: Alignment.topCenter,
+              child: Container(
+                width: width * 0.9,
+                constraints: BoxConstraints(
+                  minHeight: height * 0.25,
+                ),
+                child: Text(
+                  GameStory.getLine(gameValue.item1.scriptLineDescriptionKey),
+                  style: GameTypography.paragraph,
+                  textAlign: TextAlign.justify,
+                  softWrap: true,
+                ),
               ),
             ),
             SizedBox(
