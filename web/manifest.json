@@ -2,7 +2,7 @@
     "name": "Materia optima",
     "short_name": "Materia optima",
     "start_url": ".",
-    "display": "browser",
+    "display": "standalone",
     "background_color": "#121212",
     "theme_color": "#FB7102",
     "description": "My entry for Flutter Puzzle Hack",
