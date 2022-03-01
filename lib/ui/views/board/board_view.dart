@@ -106,13 +106,14 @@ class BoardView extends StatelessWidget {
         entry,
         gameModel: Provider.of<GameModel>(context, listen: false),
       );
-    } else {
-      var entry = GameStory.storyEntries[2137];
-      if (entry == null) {
-        throw Exception('Tried to show dialog for null entry (entry 2137).');
-      }
-      showMirrorDialog(context, entry);
     }
+    // else {
+    //   var entry = GameStory.storyEntries[2137];
+    //   if (entry == null) {
+    //     throw Exception('Tried to show dialog for null entry (entry 2137).');
+    //   }
+    //   showMirrorDialog(context, entry);
+    // }
   }
 
   List<BoardTile> _buildBoardTileList(

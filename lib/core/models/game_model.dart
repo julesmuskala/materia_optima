@@ -132,10 +132,12 @@ class GameModel extends ChangeNotifier {
     // Check for null to discard not unlockable elements
     if (resolvedQuestStage != null && _currentQuestStage < resolvedQuestStage) {
       setQuestStage(resolvedQuestStage);
+      notifyListeners();
+      return resolvedQuestStage;
     }
 
     notifyListeners();
-    return resolvedQuestStage;
+    return null;
   }
 
   void loadSave() async {
