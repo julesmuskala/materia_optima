@@ -13,7 +13,7 @@ class StoryEntry {
     this.rarity = 'common',
     this.followUpStage,
     this.unlockedElement,
-    this.audioPath,
+    this.audioPath = 'effect_magic.mp3',
   });
 
   final String titleKey;
@@ -23,7 +23,7 @@ class StoryEntry {
   final String rarity;
   final int? followUpStage;
   final AlchemyElement? unlockedElement;
-  final String? audioPath;
+  final String audioPath;
 }
 
 abstract class GameStory {
@@ -216,12 +216,12 @@ abstract class GameStory {
     2137: StoryEntry(
       titleKey: 'helper_title_2137',
       descriptionKey: 'helper_desc_2137',
-      audioPath: 'effect_fail.mp3',
+      audioPath: 'effect_fail_alt.mp3',
     ),
     6969: StoryEntry(
       titleKey: 'helper_title_6969',
       descriptionKey: 'helper_desc_6969',
-      audioPath: 'effect_fail.mp3',
+      audioPath: 'effect_fail_alt.mp3',
     ),
   });
 }

@@ -11,6 +11,7 @@ import 'package:materia_optima/utils/story.dart';
 import 'package:materia_optima/core/models/game_model.dart';
 import 'package:materia_optima/core/types/types.dart';
 import 'package:materia_optima/core/show_dialog.dart';
+import 'package:materia_optima/ui/views/board/board_reset_button.dart';
 
 class BoardView extends StatelessWidget {
   const BoardView({
@@ -78,12 +79,11 @@ class BoardView extends StatelessWidget {
             SizedBox(
               height: height * 0.03,
             ),
-            FancyButton(
+            BoardResetButton(
               onPressed: gameValue.item5 != 15
                   ? () => gameValue.item2.call(16)
                   : null, // reset 16 tiles
-              listenedKey: ListenedKeys.rKey,
-              description: GameStory.getLine('reset_board'),
+              audioPath: 'assets/sound_effects/effect_reset.mp3',
             ),
           ],
         );
