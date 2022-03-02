@@ -4,7 +4,9 @@ Materia optima is a game based on the concept of slide puzzle with an alchemical
 
 ## Try it out
 
-Try out Materia optima by visiting [this website](https://www.juliusz.muskala.pl/) or by running `flutter run -d chrome --release`. Furthermore, the game fully supports Android.
+Try out Materia optima by visiting [this website](https://www.juliusz.muskala.pl/) or by running `flutter run -d chrome --release --web-renderer canvaskit`.
+
+You can also try it out on Windows by running `flutter run -d windows` or on Android (I suggest using *Run code* button in your favorite IDE).
 
 ## Acknowledgments
 
@@ -19,4 +21,5 @@ This project uses:
 - tuple package under [BSD-2-Clause license](legal/tuple_license)
 - url_launcher package under [BSD-3-Clause license](legal/url_launcher_license)
 - just_audio package under [Apache-2.0 license](legal/just_audio_license)
+- just_audio_libwinmedia package under [MIT license](legal/just_audio_libwinmedia_license)
 - YouTube Sound Library free sound effects and music
