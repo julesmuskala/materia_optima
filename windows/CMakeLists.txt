@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.14)
 project(materia_optima LANGUAGES CXX)
 
-set(BINARY_NAME "materia_optima")
+set(BINARY_NAME "MateriaOptima")
 
 cmake_policy(SET CMP0063 NEW)
 
