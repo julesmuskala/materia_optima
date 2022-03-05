@@ -10,8 +10,6 @@ import 'package:materia_optima/core/models/game_model.dart';
 import 'package:materia_optima/ui/views/inventory/inventory_title.dart';
 import 'package:materia_optima/utils/story.dart';
 import 'package:materia_optima/core/types/listened_keys.dart';
-import 'package:materia_optima/core/types/types.dart';
-import 'package:materia_optima/core/show_dialog.dart';
 
 class InventoryView extends StatelessWidget {
   const InventoryView({

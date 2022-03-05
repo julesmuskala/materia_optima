@@ -27,7 +27,7 @@ class StoryEntry {
 }
 
 abstract class GameStory {
-  static const Map<String, String> lines = {
+  static const Map<String, String> _lines = {
     'error_fallback': 'Error: provided key is null',
     'app_title': 'Materia Optima',
     'app_subtitle': 'Achieve alchemical prowess',
@@ -108,7 +108,7 @@ abstract class GameStory {
         'There is no more Materia prima on the board to replace. You can try to clear it, before adding anything more again.',
   };
 
-  static String getLine(String key) => lines[key] ?? 'Error: no line found';
+  static String getLine(String key) => _lines[key] ?? 'Error: no line found';
 
   static final LinkedHashMap<int, StoryEntry> storyEntries =
       LinkedHashMap.from({

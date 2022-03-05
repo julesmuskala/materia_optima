@@ -113,11 +113,13 @@ class GameModel extends ChangeNotifier {
   void _addMateriaPrima() {
     if (_tilesNotFiled == 15) return;
     var randomIndex = _random.nextInt(_boardTiles.length);
-    while (_boardTiles[randomIndex].alchemyElement ==
-        AlchemyElement.materiaPrima) {
+    var boardTile = _boardTiles[randomIndex];
+    while (boardTile.alchemyElement == AlchemyElement.materiaPrima ||
+        boardTile.alchemyElement == AlchemyElement.materiaNulla) {
       randomIndex = _random.nextInt(_boardTiles.length);
+      boardTile = _boardTiles[randomIndex];
     }
-    _boardTiles[randomIndex].alchemyElement = AlchemyElement.materiaPrima;
+    boardTile.alchemyElement = AlchemyElement.materiaPrima;
     _tilesNotFiled++;
 
     notifyListeners();
