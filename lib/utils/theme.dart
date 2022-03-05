@@ -11,7 +11,7 @@ abstract class GameColors {
   static const yellow = Color.fromARGB(255, 235, 233, 24);
   static const grey50 = Color.fromARGB(255, 173, 173, 173);
   static const grey100 = Color.fromARGB(255, 113, 113, 113);
-  static const grey200 = Color.fromARGB(255, 18, 18, 18);
+  static const grey200 = Color.fromARGB(255, 17, 17, 17);
   static const shadowBlack = Color.fromARGB(115, 0, 0, 0);
 }
 
