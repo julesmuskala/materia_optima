@@ -2,6 +2,8 @@
 
 Materia optima is a game based on the concept of slide puzzle with an alchemical twist. Player creates various materiae (alchemical ingredients) by arranging tiles and discovers the game's plot.
 
+[Watch presentation video](https://youtu.be/Cx62ydcEtYo).
+
 ## Try it out
 
 Try out Materia optima by visiting [this website](https://www.juliusz.muskala.pl/) or by running `flutter run -d chrome --release --web-renderer canvaskit`.
