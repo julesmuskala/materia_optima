@@ -1,5 +1,7 @@
 # Materia optima
 
+![Sample game image](sample_image.png)
+
 Materia optima is a game based on the concept of slide puzzle with an alchemical twist. Player creates various materiae (alchemical ingredients) by arranging tiles and discovers the game's plot.
 
 [Watch presentation video](https://youtu.be/Cx62ydcEtYo).
