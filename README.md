@@ -8,7 +8,7 @@ Materia optima is a game based on the concept of slide puzzle with an alchemical
 
 ## Try it out
 
-Try out Materia optima by visiting [this website](https://www.juliusz.muskala.pl/) or by running `flutter run -d chrome --release --web-renderer canvaskit`.
+Try out Materia optima by running `flutter run -d chrome --release --web-renderer canvaskit`.
 
 You can also try it out on Windows by running `flutter run -d windows` or on Android (I suggest using *Run code* button in your favorite IDE).
 
